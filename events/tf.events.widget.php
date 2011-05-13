@@ -17,7 +17,7 @@ class Example_Widget extends WP_Widget {
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'example-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'example-widget', __('Pubforce - Events', 'example'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'example-widget', __('Events', 'example'), $widget_ops, $control_ops );
 	}
 
 	/**
