@@ -156,9 +156,9 @@ function tf_foodmenu_custom_columns($column)
                         $price3 = $custom["tf_menu_price3"][0];
 
                         $output = '';
-                        if ($price1 != '') { echo get_option('pubforce_fx').''.$price1; }
-                        if ($price2 != '') { echo '<br />'; echo get_option('pubforce_fx').''.$price2; }
-                        if ($price3 != '') { echo '<br />'; echo get_option('pubforce_fx').''.$price3; }
+                        if ($price1 != '') { echo get_option('tf_currency_symbol').''.$price1; }
+                        if ($price2 != '') { echo '<br />'; echo get_option('tf_currency_symbol').''.$price2; }
+                        if ($price3 != '') { echo '<br />'; echo get_option('tf_currency_symbol').''.$price3; }
                         break;
         }
 }
@@ -295,7 +295,7 @@ add_action( 'init', 'create_foodmenu_tax', 10 );
 
 function create_foodmenu_tax() {
 
-    if (get_option('pubforce_h_foodtax') != 'updated') {
+    if (get_option('tf_added_default_food_terms') != 'updated') {
         // Create the terms
         if (term_exists('Appetizers', 'tf_foodmenucat') == false ) {
             wp_insert_term(
@@ -316,7 +316,7 @@ function create_foodmenu_tax() {
               );
          }
          // Register update so that it's not repeated
-         update_option('pubforce_h_foodtax','updated');
+         update_option('tf_added_default_food_terms','updated');
     }
 }
 ?>

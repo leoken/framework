@@ -16,7 +16,7 @@
 function tf_menu_full ( $atts ) {
 
         // - get options -
-        $defaultfx = get_option('pubforce_menu_fx');
+        $defaultfx = get_option('tf_menu_currency_symbol');
 
         // - define arguments -
         extract(shortcode_atts(array(
@@ -39,7 +39,7 @@ function tf_menu_full ( $atts ) {
         // - currency -
         $fx = null;
         if ($currency=='true') {
-             $fx = get_option('pubforce_fx');}
+             $fx = get_option('tf_currency_symbol');}
 
         // - taxonomy group or single post -
         if ($type=="menu") {
@@ -50,7 +50,7 @@ function tf_menu_full ( $atts ) {
      // ===== LOOP: FULL MENU SECTION =====
 
             // - get options -
-                $sortfield = get_option('pubforce_menu_sort');
+                $sortfield = get_option('tf_menu_sort_key');
                 $metakey = null;
                 $orderby = 'title';
                 if ($sortfield=='true') { $metakey = 'tf_menu_order'; $orderby = 'meta_value';}
@@ -129,7 +129,7 @@ add_shortcode('tf-menu-full', 'tf_menu_full');
 
 function tf_menu_list ( $atts ) {
 
-    $defaultfx = get_option('pubforce_menu_fx');
+    $defaultfx = get_option('tf_menu_currency_symbol');
 
     extract(shortcode_atts(array(
          'id' => '', // Menu Name or Post ID
@@ -152,7 +152,7 @@ function tf_menu_list ( $atts ) {
         // - currency -
         $fx = null;
         if ($currency=='true') {
-             $fx = get_option('pubforce_fx');}
+             $fx = get_option('tf_currency_symbol');}
 
         // - taxonomy group or single post -
         if ($type=="menu") {
@@ -218,7 +218,7 @@ add_shortcode('tf-menu-list', 'tf_menu_list');
 
 function tf_menu_short ( $atts ) {
 
-    $defaultfx = get_option('pubforce_menu_fx');
+    $defaultfx = get_option('tf_menu_currency_symbol');
 
     extract(shortcode_atts(array(
          'id' => '', // Menu Name or Post ID
@@ -240,7 +240,7 @@ function tf_menu_short ( $atts ) {
         // - currency -
         $fx = null;
         if ($currency=='true') {
-             $fx = get_option('pubforce_fx');}
+             $fx = get_option('tf_currency_symbol');}
 
         // - taxonomy group or single post -
         if ($type=="menu") {

@@ -290,12 +290,13 @@ function events_scripts() {
     if( 'tf_events' != $post_type )
     return;
     // wp_deregister_script('jquery-ui-core'); TODO removed deregister, seems to have no conflicting issues.
-    wp_enqueue_script('jquery-ui', get_bloginfo('template_url') . '/js/jquery-ui-1.8.9.custom.min.js', array('jquery'));
-    wp_enqueue_script('ui-datepicker', get_bloginfo('template_url') . '/js/jquery.ui.datepicker.min.js');
-    wp_enqueue_script('ui-datepicker-settings', get_bloginfo('template_url').'/js/pubforce-admin.js', array('jquery'));
+    wp_enqueue_script('jquery-ui', TF_URL . '/assets/js/jquery-ui-1.8.9.custom.min.js', array('jquery'));
+    wp_enqueue_script('ui-datepicker', TF_URL . '/assets/js/jquery.ui.datepicker.js');
+    wp_enqueue_script('ui-datepicker-settings', TF_URL . '/assets/js/themeforce-admin.js', array('jquery'));
     // - pass local img path to js -
-    $datepicker_img = get_bloginfo('template_url') . '/images/ui/icon-datepicker.png';
-    wp_localize_script( 'ui-datepicker-settings', 'pubforce', array(
+    $datepicker_img = TF_URL . '/assets/images/ui/icon-datepicker.png';
+
+    wp_localize_script( 'ui-datepicker-settings', 'themeforce', array(
 	  	'buttonImage' => $datepicker_img,
 		));
 }
@@ -312,7 +313,7 @@ add_action( 'init', 'create_events_tax', 10 );
 
 function create_events_tax() {
 
-    if (get_option('pubforce_h_eventstax') != 'updated') {
+    if (get_option('tf_added_default_events_terms') != 'updated') {
         // Create the terms
         if (term_exists('Featured', 'tf_eventcategory') == false ) {
             wp_insert_term(
@@ -333,7 +334,7 @@ function create_events_tax() {
               );
          }
          // Register update so that it's not repeated
-         update_option('pubforce_h_eventstax','updated');
+         update_option('tf_added_default_events_terms','updated');
     }
 }
 ?>

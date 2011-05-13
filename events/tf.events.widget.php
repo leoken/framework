@@ -11,7 +11,7 @@ class Example_Widget extends WP_Widget {
 	 */
 	function Example_Widget() {
 		/* Widget settings. */
-		$widget_ops = array( 'classname' => 'example', 'description' => __('Displays events from Pubforce within the widget areas', 'themeforce') );
+		$widget_ops = array( 'classname' => 'example', 'description' => __('Displays events within the widget areas', 'themeforce') );
 
 		/* Widget control settings. */
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'example-widget' );

@@ -22,9 +22,10 @@ CALSCALE:GREGORIAN
 
 // - grab date barrier -
 $today6am = strtotime('today 6:00') + ( get_option( 'gmt_offset' ) * 3600 );
-$limit = get_option('pubforce_rss_limit');
+$limit = get_option('tf_rss_limit');
 
 // - query -
+// TODO - Replace with WP_Query
 global $wpdb;
 $querystr = "
     SELECT *
