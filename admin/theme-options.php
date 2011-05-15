@@ -194,19 +194,19 @@ $options[] = array( "name" => "Food Menu Settings",
 
 $options[] = array( "name" => "Menu Currency",
 					"desc" => "Please enter your currency symbol or 3-letter code, whichever looks better to you. Is used for the menu.",
-					"id" => $shortname."_fx",
+					"id" => "tf_currency_symbol",
 					"std" => "$",
 					"type" => "text");
 
 $options[] = array( "name" => "Show currency for menu prices by default?",
 					"desc" => "Otherwise you will need to set it manually by using the shortcode variable",
-					"id" => $shortname."_menu_fx",
+					"id" => "tf_menu_currency_symbol",
 					"std" => "false",
 					"type" => "checkbox");
 
 $options[] = array( "name" => "Use advanced sort functionality for Menu?",
 					"desc" => "If you don't use the advanced sort, menu items will be sorted alphabetically. ", //See <a href='http://'>this tutorial</a>for more information
-					"id" => $shortname."_menu_sort",
+					"id" => "tf_menu_sort_key",
 					"std" => "false",
 					"type" => "checkbox");
 

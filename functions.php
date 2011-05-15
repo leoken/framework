@@ -11,19 +11,18 @@
  *
  */
 
-// - CUSTOM POST TYPE: FOOD -
-//---------------------------------------------
+// Set up theme supports
+add_theme_support( 'tf_food_menu' );
+//TODO add_theme_support( 'tf_events' );
 
-require_once (TEMPLATEPATH . '/functions/cpt-foodmenu.php');
-require_once (TEMPLATEPATH . '/functions/cpt-foodmenu-shortcodes.php');
+// Load the Theme Force Framework
+require_once( TEMPLATEPATH . '/themeforce/themeforce.php' );
 
 // - WIDGETS -
 //---------------------------------------------
 
-require_once (TEMPLATEPATH . '/functions/widget-openingtimes.php');
 require_once (TEMPLATEPATH . '/functions/widget-foursquare-tips.php');
 require_once (TEMPLATEPATH . '/functions/widget-foursquare-photos.php');
-require_once (TEMPLATEPATH . '/functions/widget-googlemaps.php');
 require_once (TEMPLATEPATH . '/functions/widget-socialmedia.php');
 
 // - CUSTOM FUNCTIONS -
@@ -40,11 +39,6 @@ function load_chowforce_css() {
 
 add_action('wp_print_styles', 'load_chowforce_css');
 
-function tf_functions_css() {
-    wp_enqueue_style('tf-functions-css', get_bloginfo('template_directory') . '/functions/tf-functions.css');
-    }
-
-add_action('admin_init', 'tf_functions_css');
 
 // - JAVASCRIPT ENQUEUE -
 //---------------------------------------------
@@ -207,6 +201,62 @@ function themeforce_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 endif;
+
+
+/**
+ * Updates the Pubforce options which have been moved to ThemeForce.
+ * 
+ */
+function cf_update_pubforce_options_to_themeforce() {
+	
+	$options_to_change = array(
+		'pubforce_h_foodtax'	=> 'tf_added_default_food_terms',
+		'chowforce_fx'			=> 'tf_currency_symbol',	
+		'chowforce_menu_fx'		=> 'tf_menu_currency_symbol',
+		'chowforce_menu_sort'	=> 'tf_menu_sort_key',
+		
+	);
+	
+	foreach( $options_to_change as $old_option => $new_option ) {
+		update_option( $new_option, get_option( $old_option ) );
+		delete_option( $old_option );
+	}
+	
+}
+
+/**
+ * If the site is using old Pubforce options, show a nag to get them to migrate.
+ * 
+ */
+function cf_update_pubforce_options_nag() {
+	
+	if( !get_option( 'pubforce_h_foodtax' ) && !get_option( 'chowforce_menu_fx' ) && !get_option( 'chowforce_menu_sort' ) )
+		return;
+	
+	?>
+	<div class="update-nag"><?php _e( 'You have legacy Chowforce options that need updating, click the following button to update them.' ) ?> <a href="<?php echo wp_nonce_url( add_query_arg( 'cf_action', 'update_legacy_options' ), 'update_legacy_options' ) ?>" class="button"><?php _e( 'Update Options' ) ?></a></div>
+	<?php
+	
+}
+add_action('admin_notices', 'cf_update_pubforce_options_nag' );
+
+/**
+ * Submit action for the chowforce options migrator.
+ * 
+ */
+function cf_update_pubforce_legacy_options_action() {
+
+	if( empty( $_GET['cf_action'] ) || $_GET['cf_action'] !== 'update_legacy_options' || !wp_verify_nonce( $_GET['_wpnonce'], 'update_legacy_options' ) )
+		return;
+	
+	cf_update_pubforce_options_to_themeforce();
+	
+	wp_redirect( wp_get_referer() );
+	exit;
+
+}
+add_action( 'admin_init', 'cf_update_pubforce_legacy_options_action' );
+
 
 // - WIDGET INIT -
 //---------------------------------------------
