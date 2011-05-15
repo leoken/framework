@@ -1,0 +1,3 @@
+[submodule "themeforce"]
+	path = themeforce
+	url = git@github.com:themeforce/framework.git
