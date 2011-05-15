@@ -42,21 +42,25 @@ class tf_fs_tips_widget extends WP_Widget {
                 echo '<div class="fs-tips">';
 
                         $venue = themeforce_foursquare_transient();
+                        if( isset( $venue->meta->errorType ) ) {
+                        	echo 'Please configure foursquare in the Theme Options';
+                        } else {
 
-                        // -display meta code -
-                        echo '<!-- Foursquare Response Code: ' . $venue->meta->code . ' -->';
-
-                        $counter=0;
-                        foreach ($venue->response->venue->tips->groups[0]->items as $items) {
-                            if ($counter < $limit) {
-                                $counter++;
-                                echo '<div class="fs-tips-item">';
-                                echo '<div class="fs-tips-thumb"><img src="' . $items->user->photo . '" width="50px" height="50px" style="padding:0;margin:0;line-height:0;" /></div>';
-                                echo '<div class="fs-tips-text"><strong>'. $items->user->firstName . ' ' . $items->user->lastName . __(' says ', 'themeforce') . '</strong><div class="fs-tips-quote">"' . $items->text . '"</div></div>';
-                                echo '</div><div class="clearfix"></div>';
-                            }
-                            }
-
+                       		// -display meta code -
+                       		echo '<!-- Foursquare Response Code: ' . $venue->meta->code . ' -->';
+					   		
+                       		$counter=0;
+                       		foreach ($venue->response->venue->tips->groups[0]->items as $items) {
+                       		    if ($counter < $limit) {
+                       		        $counter++;
+                       		        echo '<div class="fs-tips-item">';
+                       		        echo '<div class="fs-tips-thumb"><img src="' . $items->user->photo . '" width="50px" height="50px" style="padding:0;margin:0;line-height:0;" /></div>';
+                       		        echo '<div class="fs-tips-text"><strong>'. $items->user->firstName . ' ' . $items->user->lastName . __(' says ', 'themeforce') . '</strong><div class="fs-tips-quote">"' . $items->text . '"</div></div>';
+                       		        echo '</div><div class="clearfix"></div>';
+                       		    }
+                       		}
+                       	}
+					   		
                 echo '</div>';
                 if ( $footdesc ) {echo '<p>' . $footdesc . '</p>';}
 
