@@ -18,8 +18,12 @@ if( current_theme_supports( 'tf_events' ) )
 
 //Widgets
 require_once( TF_PATH . '/widgets/newsletter-widget.php' );
-require_once( TF_PATH . '/widgets/widget-openingtimes.php' );
-require_once( TF_PATH . '/widgets/widget-googlemaps.php' );
+
+if( current_theme_supports( 'tf_widget_opening_times' ) )
+	require_once( TF_PATH . '/widgets/widget-openingtimes.php' );
+
+if( current_theme_supports( 'tf_widget_google_maps' ) )
+	require_once( TF_PATH . '/widgets/widget-googlemaps.php' );
 
 //Google Maps
 require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );
