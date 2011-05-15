@@ -17,7 +17,9 @@ if( current_theme_supports( 'tf_events' ) )
 	require_once( TF_PATH . '/events/tf.events.php' );
 
 //Widgets
-require_once( TF_PATH . '/newsletter-widget.php' );
+require_once( TF_PATH . '/widgets/newsletter-widget.php' );
+require_once( TF_PATH . '/widgets/widget-openingtimes.php' );
+require_once( TF_PATH . '/widgets/widget-googlemaps.php' );
 
 //Google Maps
 require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );
