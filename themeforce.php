@@ -18,17 +18,36 @@ if( current_theme_supports( 'tf_events' ) )
 	require_once( TF_PATH . '/events/tf.events.php' );
 
 //Widgets
-require_once( TF_PATH . '/newsletter-widget.php' );
+require_once( TF_PATH . '/widgets/newsletter-widget.php' );
+
+if( current_theme_supports( 'tf_widget_opening_times' ) )
+	require_once( TF_PATH . '/widgets/widget-openingtimes.php' );
+
+if( current_theme_supports( 'tf_widget_google_maps' ) )
+	require_once( TF_PATH . '/widgets/widget-googlemaps.php' );
 
 //Google Maps
 require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );
 
+//Four Square
+if( current_theme_supports( 'tf_four_square' ) ) {
+	require_once( TF_PATH . '/foursquare/tf.foursquare.php' ); 
+	require_once( TF_PATH . '/widgets/widget-foursquare-photos.php' );
+	require_once( TF_PATH . '/widgets/widget-foursquare-tips.php' );
+}
+
+//Yelp
+if( current_theme_supports( 'tf_yelp' ) ) {
+	require_once( TF_PATH . '/yelp/tf.yelp.php' );
+}
+
 //Options Framework
 define('OF_FILEPATH', STYLESHEETPATH );
 define('OF_DIRECTORY', TF_URL . '/options-framework' );
-	
-require_once ( TF_PATH . '/options-framework/admin/admin-functions.php');		// Custom functions and plugins
-require_once ( TF_PATH . '/options-framework/admin/admin-interface.php');		// Admin Interfaces (options,framework, seo)
+
+require_once( TF_PATH . '/options-framework/admin/admin-options.php' );
+require_once( TF_PATH . '/options-framework/admin/admin-functions.php');		// Custom functions and plugins
+require_once( TF_PATH . '/options-framework/admin/admin-interface.php');		// Admin Interfaces (options,framework, seo)
 
 /**
  * Enqueue the admin styles for themeforce features.

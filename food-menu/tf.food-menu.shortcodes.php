@@ -24,6 +24,8 @@ function tf_menu_full ( $atts ) {
              'header' => 'yes', // Menu Section Header On or Off
              'currency'=> $defaultfx, // Currency On or Off
              'type' => 'menu', // Menu or Single
+             'align' => '', // For full width
+             'posts_per_page' => 99,
          ), $atts));
 
     // ===== OUTPUT FUNCTION =====
@@ -31,6 +33,9 @@ function tf_menu_full ( $atts ) {
         ob_start();
 
     // ===== OPTIONS =====
+
+        // - full-width check -
+        if( $align ) { echo '<div style="clear:' . $align . '"></div><div class="' . $align . ' half-col">';}
 
         // - header text -
         if ($header=="yes") {
@@ -54,6 +59,7 @@ function tf_menu_full ( $atts ) {
                 $metakey = null;
                 $orderby = 'title';
                 if ($sortfield=='true') { $metakey = 'tf_menu_order'; $orderby = 'meta_value';}
+		if ($posttype=='p') { $metakey = 'null'; $orderby = 'title';}
 
             // - arguments -
             $args = array(
@@ -69,6 +75,7 @@ function tf_menu_full ( $atts ) {
             // - query -
             $my_query = null;
             $my_query = new WP_query($args);
+            
             while ($my_query->have_posts()) : $my_query->the_post();
 
             // - variables -
@@ -108,6 +115,7 @@ function tf_menu_full ( $atts ) {
                 <div class="clearfix"></div>
         <?php
         endwhile;
+        if( $align ) { echo '</div>';}
 
     // ===== RETURN: FULL MENU SECTION =====
         
@@ -137,6 +145,7 @@ function tf_menu_list ( $atts ) {
          'currency'=> $defaultfx,
          'type' => 'menu', // Menu or Single
          'posts_per_page' => 99,
+         'align' => '', // For full width
      ), $atts));
 
     // ===== OUTPUT FUNCTION =====
@@ -144,6 +153,9 @@ function tf_menu_list ( $atts ) {
     ob_start();
 
     // ===== OPTIONS =====
+
+        // - full-width check -
+        if( $align ) { echo '<div style="clear:' . $align . '"></div><div class="' . $align . ' half-col">';}
 
         // - header text -
         if ($header=="yes") {
@@ -162,12 +174,23 @@ function tf_menu_list ( $atts ) {
 
      // ===== LOOP: LIST MENU SECTION =====
 
+	// - get options -
+	$sortfield = get_option('tf_menu_sort_key');
+	$metakey = null;
+	$orderby = 'title';
+	if ($sortfield=='true') { $metakey = 'tf_menu_order'; $orderby = 'meta_value';}
+	if ($posttype=='p') { $metakey = 'null'; $orderby = 'title';}
+	 
             // - arguments -
             $args = array(
                 'post_type' => 'tf_foodmenu',
                 $posttype => $id,
                 'post_status' => 'publish',
+		'orderby' => $orderby,
+                'meta_key' => $metakey,
+                'order' => 'ASC',
                 'posts_per_page' => 99,
+                'align' => '', // For full width
             );
 
             // - query -
@@ -199,6 +222,7 @@ function tf_menu_list ( $atts ) {
         <div class="clearfix"></div>
         <?php
         endwhile;
+        if( $align ) { echo '</div>';}
 
 $output = ob_get_contents();
 ob_end_clean();
@@ -250,12 +274,20 @@ function tf_menu_short ( $atts ) {
 
      // ===== LOOP: SMALL MENU SECTION =====
 
+	// - get options -
+	$sortfield = get_option('tf_menu_sort_key');
+	$metakey = null;
+	$orderby = 'title';
+	if ($sortfield=='true') { $metakey = 'tf_menu_order'; $orderby = 'meta_value';}
+	if ($posttype=='p') { $metakey = 'null'; $orderby = 'title';}
+	 
             // - arguments -
             $args = array(
                 'post_type' => 'tf_foodmenu',
                 $posttype => $id,
                 'post_status' => 'publish',
-                'orderby' => 'title',
+		'orderby' => $orderby,
+                'meta_key' => $metakey,
                 'order' => 'ASC',
                 'posts_per_page' => 99,
             );
