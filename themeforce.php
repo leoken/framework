@@ -3,6 +3,7 @@
 /*
  * Theme Force Framework
  *
+ * Version: dev
  */
  
 define( 'TF_PATH', dirname( __FILE__ ) );
