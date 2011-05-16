@@ -57,3 +57,28 @@ function tf_enqueue_admin_css() {
 	wp_enqueue_style('tf-functions-css', TF_URL . '/assets/css/admin.css');
 }
 add_action('admin_init', 'tf_enqueue_admin_css');
+
+/**
+ * Adds the themeforce icon to the ThemeForce related widget in the admin.
+ * 
+ */
+function tf_add_tf_icon_classes_to_widgets() {
+	?>
+	 <script type="text/javascript">
+     	jQuery( document ).ready( function() {
+     		
+     		jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '_tf' ) > 1 )
+					jQuery( object ).addClass('tf-admin-widget');
+     		} );
+     		
+     	} );
+     </script>
+     
+     <style text="text/css">
+     	/* ThemeForce Icon */
+		.tf-admin-widget .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-themeforce-18.png); background-repeat: no-repeat; background-position: 213px center; }
+     </style>
+	<?php
+}
+add_action( 'in_admin_footer', 'tf_add_tf_icon_classes_to_widgets' );
