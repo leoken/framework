@@ -35,7 +35,7 @@
         { wp_enqueue_script( 'comment-reply' ) ;}
     wp_head();
     ?>
-    <?php if (get_option('chowforce_yelp_switch') == 'true') { ?>
+    <?php if (get_option('tf_yelp_enabled') == 'true') { ?>
         <script type="text/javascript">
             jQuery().ready(function () {
                 var stickyPanelOptions = {
@@ -50,9 +50,9 @@
 
 <body <?php body_class(); ?>>
 
-<?php if (get_option('chowforce_yelp_switch') == 'true') {
+<?php if (get_option('tf_yelp_enabled') == 'true') {
     echo '<!-- yelp bar -->';
-    $yelpbar = themeforce_yelp_bar();
+    $yelpbar = tf_yelp_bar();
     echo $yelpbar;
     echo '<!-- / yelp bar -->';
     } else {

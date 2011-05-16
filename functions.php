@@ -15,6 +15,8 @@
 add_theme_support( 'tf_food_menu' );
 add_theme_support( 'tf_widget_opening_times' );
 add_theme_support( 'tf_widget_google_maps' );
+add_theme_support( 'tf_four_square' );
+add_theme_support( 'tf_yelp' );
 
 //TODO add_theme_support( 'tf_events' );
 
@@ -24,8 +26,6 @@ require_once( TEMPLATEPATH . '/themeforce/themeforce.php' );
 // - WIDGETS -
 //---------------------------------------------
 
-require_once (TEMPLATEPATH . '/functions/widget-foursquare-tips.php');
-require_once (TEMPLATEPATH . '/functions/widget-foursquare-photos.php');
 require_once (TEMPLATEPATH . '/functions/widget-socialmedia.php');
 
 // - CUSTOM FUNCTIONS -
@@ -213,10 +213,17 @@ endif;
 function cf_update_pubforce_options_to_themeforce() {
 	
 	$options_to_change = array(
-		'pubforce_h_foodtax'	=> 'tf_added_default_food_terms',
-		'chowforce_fx'			=> 'tf_currency_symbol',	
-		'chowforce_menu_fx'		=> 'tf_menu_currency_symbol',
-		'chowforce_menu_sort'	=> 'tf_menu_sort_key',
+		'pubforce_h_foodtax'		=> 'tf_added_default_food_terms',
+		'chowforce_fx'				=> 'tf_currency_symbol',	
+		'chowforce_menu_fx'			=> 'tf_menu_currency_symbol',
+		'chowforce_menu_sort'		=> 'tf_menu_sort_key',
+		'chowforce_fsquare_venueid' => 'tf_fsquare_venue_id',
+		'chowforce_fsquare_clientid'=> 'tf_fsquare_client_id',
+		'chowforce_fsquare_clientsecret' => 'tf_fsquare_client_secret',
+		'chowforce_yelp_api'		=> 'tf_yelp_api_key',
+		'chowforce_yelp_phone'		=> 'tf_yelp_phone',
+		'chowforce_yelp_cc'			=> 'tf_yelp_country_code',
+		'chowforce_yelp_switch'		=> 'tf_yelp_enabled'
 		
 	);
 	
@@ -338,103 +345,6 @@ function themeforce_widgets_init() {
 }
 add_action( 'widgets_init', 'themeforce_widgets_init' );
 
-// - FOURSQUARE TRANSIENTS -
-//---------------------------------------------
-
-function themeforce_foursquare_api() {
-
-        // - setup -
-        $fs_api = 'https://api.foursquare.com/v2/venues/';
-        $fs_venue = get_option('chowforce_fsquare_venueid');
-        $fs_id = '?client_id=' . get_option('chowforce_fsquare_clientid');
-        $fs_secret = '&client_secret=' . get_option('chowforce_fsquare_clientsecret');
-        $fs_url = $fs_api . $fs_venue . $fs_id . $fs_secret;
-
-        // - response -
-        $api_response = wp_remote_get($fs_url);
-        $json = wp_remote_retrieve_body($api_response);
-        $json = json_decode($json);
-
-        // - data -
-        return $json;   
-    }
-
-function themeforce_foursquare_transient() {
-
-        // - get transient -
-        $json = get_transient('themeforce_foursquare_json');
-
-        // - refresh transient -
-        if ( false == $json ) {
-            $json = themeforce_foursquare_api();
-            set_transient('themeforce_foursquare_json', $json, 180);
-            }
-
-        // - data -
-        return $json;
-    }
-
-// - YELP TRANSIENTS -
-//---------------------------------------------
-
-function themeforce_yelp_api() {
-    
-        $api_key = get_option('chowforce_yelp_api');
-        $api_phone = get_option('chowforce_yelp_phone');
-        $api_cc = get_option('chowforce_yelp_cc');
-
-        $api_response = wp_remote_get("http://api.yelp.com/phone_search?phone={$api_phone}&cc={$api_cc}&ywsid={$api_key}");
-        $yelpfile = wp_remote_retrieve_body($api_response);
-        $yelp = json_decode($yelpfile);
-
-        return $yelp;
-    }
-
-function themeforce_yelp_transient() {
-
-        // - get transient -
-        $json = get_transient('themeforce_yelp_json');
-
-        // - refresh transient -
-        if ( false == $json ) {
-            $json = themeforce_yelp_api();
-            set_transient('themeforce_yelp_json', $json, 180);
-            }
-
-        // - data -
-        return $json;
-    }
-
-// - YELP BAR -
-//---------------------------------------------
-
-function themeforce_yelp_bar() {
-
-        $yelp = themeforce_yelp_transient();
-
-        ob_start();
-            // Shows Response Code for Debugging (as HTML Comment)
-            echo '<!-- Yelp Response Code: ' . $yelp->message->text . ' - ' . $yelp->message->code . ' - ' . $yelp->message->version . ' -->';
-            echo '<div id="yelpbar">';
-            echo '<div id="yelpcontent">';
-            // Display Requirement: No-follow Link back to Yelp.com
-            echo '<div class="yelpimg"><a href="http://www.yelp.com">';
-            echo '<img src ="' . get_bloginfo('template_url') . '/images/yelp_logo_50x25.png">';
-            echo '</a></div>';
-            // Show Venue specific details
-            echo '<div class="yelptext">' . __('users have rated our establishment', 'themeforce') . '</div>';
-            echo '<a href="' . $yelp->businesses[0]->url . '">';
-            echo '<div class="yelpimg"><img src="' . $yelp->businesses[0]->rating_img_url . '" alt=" " style="padding-top:7px;" /></div>';
-            echo '</a>';
-            echo '<div class="yelptext">' . __('through', 'themeforce') . '</div>';
-            echo '<div class="yelptext"><a href="' . $yelp->businesses[0]->url . '" target="_blank">';
-            echo $yelp->businesses[0]->review_count . '&nbsp;' . __( 'Reviews', 'themeforce' );
-            echo '</a></div></div></div>';
-        $output = ob_get_contents();
-        ob_end_clean();
-
-        return $output;
-    };
 
 // - SLIDER -
 //---------------------------------------------
