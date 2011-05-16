@@ -13,6 +13,7 @@
 
 // Set up theme supports
 add_theme_support( 'tf_food_menu' );
+add_theme_support( 'tf_events' );
 add_theme_support( 'tf_widget_opening_times' );
 add_theme_support( 'tf_widget_google_maps' );
 add_theme_support( 'tf_four_square' );
