@@ -11,7 +11,11 @@ function tf_yelp_api() {
     $api_response = wp_remote_get("http://api.yelp.com/phone_search?phone={$api_phone}&cc={$api_cc}&ywsid={$api_key}");
     $yelpfile = wp_remote_retrieve_body($api_response);
     $yelp = json_decode($yelpfile);
-
+	
+	//error checking
+	if( !isset( $yelp->message->code ) || $yelp->message->code != 0 )
+		return null;
+	
     return $yelp;
 }
 
@@ -21,10 +25,10 @@ function tf_yelp_transient() {
     $json = get_transient('themeforce_yelp_json');
 
     // - refresh transient -
-    if ( false == $json ) {
+    if ( !$json ) {
         $json = tf_yelp_api();
         set_transient('themeforce_yelp_json', $json, 180);
-        }
+	}
 
     // - data -
     return $json;
@@ -36,6 +40,9 @@ function tf_yelp_transient() {
 function tf_yelp_bar() {
 
     $yelp = tf_yelp_transient();
+    
+    if( !$yelp )
+    	return;
 
     ob_start();
         // Shows Response Code for Debugging (as HTML Comment)
