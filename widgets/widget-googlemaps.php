@@ -17,7 +17,7 @@ class tf_googlemaps_widget extends WP_Widget {
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'tf-googlemaps-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'tf-googlemaps-widget', __('TF - Google Maps', 'example'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'tf-googlemaps-widget', __('Google Maps', 'example'), $widget_ops, $control_ops );
 	}
 
 	/**

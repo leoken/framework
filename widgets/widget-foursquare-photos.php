@@ -17,7 +17,7 @@ class tf_fs_photos_widget extends WP_Widget {
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'tf-fs-photos-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'tf-fs-photos-widget', __('TF - Foursquare Photos', 'themeforce'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'tf-fs-photos-widget', __('Foursquare Photos', 'themeforce'), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -41,21 +41,26 @@ class tf_fs_photos_widget extends WP_Widget {
                 if ( $headdesc ) {echo '<p>' . $headdesc . '</p>';}
                 echo '<div class="fs-photos">';
 
-                        $venue = tf_foursquare_transient();
-
-                        // -display meta code -
-                        echo '<!-- Foursquare Response Code: ' . $venue->meta->code . ' -->';
-
-                        $counter=0;
-                        foreach ($venue->response->venue->photos->groups[1]->items as $items) {
-                            if ($counter < $limit) {
-                                $counter++;
-                                echo '<div class="fs-photos-item">';
-                                echo '<div class="fs-photos-thumb"><img src="' . $items->sizes->items[2]->url . '" style="padding:0;margin:0" /></div>';
-                                // echo '<div class="fs-photos-text"><strong>'. $items->user->firstName . ' ' . $items->user->lastName . __(' says ', 'themeforce') . '</strong><div class="fs-photos-quote">"' . $items->text . '"</div></div>';
-                                echo '</div>';
-                            }
-                            }
+                $venue = tf_foursquare_transient();
+				    
+				if( isset( $venue->meta->errorType ) || !$venue ) {
+                	echo 'Please configure foursquare in the Theme Options';
+                } else {
+                
+                	// -display meta code -
+                	echo '<!-- Foursquare Response Code: ' . $venue->meta->code . ' -->';
+				    
+                	$counter=0;
+                	foreach ($venue->response->venue->photos->groups[1]->items as $items) {
+                	    if ($counter < $limit) {
+                	        $counter++;
+                	        echo '<div class="fs-photos-item">';
+                	        echo '<div class="fs-photos-thumb"><img src="' . $items->sizes->items[2]->url . '" style="padding:0;margin:0" /></div>';
+                	        // echo '<div class="fs-photos-text"><strong>'. $items->user->firstName . ' ' . $items->user->lastName . __(' says ', 'themeforce') . '</strong><div class="fs-photos-quote">"' . $items->text . '"</div></div>';
+                	        echo '</div>';
+                	    }   
+				    }
+				}
 
                 echo '<div class="clearfix"></div></div>';
                 if ( $footdesc ) {echo '<p>' . $footdesc . '</p>';}
