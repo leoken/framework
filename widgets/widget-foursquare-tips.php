@@ -42,7 +42,7 @@ class tf_fs_tips_widget extends WP_Widget {
                 echo '<div class="fs-tips">';
 
                         $venue = tf_foursquare_transient();
-                        if( isset( $venue->meta->errorType ) ) {
+                        if( isset( $venue->meta->errorType ) || !$venue ) {
                         	echo 'Please configure foursquare in the Theme Options';
                         } else {
 

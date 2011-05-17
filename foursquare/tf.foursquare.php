@@ -21,23 +21,30 @@ function tf_foursquare_api() {
     // - response -
     $api_response = wp_remote_get($fs_url);
     $json = wp_remote_retrieve_body($api_response);
-    $json = json_decode($json);
+    
+    $response = json_decode($json);
+	
+	// error checking    
+    if( !isset( $response->meta->code ) || $reponse->meta->code != 200 )
+		return array();
 
-    // - data -
-    return $json;   
+    return $response;
 }
 
+/**
+ * Gets the foursquare data transient (lasts 180 seconds).
+ * 
+ * @return object
+ */
 function tf_foursquare_transient() {
 
     // - get transient -
     $json = get_transient('tf_foursquare_json');
 
     // - refresh transient -
-    if ( false == $json ) {
+    if ( !$json ) {
         $json = tf_foursquare_api();
 		set_transient('tf_foursquare_json', $json, 180);
     }
-
-    // - data -
     return $json;
 }
