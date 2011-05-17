@@ -17,7 +17,7 @@ class tf_fs_photos_widget extends WP_Widget {
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'tf-fs-photos-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'tf-fs-photos-widget', __('TF - Foursquare Photos', 'themeforce'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'tf-fs-photos-widget', __('Foursquare Photos', 'themeforce'), $widget_ops, $control_ops );
 	}
 
 	/**

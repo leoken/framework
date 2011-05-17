@@ -17,7 +17,7 @@ class tf_fs_tips_widget extends WP_Widget {
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'tf-fs-tips-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'tf-fs-tips-widget', __('TF - Foursquare Tips', 'themeforce'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'tf-fs-tips-widget', __('Foursquare Tips', 'themeforce'), $widget_ops, $control_ops );
 	}
 
 	/**

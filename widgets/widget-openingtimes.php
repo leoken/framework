@@ -17,7 +17,7 @@ class tf_openingtimes_widget extends WP_Widget {
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'tf-openingtimes-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'tf-openingtimes-widget', __('TF - Opening Times', 'example'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'tf-openingtimes-widget', __('Opening Times', 'example'), $widget_ops, $control_ops );
 	}
 
 	/**
