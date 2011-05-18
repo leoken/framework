@@ -29,7 +29,7 @@ class tf_socialmedia_widget extends WP_Widget {
                 // - our variables from the widget settings -
 
 		$title = apply_filters('widget_title', $instance['sm-title'] );
-                $twitter =  get_option('tf__twitter');
+                $twitter =  get_option('tf_twitter');
                 $facebook =  get_option('tf_facebook');
 
                 // widget display
