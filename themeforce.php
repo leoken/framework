@@ -115,6 +115,14 @@ function tf_of_business_options( $options ) {
 						"std" => "(123) 456 789",
 						"type" => "text");
 	
+	if( get_current_theme() == 'Chowforce' ) {
+		$options[] = array( "name" => "Short Contact Info",
+							"desc" => "Visible contact information in the top-right corner (you can also leave blank)",
+							"id" => "chowforce_biz_contactinfo",
+							"std" => "Call us at +01 (02) 123 57 89",
+							"type" => "text");
+	}
+	
 	$options[] = array( "name" => "Menu Currency",
 						"desc" => "Please enter your currency symbol or 3-letter code, whichever looks better to you. Is used for the menu.",
 						"id" => "tf_currency_symbol",
@@ -156,5 +164,12 @@ function tf_of_business_options( $options ) {
 						"id" => $shortname."_terminalnotice",
 						"std" => "Terminal Footer Text",
 						"type" => "text");
+						
+	$options[] = array( "name" => "Tracking Code",
+						"desc" => "Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme.",
+						"id" => $shortname."_google_analytics",
+						"std" => "",
+						"type" => "textarea"); 
+	
 	return $options;
 }
