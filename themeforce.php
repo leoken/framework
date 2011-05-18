@@ -10,7 +10,7 @@ define( 'TF_PATH', dirname( __FILE__ ) );
 define( 'TF_URL', str_replace( ABSPATH, get_bloginfo('url') . '/', TF_PATH ) );
 
 //Facebook Open Graph protocol
-require_once( TF_PATH . '/OGtags.php' );
+require_once( TF_PATH . '/OpenGraphProtocol.php' );
 
 
 //Food Menu
