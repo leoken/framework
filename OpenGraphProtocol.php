@@ -3,6 +3,7 @@
 /**
  * Adds the OpenGraph meta tags to the head.
  *
+ * TODO - implement more for event pages, and menu pages.
  * TODO - seperate address fields
  * 
  */
@@ -14,6 +15,11 @@ function tf_add_og_meta_tags() {
 		return;
 	
 	$meta = array();
+	
+	if( get_current_theme() == 'Chowforce' ) 
+		$image = array( 'property' => 'og:image', 'content' => get_option('chowforce_logo') );
+	elseif( get_current_theme() == 'Pubforce' ) 
+		$image = array( 'property' => 'og:image', 'content' => get_option('pubforce_logo') );
 	
 	//Site name
 	$meta[] = array( 'property' => 'og:site_name', 'content' => get_bloginfo() );
@@ -43,6 +49,8 @@ function tf_add_og_meta_tags() {
 					$post_thumbnail = $matches[1];
 					$meta[] = array( 'property' => 'og:image', 'content' => $post_thumbnail );
 				}
+			} else {
+				$meta[] = $image;
 			}
 		} elseif ( get_post_type() == 'tf_events' ) {
 		
@@ -53,22 +61,24 @@ function tf_add_og_meta_tags() {
 	} elseif( is_front_page() ) {
 		
 		$meta[] = array( 'property' => 'og:type', 'content' => 'website' );
-		$meta[] = array( 'property' => 'og:description', 'content' => get_bloginfo( 'description' ) );
-		$meta[] = array( 'property' => 'og:type', 'content' => 'website' );
 		
+		if( $description = get_bloginfo( 'description' ) )
+			$meta[] = array( 'property' => 'og:description', 'content' => $description );
+				
 		if( $phone_number = get_option( 'tf_business_phone' ) ) {
 			$meta[] = array( 'property' => 'og:phone_number', 'content' => $phone_number );
 		}
 		
+		$meta[] = $image;
+		
 	} elseif( !is_front_page() && is_home() ) {
 		$meta[] = array( 'property' => 'og:type', 'content' => 'blog' );
+		$meta[] = $image;
 	}
 
-
-	
 	foreach( $meta as $meta_item ) : ?>
 		<meta property="<?php echo $meta_item['property'] ?>" content="<?php echo $meta_item['content'] ?>" />
-		<?php error_log( '#META# ' . $meta_item['property'] . ' - ' . $meta_item['content'] ); ?>
+		
 	<?php endforeach;
 
 }
