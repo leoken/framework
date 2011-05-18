@@ -9,6 +9,10 @@
 define( 'TF_PATH', dirname( __FILE__ ) );
 define( 'TF_URL', str_replace( ABSPATH, get_bloginfo('url') . '/', TF_PATH ) );
 
+//Facebook Open Graph protocol
+require_once( TF_PATH . '/OGtags.php' );
+
+
 //Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
 	require_once( TF_PATH . '/food-menu/tf.food-menu.php' );
@@ -82,3 +86,75 @@ function tf_add_tf_icon_classes_to_widgets() {
 	<?php
 }
 add_action( 'in_admin_footer', 'tf_add_tf_icon_classes_to_widgets' );
+
+add_filter('tf_of_options','tf_of_business_options', 8);
+function tf_of_business_options( $options ) {
+
+	$shortname = "tf";
+
+// BUSINES OPTIONS
+	
+	$options[] = array( "name" => "Business Options",
+						"type" => "heading");
+	
+	$options[] = array( "name" => "Business Name",
+						"desc" => "This is used within the Address HTML tags too, so make sure it's correct",
+						"id" => $shortname."_business_name",
+						"std" => "Your Business Name",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Address",
+						"desc" => "It's always worth checking against <a href='http://maps.google.com'>Google Maps</a> to see if it is an address search engines can recognize.",
+						"id" => $shortname."_business_address",
+						"std" => "Please enter your address here.",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Phone #",
+						"desc" => "",
+						"id" => $shortname."_business_phone",
+						"std" => "(123) 456 789",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Menu Currency",
+						"desc" => "Please enter your currency symbol or 3-letter code, whichever looks better to you. Is used for the menu.",
+						"id" => "tf_currency_symbol",
+						"std" => "$",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Show currency for menu prices by default?",
+						"desc" => "Otherwise you will need to set it manually by using the shortcode variable",
+						"id" => "tf_menu_currency_symbol",
+						"std" => "false",
+						"type" => "checkbox");
+	
+	$options[] = array( "name" => "Use advanced sort functionality for Menu?",
+						"desc" => "If you don't use the advanced sort, menu items will be sorted alphabetically. ", //See <a href='http://'>this tutorial</a>for more information
+						"id" => "tf_menu_sort_key",
+						"std" => "false",
+						"type" => "checkbox");
+	
+	$options[] = array( "name" => "Facebook Link",
+						"desc" => "Icon will show automatically once a link entered.",
+						"id" => $shortname."_facebook",
+						"std" => "",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Twitter Link",
+						"desc" => "Icon will show automatically once a link entered.",
+						"id" => $shortname."_twitter",
+						"std" => "",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Footer Text",
+						"desc" => "This is the text that is right above your social media icons.",
+						"id" => $shortname."_footer_text",
+						"std" => "Pubforce is a WordPress theme for Pubs & Taverns. Edit this text within the Theme Options of Pubforce.",
+						"type" => "textarea");
+	
+	$options[] = array( "name" => "Terminal Footer Text",
+						"desc" => "This is a great place to put any Copyright Information or other short pieces of text",
+						"id" => $shortname."_terminalnotice",
+						"std" => "Terminal Footer Text",
+						"type" => "text");
+	return $options;
+}
