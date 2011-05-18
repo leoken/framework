@@ -224,7 +224,14 @@ function cf_update_pubforce_options_to_themeforce() {
 		'chowforce_yelp_api'		=> 'tf_yelp_api_key',
 		'chowforce_yelp_phone'		=> 'tf_yelp_phone',
 		'chowforce_yelp_cc'			=> 'tf_yelp_country_code',
-		'chowforce_yelp_switch'		=> 'tf_yelp_enabled'
+		'chowforce_yelp_switch'		=> 'tf_yelp_enabled',
+		'chowforce_biz_name'		=> 'tf_business_name',
+		'chowforce_biz_address'  => 'tf_business_address',
+		'chowforce_biz_phone'	=> 'tf_business_phone',
+		'chowforce_facebook'		=> 'tf_facebook',
+		'chowforce_twitter'		=> 'tf_twitter',
+		'chowforce_footer_text'	=> 'tf_footer_text',
+		'chowforce_terminalnotice' => 'tf_terminalnotice'
 		
 	);
 	

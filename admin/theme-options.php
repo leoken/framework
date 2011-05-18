@@ -63,53 +63,6 @@ function cf_of_options( $options ) {
 	$body_repeat = array("no-repeat","repeat-x","repeat-y","repeat");
 	$body_pos = array("top left","top center","top right","center left","center center","center right","bottom left","bottom center","bottom right");
 	
-	$options[] = array( "name" => "Business Settings",
-	                    "type" => "heading");
-	
-	$options[] = array( "name" => "Business Name",
-						"desc" => "Please enter the name of your business",
-						"id" => $shortname."_biz_name",
-						"std" => "",
-						"type" => "text");
-	
-	$options[] = array( "name" => "Business Address",
-						"desc" => "Please enter your business address",
-						"id" => $shortname."_biz_address",
-						"std" => "",
-						"type" => "text");
-	
-	$options[] = array( "name" => "Short Contact Info",
-						"desc" => "Visible contact information in the top-right corner (you can also leave blank)",
-						"id" => $shortname."_biz_contactinfo",
-						"std" => "Call us at +01 (02) 123 57 89",
-						"type" => "text");
-	
-	$options[] = array( "name" => "Facebook Link",
-						"desc" => "Please enter your full facebook link",
-						"id" => $shortname."_facebook",
-						"std" => "",
-						"type" => "text");
-	
-	$options[] = array( "name" => "Twitter Link",
-						"desc" => "Please enter your full twitter link",
-						"id" => $shortname."_twitter",
-						"std" => "",
-						"type" => "text");
-	
-	$options[] = array( "name" => "Terminal Notice",
-						"desc" => "Displayed in the Terminal Footer (i.e. Copyright, etc.)",
-						"id" => $shortname."_terminalnotice",
-						"std" => "",
-						"type" => "text");
-	
-	$options[] = array( "name" => "Tracking Code",
-						"desc" => "Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme.",
-						"id" => $shortname."_google_analytics",
-						"std" => "",
-						"type" => "textarea"); 
-	
-	
-	
 	// Design Options
 	
 	$options[] = array( "name" => "Design Settings",
