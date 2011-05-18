@@ -2,6 +2,8 @@
 
 /**
  * Adds the OpenGraph meta tags to the head.
+ *
+ * TODO - seperate address fields
  * 
  */
 function tf_add_og_meta_tags() {
@@ -42,11 +44,22 @@ function tf_add_og_meta_tags() {
 					$meta[] = array( 'property' => 'og:image', 'content' => $post_thumbnail );
 				}
 			}
+		} elseif ( get_post_type() == 'tf_events' ) {
+		
+		} elseif ( get_post_type() == 'tf_foodmenu' ) {
+		
 		}
-	} elseif ( get_post_type() == 'tf_foodmenu' ) {
 		
 	} elseif( is_front_page() ) {
+		
 		$meta[] = array( 'property' => 'og:type', 'content' => 'website' );
+		$meta[] = array( 'property' => 'og:description', 'content' => get_bloginfo( 'description' ) );
+		$meta[] = array( 'property' => 'og:type', 'content' => 'website' );
+		
+		if( $phone_number = get_option( 'tf_business_phone' ) ) {
+			$meta[] = array( 'property' => 'og:phone_number', 'content' => $phone_number );
+		}
+		
 	} elseif( !is_front_page() && is_home() ) {
 		$meta[] = array( 'property' => 'og:type', 'content' => 'blog' );
 	}
