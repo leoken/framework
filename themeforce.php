@@ -5,9 +5,10 @@
  *
  * Version: dev
  */
- 
+
+define( 'TF_DIR_SLUG', end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) ) );
 define( 'TF_PATH', dirname( __FILE__ ) );
-define( 'TF_URL', str_replace( ABSPATH, get_bloginfo('url') . '/', TF_PATH ) );
+define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 
 //Facebook Open Graph protocol
 require_once( TF_PATH . '/tf.open_graph_protocol.php' );
