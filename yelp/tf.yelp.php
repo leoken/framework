@@ -51,7 +51,7 @@ function tf_yelp_bar() {
         echo '<div id="yelpcontent">';
         // Display Requirement: No-follow Link back to Yelp.com
         echo '<div class="yelpimg"><a href="http://www.yelp.com">';
-        echo '<img src ="' . get_bloginfo('template_url') . '/images/yelp_logo_50x25.png">';
+        echo '<img src ="' . get_bloginfo('template_url') . '/themeforce/assets/images/yelp_logo_50x25.png">';
         echo '</a></div>';
         // Show Venue specific details
         echo '<div class="yelptext">' . __('users have rated our establishment', 'themeforce') . '</div>';

@@ -36,7 +36,7 @@ function create_foodmenu_postype() {
         '_builtin' => false,
         '_edit_link' => 'post.php?post=%d',
         'capability_type' => 'post',
-        'menu_icon' => get_bloginfo('template_url').'/functions/images/cookie_16.png',
+        'menu_icon' => get_bloginfo('template_url').'/themeforce/assets/images/cookie_16.png',
         'hierarchical' => false,
         'rewrite' => array( "slug" => "food-menu" ),
         'supports'=> array('title', 'thumbnail', 'editor') ,
@@ -136,7 +136,7 @@ function tf_foodmenu_custom_columns($column)
                             if ($thumbnail) (string)$thumbnail = $thumbnail[0];
                             echo '<img src="';
                             echo bloginfo('template_url');
-                            echo '/timthumb/timthumb.php?src=';
+                            echo '/themeforce/timthumb/timthumb.php?src=';
                             echo $thumbnail;
                             echo '&amp;h=60&amp;w=60&amp;zc=1" alt="" />';
                         }
