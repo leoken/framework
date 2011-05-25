@@ -10,9 +10,11 @@ define( 'TF_DIR_SLUG', end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) 
 define( 'TF_PATH', dirname( __FILE__ ) );
 define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 
+//WP Thumb
+require_once( TF_PATH . '/wpthumb/wpthumb.php' ); 
+
 //Facebook Open Graph protocol
 require_once( TF_PATH . '/tf.open_graph_protocol.php' );
-
 
 //Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
@@ -174,3 +176,60 @@ function tf_of_business_options( $options ) {
 	
 	return $options;
 }
+
+function tf_sortable_admin_rows_scripts() {
+	wp_enqueue_script('ui-datepicker-settings', TF_URL . '/assets/js/themeforce-admin.js', array('jquery'));
+
+}
+add_action( 'admin_print_scripts-edit.php', 'tf_sortable_admin_rows_scripts' );
+
+add_action( 'load-edit.php', 'tf_sortable_admin_rows_order_table_rows_hook' );
+function tf_sortable_admin_rows_order_table_rows_hook() {
+	if( !empty( $_GET['post_type'] ) && $_GET['post_type'] == 'tf_foodmenu' && !empty( $_GET['term'] ) )
+		add_action( 'parse_query', 'tf_sortable_admin_rows_order_table_rows' );
+}
+
+function tf_sortable_admin_rows_order_table_rows( $wp_query ) {
+	global $wpdb;
+	
+	$wp_query->query_vars['orderby'] = 'menu_order';
+	$wp_query->query_vars['order'] = 'ASC';
+	
+}
+
+function tf_sortable_admin_rows_column( $columns ) {
+
+	if( !isset( $columns['tf_col_menu_cat'] ) || empty( $_GET['term'] ) )
+		return $columns;
+	
+	$columns['tf_sortable_column'] = '';
+	
+	return $columns;
+
+}
+add_action( 'manage_edit-tf_foodmenu_columns', 'tf_sortable_admin_rows_column', 11 );
+
+function tf_sortable_admin_row_cell( $column ) {
+	
+	if( $column != 'tf_sortable_column' )
+		return $column;
+	
+	?>
+	
+	<a class="tf_sortable_admin_row_handle"></a>
+	
+	<?php
+}
+add_action( 'manage_posts_custom_column', 'tf_sortable_admin_row_cell' );
+
+function tf_sortable_admin_row_request() {
+	
+	global $wpdb;
+	
+	foreach( (array) $_POST['posts'] as $key => $post_id ) {
+		$wpdb->update( $wpdb->posts, array( 'menu_order' => $key ), array( 'ID' => $post_id ) );
+	}
+		
+	exit;
+}
+add_action( 'wp_ajax_tf_sort_admin_rows', 'tf_sortable_admin_row_request' );
