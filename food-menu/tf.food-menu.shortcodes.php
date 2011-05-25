@@ -96,7 +96,7 @@ function tf_menu_full ( $atts ) {
 
                 <div class="full-menu">
                     <?php if( has_post_thumbnail() ) { ?>
-                    <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo bloginfo('template_url'); ?>/timthumb/timthumb.php?src=<?php echo $thumbnail ?>&amp;h=60&amp;w=60&amp;zc=1" alt="<?php the_title(); ?>" /></a>
+                    <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo bloginfo('template_url'); ?>/themeforce/timthumb/timthumb.php?src=<?php echo $thumbnail ?>&amp;h=60&amp;w=60&amp;zc=1" alt="<?php the_title(); ?>" /></a>
                     <div class="thumb-text">
                     <?php } else { ?>
                     <div class="text">
