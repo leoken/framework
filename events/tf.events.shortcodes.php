@@ -190,7 +190,7 @@ function tf_events_feat ( $atts ) {
 	// - output - ?>
 	    <div class="feat-events">
 	        <?php if( has_post_thumbnail() ) { ?>
-	            <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo bloginfo('template_url'); ?>/timthumb/timthumb.php?src=<?php echo $thumbnail ?>&amp;h=130&amp;w=180&amp;zc=1" alt="<?php the_title(); ?>" /></a>
+	            <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo bloginfo('template_url'); ?>/themeforce/timthumb/timthumb.php?src=<?php echo $thumbnail ?>&amp;h=130&amp;w=180&amp;zc=1" alt="<?php the_title(); ?>" /></a>
 	            <div class="thumb-text">
 	        <?php } else { ?>
 	            <div class="text">

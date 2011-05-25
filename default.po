@@ -1,0 +1,599 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Chowforce\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-30 17:54+0100\n"
+"PO-Revision-Date: 2011-03-30 17:55+0100\n"
+"Last-Translator: Theme Force <support@themeforce.zendesk.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\xampplite\\htdocs\\chowforce3\\wp-content\\themes\\chowforce30\n"
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/404.php:8
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/search.php:19
+msgid "Not Found (404)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/404.php:9
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/search.php:20
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/archive.php:26
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/archive.php:28
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/archive.php:30
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/archive.php:32
+msgid "Blog Archives"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/category.php:9
+#, php-format
+msgid "Category Archives: %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:9
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:31
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:50
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:32
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:51
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:62
+msgid "<!-- Comments are Closed -->"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:68
+msgid "Name"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:70
+msgid "Email"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/comments.php:72
+msgid "Website"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:83
+msgid "Header Navigation"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:83
+msgid "Terminal Footer Navigation"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:111
+#, php-format
+msgid "Search results for %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:114
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:131
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:177
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:180
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:185
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:185
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:200
+msgid "(Edit)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:200
+msgid "Pingback:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:213
+msgid "Sidebar - Right"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:215
+msgid "The secondary widget area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:223
+msgid "Footer - First Area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:225
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:255
+msgid "The first footer widget area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:233
+msgid "Footer - Second Area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:235
+msgid "The second footer widget area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:243
+msgid "Footer - Third Area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:245
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:265
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:275
+msgid "The third footer widget area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:253
+msgid "Home - First Area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:263
+msgid "Home - Second Area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:273
+msgid "Home - Third Area"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:368
+msgid "users have rated our establishment"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:372
+msgid "through"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:374
+msgid "Reviews"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:416
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions.php:418
+msgid "Slide"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/header.php:55
+msgid "Logo"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/index.php:21
+msgid "<div class=\"moretext\">Read the rest here...</div>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/index.php:23
+msgid "Comments (0)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/index.php:23
+msgid "Comments (1)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/index.php:23
+msgid "Comments (%)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/index.php:32
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/index.php:37
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/index.php:38
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:20
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:132
+msgid "&larr; Older posts"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:21
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:133
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:26
+msgid "Not Found"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:27
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:68
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:77
+msgid "More Galleries"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:79
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:94
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:121
+msgid "Leave a comment"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:79
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:94
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:121
+msgid "1 Comment"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:79
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:94
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:121
+msgid "% Comments"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:80
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:95
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:122
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/page.php:13
+msgid "Edit"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:89
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:106
+msgid "Continue reading &rarr;"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:107
+msgid "Pages:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:111
+#, php-format
+msgid "Posted in %2$s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/loop.php:118
+#, php-format
+msgid "Tagged %2$s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/search.php:9
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/searchform.php:4
+msgid "To search, type and hit enter"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/single.php:33
+msgid "Sorry, this page is not available. Please return to the main page or use the navigation above. "
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/tag.php:10
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/admin/theme-options.php:300
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/admin/theme-options.php:341
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/admin/theme-options.php:383
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/admin/theme-options.php:425
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/admin/theme-options.php:467
+msgid "Read More"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:17
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:18
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:33
+msgid "Food Menu"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:19
+msgid "Add Menu Item"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:20
+msgid "Add New Menu Item"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:22
+msgid "Edit Menu Item"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:23
+msgid "New Menu Item"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:24
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:25
+msgid "View Menu Item"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:26
+msgid "Search  Menu Items"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:27
+msgid "No  Menu Items found"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:28
+msgid "No  Menu Items found in Trash"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:29
+msgid "Parent Menu Item"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:60
+msgid "Menu Categories"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:61
+msgid "Food Menu Category"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:62
+msgid "Search Food Menu Categories"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:63
+msgid "Popular Food Menu Categories"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:64
+msgid "All Food Menu Categories"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:67
+msgid "Edit Food Menu Category"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:68
+msgid "Update Food Menu Category"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:69
+msgid "Add New Food Menu Category"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:70
+msgid "New Food Menu Category Name"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:74
+msgid "Menu Category"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:94
+msgid "ID"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:95
+msgid "Order"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:96
+msgid "Section"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:97
+msgid "Thumbnail"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:98
+msgid "Item"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:99
+msgid "Description"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:100
+msgid "Size(s)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:101
+msgid "Price(s)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:128
+msgid "None"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:198
+msgid "Enabled in Theme Options - Use a number to order menu items."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:199
+msgid "All Sizes are Optional"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:202
+msgid "Use the decimal format you want display (i.e. 1, 1.9 , 1.99)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:276
+#, php-format
+msgid "Menu item updated. <a href=\"%s\">View item</a>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:277
+msgid "Custom field updated."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:278
+msgid "Custom field deleted."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:279
+msgid "Menu item updated."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:281
+#, php-format
+msgid "Menu item restored to revision from %s"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:282
+#, php-format
+msgid "Menu item published. <a href=\"%s\">View menu item</a>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:283
+msgid "Menu saved."
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:284
+#, php-format
+msgid "Menu item submitted. <a target=\"_blank\" href=\"%s\">Preview menu item</a>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:285
+#, php-format
+msgid "Menu item scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview menu item</a>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:287
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/cpt-foodmenu.php:288
+#, php-format
+msgid "Menu item draft updated. <a target=\"_blank\" href=\"%s\">Preview menu item</a>"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-photos.php:14
+msgid "This widget is used to show Foursquare photos"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-photos.php:20
+msgid "TF - Foursquare Photos"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-photos.php:89
+msgid "Guest photos"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-photos.php:95
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-tips.php:95
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-googlemaps.php:85
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-openingtimes.php:112
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-socialmedia.php:71
+msgid "Title:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-photos.php:97
+msgid "Display Limit:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-photos.php:109
+msgid "Text above photos:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-photos.php:110
+msgid "Text below photos:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-tips.php:14
+msgid "This widget is used to show Foursquare Tips"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-tips.php:20
+msgid "TF - Foursquare Tips"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-tips.php:55
+msgid " says "
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-tips.php:89
+msgid "Guest Tips"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-tips.php:109
+msgid "Text above Tips:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-foursquare-tips.php:110
+msgid "Text below Tips:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-googlemaps.php:14
+msgid "This widget is used to show a Google Map of your business (based on your address in the options)"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-googlemaps.php:20
+msgid "TF - Google Maps"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-googlemaps.php:78
+msgid "Our Location"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-googlemaps.php:88
+msgid "Height (in pixels):"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-googlemaps.php:90
+msgid "Zoom Factor:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-openingtimes.php:14
+msgid "This widget is used to show Opening Times"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-openingtimes.php:20
+msgid "TF - Opening Times"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-openingtimes.php:107
+msgid "Opening Times"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-openingtimes.php:115
+msgid "Enter Opening Hours:"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-socialmedia.php:14
+msgid "This widget is used to show the Wooden Social Media Icons"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-socialmedia.php:20
+msgid "TF - Wooden Social Media"
+msgstr ""
+
+#: C:\xampplite\htdocs\chowforce3\wp-content\themes\chowforce30/functions/widget-socialmedia.php:66
+msgid "Connect with us"
+msgstr ""
+

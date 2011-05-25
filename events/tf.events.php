@@ -36,7 +36,7 @@ function create_event_postype() {
 	    'show_ui' => true,
 	    '_builtin' => false,
 	    'capability_type' => 'post',
-	    'menu_icon' => get_bloginfo('template_url').'/functions/images/event_16.png',
+	    'menu_icon' => get_bloginfo('template_url').'/themeforce/assets/images/event_16.png',
 	    'hierarchical' => false,
 	    'rewrite' => array( "slug" => "events" ),
 	    'supports'=> array('title', 'thumbnail', 'excerpt', 'editor') ,
@@ -149,7 +149,7 @@ function tf_events_custom_columns($column) {
                     if ($thumbnail) (string)$thumbnail = $thumbnail[0];
                     echo '<img src="';
                     echo bloginfo('template_url');
-                    echo '/timthumb/timthumb.php?src=';
+                    echo '/themeforce/timthumb/timthumb.php?src=';
                     echo $thumbnail;
                     echo '&h=60&w=60&zc=1" alt="" />';
                 }
@@ -282,7 +282,7 @@ function events_styles() {
     global $post_type;
     if( 'tf_events' != $post_type )
         return;
-    wp_enqueue_style('ui-datepicker', get_bloginfo('template_url') . '/css/jquery-ui-1.8.9.custom.css');
+    wp_enqueue_style('ui-datepicker', TF_URL . '/assets/css/jquery-ui-1.8.9.custom.css');
 }
 
 function events_scripts() {
