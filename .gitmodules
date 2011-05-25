@@ -1,0 +1,3 @@
+[submodule "wpthumb"]
+	path = wpthumb
+	url = git@github.com:humanmade/WPThumb.git
