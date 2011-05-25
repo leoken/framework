@@ -23,11 +23,11 @@ function tf_foursquare_api() {
     $json = wp_remote_retrieve_body($api_response);
     
     $response = json_decode($json);
-	
-	// error checking    
-    if( !isset( $response->meta->code ) || $reponse->meta->code != 200 )
-		return array();
 
+	// error checking    
+    if( !isset( $response->meta->code ) || $response->meta->code != 200 )
+		return array();
+	
     return $response;
 }
 
