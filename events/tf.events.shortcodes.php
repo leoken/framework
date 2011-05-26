@@ -174,7 +174,7 @@ function tf_events_feat ( $atts ) {
 	$ed = $custom["tf_events_enddate"][0];
 	$post_image_id = get_post_thumbnail_id(get_the_ID());
 	        if ($post_image_id) {
-	                $thumbnail = wp_get_attachment_image_src( $post_image_id, 'post-thumbnail', false);
+	                $thumbnail = wp_get_attachment_image_src( $post_image_id,'width=130&height=130&crop=1', false);
 	                if ($thumbnail) (string)$thumbnail = $thumbnail[0];
 	                }
 	
@@ -190,7 +190,7 @@ function tf_events_feat ( $atts ) {
 	// - output - ?>
 	    <div class="feat-events">
 	        <?php if( has_post_thumbnail() ) { ?>
-	            <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo bloginfo('template_url'); ?>/timthumb/timthumb.php?src=<?php echo $thumbnail ?>&amp;h=130&amp;w=180&amp;zc=1" alt="<?php the_title(); ?>" /></a>
+	            <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo $thumbnail ?>" alt="<?php the_title(); ?>" /></a>
 	            <div class="thumb-text">
 	        <?php } else { ?>
 	            <div class="text">
