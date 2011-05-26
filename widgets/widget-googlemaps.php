@@ -42,7 +42,7 @@ class tf_googlemaps_widget extends WP_Widget {
                 if ( $headdesc ) {echo '<p>' . $headdesc . '</p>';}
 
                 // - gmaps -
-                $address = get_option('tf_business_address');
+                $address = get_option('chowforce_biz_address');
                 $address_url = preg_replace('/[^a-zA-Z0-9_ -]/s', '+', $address);
                 echo '<img class="tf-googlemaps-front" src="http://maps.google.com/maps/api/staticmap?center=' . $address_url . '?>&zoom=' . $zoom . '&size=300x' . $height . '&markers=color:white|' . $address_url . '&sensor=false" />';
 
