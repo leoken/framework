@@ -48,3 +48,15 @@ function tf_foursquare_transient() {
     }
     return $json;
 }
+
+/**
+ * If the Foursquare options are changed, we need to remove teh transient to there is no overlap of incorrect data
+ * 
+ */
+function tf_delete_forsquare_transient_on_update_option() {
+	
+	delete_transient( 'tf_foursquare_json' );
+}
+add_action( 'update_option_tf_fsquare_venue_id', 'tf_delete_forsquare_transient_on_update_option' );
+add_action( 'update_option_tf_fsquare_client_id', 'tf_delete_forsquare_transient_on_update_option' );
+add_action( 'update_option_tf_fsquare_client_secret', 'tf_delete_forsquare_transient_on_update_option' );

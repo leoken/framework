@@ -34,6 +34,19 @@ function tf_yelp_transient() {
     return $json;
 }
 
+
+/**
+ * If the Yelp options are changed, we need to remove teh transient to there is no overlap of incorrect data
+ * 
+ */
+function tf_delete_yelp_transient_on_update_option() {
+	
+	delete_transient( 'themeforce_yelp_json' );
+}
+add_action( 'update_option_tf_yelp_api_key', 'tf_delete_yelp_transient_on_update_option' );
+add_action( 'update_option_tf_yelp_phone', 'tf_delete_yelp_transient_on_update_option' );
+add_action( 'update_option_tf_yelp_country_code', 'tf_delete_yelp_transient_on_update_option' );
+
 // - YELP BAR -
 //---------------------------------------------
 
