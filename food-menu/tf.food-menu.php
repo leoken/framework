@@ -37,7 +37,7 @@ function create_foodmenu_postype() {
         '_builtin' => false,
         '_edit_link' => 'post.php?post=%d',
         'capability_type' => 'post',
-        'menu_icon' => get_bloginfo('template_url').'/functions/images/cookie_16.png',
+        'menu_icon' => get_bloginfo('template_url').'/themeforce/assets/images/food_16.png',
         'hierarchical' => false,
         'rewrite' => array( "slug" => "food-menu" ),
         'supports'=> array('title', 'thumbnail', 'editor') ,

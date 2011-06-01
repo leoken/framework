@@ -36,7 +36,7 @@ function create_event_postype() {
 	    'show_ui' => true,
 	    '_builtin' => false,
 	    'capability_type' => 'post',
-	    'menu_icon' => get_bloginfo('template_url').'/functions/images/event_16.png',
+	    'menu_icon' => get_bloginfo('template_url').'/themeforce/assets/images/event_16.png',
 	    'hierarchical' => false,
 	    'rewrite' => array( "slug" => "events" ),
 	    'supports'=> array('title', 'thumbnail', 'excerpt', 'editor') ,
