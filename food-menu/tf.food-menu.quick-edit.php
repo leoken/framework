@@ -18,6 +18,8 @@ function tf_food_menu_add_fields_to_quick_edit( $column_name, $post_type ) {
 
 	if( $post_type !== 'tf_foodmenu' )
 		return $column_name;
+	
+	add_action( 'admin_footer', 'tf_food_menu_add_inline_js_to_footer' );
 	?>
 	
 	<?php if( $column_name == 'tf_col_menu_size' ): ?>
@@ -138,7 +140,6 @@ function tf_food_menu_add_inline_js_to_footer() {
 	</script>
 	<?php
 }
-add_action( 'admin_footer', 'tf_food_menu_add_inline_js_to_footer' );
 
 function tf_food_menu_inline_date( $post_id ) {
 	
