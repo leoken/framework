@@ -49,7 +49,7 @@ class Example_Widget extends WP_Widget {
                     AND metastart.meta_key = 'tf_events_enddate'
                     AND wposts.post_type = 'tf_events'
                     AND wposts.post_status = 'publish'
-                    ORDER BY metastart.meta_value ASC LIMIT 10
+                    ORDER BY metastart.meta_value ASC LIMIT $limit
                  ";
 
                 $events = $wpdb->get_results($querystr, OBJECT);
