@@ -109,52 +109,52 @@ function tf_foodmenu_custom_columns($column)
 	$custom = get_post_custom();
 	switch ($column) {
 		case "tf_col_menu_id":
-		       echo $post->ID;
-		       break;
+				echo $post->ID;
+				break;
 		case "tf_col_menu_order":
-		       $order = $custom["tf_menu_order"][0];
-		       echo $order;
-		       break;
+				$order = $custom["tf_menu_order"][0];
+				echo $order;
+				break;
 		case "tf_col_menu_cat":
-		       $menucats = get_the_terms($post->ID, "tf_foodmenucat");
-		       $menucats_html = array();
-		       if ($menucats) {
-		       foreach ($menucats as $menucat)
-		               array_push($menucats_html, $menucat->name);
-	    
-		       echo implode($menucats_html, ", ");
-		       } else {
-		               _e('None', 'themeforce');;
-		       }
-		       break;
+				$menucats = get_the_terms($post->ID, "tf_foodmenucat");
+				$menucats_html = array();
+				if ($menucats) {
+				foreach ($menucats as $menucat)
+				        array_push($menucats_html, $menucat->name);
+				
+				echo implode($menucats_html, ", ");
+				} else {
+				        _e('None', 'themeforce');;
+				}
+				break;
 		case "tf_col_menu_desc":
 				add_filter( 'excerpt_length', '_tf_food_menu_excerpt_length' );
-		       the_excerpt();
-		       tf_food_menu_inline_date( $post->ID );
-		       break;
+		       	the_excerpt();
+		       	tf_food_menu_inline_date( $post->ID );
+		       	break;
 		case "tf_col_menu_thumb":
 		       
-		       the_post_thumbnail( 'width=50&height=50&crop=1' );
-		       break;
+				the_post_thumbnail( 'width=50&height=50&crop=1' );
+				break;
 		case "tf_col_menu_size":
-		       $size1 = $custom["tf_menu_size1"][0];
-		       $size2 = $custom["tf_menu_size2"][0];
-		       $size3 = $custom["tf_menu_size3"][0];
-		       $output = '';
-		       if ($size1 != '') { echo $size1; }
-		       if ($size2 != '') { echo '<br />'; echo $size2; }
-		       if ($size3 != '') { echo '<br />'; echo $size3; }
-		       break;    
+				$size1 = $custom["tf_menu_size1"][0];
+				$size2 = $custom["tf_menu_size2"][0];
+				$size3 = $custom["tf_menu_size3"][0];
+				$output = '';
+				if ($size1 != '') { echo $size1; }
+				if ($size2 != '') { echo '<br />'; echo $size2; }
+				if ($size3 != '') { echo '<br />'; echo $size3; }
+				break;    
 		case "tf_col_menu_price":
-		       $price1 = $custom["tf_menu_price1"][0];
-		       $price2 = $custom["tf_menu_price2"][0];
-		       $price3 = $custom["tf_menu_price3"][0];
-	    
-		       $output = '';
-		       if ($price1 != '') { echo get_option('tf_currency_symbol').''.$price1; }
-		       if ($price2 != '') { echo '<br />'; echo get_option('tf_currency_symbol').''.$price2; }
-		       if ($price3 != '') { echo '<br />'; echo get_option('tf_currency_symbol').''.$price3; }
-		       break;
+				$price1 = $custom["tf_menu_price1"][0];
+				$price2 = $custom["tf_menu_price2"][0];
+				$price3 = $custom["tf_menu_price3"][0];
+				
+				$output = '';
+				if ($price1 != '') { echo get_option('tf_currency_symbol').''.$price1; }
+				if ($price2 != '') { echo '<br />'; echo get_option('tf_currency_symbol').''.$price2; }
+				if ($price3 != '') { echo '<br />'; echo get_option('tf_currency_symbol').''.$price3; }
+				break;
 	}
 }
 
