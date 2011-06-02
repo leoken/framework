@@ -63,13 +63,12 @@ class tf_payments_widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		$instance['payment-title'] = strip_tags( $new_instance['payment-title'] );
-
 			  $instance = array( 'payment-visa' => 0, 'payment-mast' => 0, 'payment-amex' => 0, 'payment-disc' => 0, 'payment-cirr' => 0, 'payment-maes' => 0);
 				  	foreach ( $instance as $field => $val ) {
 				   if ( isset($new_instance[$field]) )
 				    $instance[$field] = 1;
 			  }
+			  $instance['payment-title'] = strip_tags( $new_instance['payment-title'] );
 			  $instance['payment-headdesc'] = strip_tags( $new_instance['payment-headdesc'] );
               $instance['payment-footdesc'] = strip_tags( $new_instance['payment-footdesc'] );
 
