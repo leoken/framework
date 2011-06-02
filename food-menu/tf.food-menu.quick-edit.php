@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Enqueue the necissary scripts for the much improved Food Menu quick edit
+ * 
+ */
 function tf_food_menu_enqueue_scripts() {
 
 	if( empty( $_GET['post_type'] ) || $_GET['post_type'] !== 'tf_foodmenu' )
@@ -14,6 +18,13 @@ function tf_food_menu_enqueue_scripts() {
 }
 add_action( 'load-edit.php', 'tf_food_menu_enqueue_scripts' );
 
+/**
+ * Adds the extra fields to the quick edit row on Manage Food menu.
+ * 
+ * @param string $column_name
+ * @param string $post_type
+ * @return void
+ */
 function tf_food_menu_add_fields_to_quick_edit( $column_name, $post_type ) {
 
 	if( $post_type !== 'tf_foodmenu' )
@@ -59,6 +70,10 @@ function tf_food_menu_add_fields_to_quick_edit( $column_name, $post_type ) {
 }
 add_action( 'quick_edit_custom_box', 'tf_food_menu_add_fields_to_quick_edit', 10, 2 );
 
+/**
+ * Extra JavaScript needed for the food menu quick edit.
+ * 
+ */
 function tf_food_menu_add_inline_js_to_footer() {
 	?>
 	<script type="text/javascript">
@@ -141,6 +156,11 @@ function tf_food_menu_add_inline_js_to_footer() {
 	<?php
 }
 
+/**
+ * Adds a JSON object to each table row in the manage food menu.
+ * 
+ * @param int $post_id
+ */
 function tf_food_menu_inline_date( $post_id ) {
 	
 	$post = get_post( $post_id );

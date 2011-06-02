@@ -143,16 +143,7 @@ function tf_events_custom_columns($column) {
             break;
             case "tf_col_ev_thumb":
                 // - show thumb -
-                $post_image_id = get_post_thumbnail_id(get_the_ID());
-                if ($post_image_id) {
-                    $thumbnail = wp_get_attachment_image_src( $post_image_id, 'post-thumbnail', false);
-                    if ($thumbnail) (string)$thumbnail = $thumbnail[0];
-                    echo '<img src="';
-                    echo bloginfo('template_url');
-                    echo '/timthumb/timthumb.php?src=';
-                    echo $thumbnail;
-                    echo '&h=60&w=60&zc=1" alt="" />';
-                }
+				the_post_thumbnail( 'width=60&height=60&crop=1' );
             break;
             case "tf_col_ev_desc";
                 the_excerpt();
