@@ -13,7 +13,7 @@ function tf_foursquare_api() {
 
     // - setup -
     $fs_api = 'https://api.foursquare.com/v2/venues/';
-	var_dump( memory_get_peak_usage() / 1024 / 1024 );
+
     $fs_venue = get_option('tf_fsquare_venue_id');
     $fs_id = '?client_id=' . get_option('tf_fsquare_client_id');
     $fs_secret = '&client_secret=' . get_option('tf_fsquare_client_secret');
