@@ -87,8 +87,10 @@ function tf_menu_full ( $atts ) {
             $size3 = $custom["tf_menu_size3"][0];
             $post_image_id = get_post_thumbnail_id(get_the_ID());
                     if ($post_image_id) {
-                            $thumbnail = wp_get_attachment_image_src( $post_image_id, 'width=60&height=60&crop=1', false);
-                            if ($thumbnail) (string)$thumbnail = $thumbnail[0];
+                            if( $thumbnail = wp_get_attachment_image_src( $post_image_id, 'width=60&height=60&crop=1', false) ) 
+                            	(string) $thumbnail = $thumbnail[0];
+                            if( $large = wp_get_attachment_image_src( $post_image_id, 'large' ) ) 
+                            	(string) $large = $large[0];
                     }
 
             // - output -
@@ -96,7 +98,7 @@ function tf_menu_full ( $atts ) {
 
                 <div class="full-menu">
                     <?php if( has_post_thumbnail() ) { ?>
-                    <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo $thumbnail ?>" alt="<?php the_title(); ?>" /></a>
+                    <a class="thumb" href="<?php echo $large; ?>"><img src="<?php echo $thumbnail ?>" alt="<?php the_title(); ?>" /></a>
                     <div class="thumb-text">
                     <?php } else { ?>
                     <div class="text">
