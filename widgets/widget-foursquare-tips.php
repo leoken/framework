@@ -29,6 +29,7 @@ class tf_fs_tips_widget extends WP_Widget {
 		// - our variables from the widget settings -
 
 		$title = apply_filters('widget_title', $instance['fs-tips-title'] );
+
 		$headdesc = $instance['fs-tips-headdesc'];
 		$footdesc = $instance['fs-tips-footdesc'];
 		$limit = $instance['fs-tips-limit'];
@@ -42,9 +43,12 @@ class tf_fs_tips_widget extends WP_Widget {
 		echo '<div class="fs-tips">';
 		
 		        $venue = tf_foursquare_transient();
-		        if( isset( $venue->meta->errorType ) || !$venue ) {
-		        	echo 'Please configure foursquare in the Theme Options';
-		        } else {
+		        if( is_wp_error( $venue ) || !$venue ) {
+                	echo 'Please configure foursquare in the Theme Options';
+					
+					if( is_wp_error( $venue ) )
+						echo '<!-- FourSquare returned error: ' . $venue->get_error_message() . '-->';
+                } else {
 		
 		       		// -display meta code -
 		       		echo '<!-- Foursquare Response Code: ' . $venue->meta->code . ' -->';
@@ -130,5 +134,3 @@ add_action( 'widgets_init', 'tf_fs_tips_load_widgets' );
 function tf_fs_tips_load_widgets() {
 	register_widget( 'tf_fs_tips_widget' );
 }
-
-?>

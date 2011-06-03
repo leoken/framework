@@ -43,12 +43,12 @@ class tf_fs_photos_widget extends WP_Widget {
 
                 $venue = tf_foursquare_transient();
 				    
-				if( isset( $venue->meta->errorType ) || !$venue ) {
+				if( is_wp_error( $venue ) || !$venue ) {
                 	echo 'Please configure foursquare in the Theme Options';
+					
+					if( is_wp_error( $venue ) )
+						echo '<!-- FourSquare returned error: ' . $venue->get_error_message() . '-->';
                 } else {
-                
-                	// -display meta code -
-                	echo '<!-- Foursquare Response Code: ' . $venue->meta->code . ' -->';
 				    
                 	$counter=0;
                 	foreach ($venue->response->venue->photos->groups[1]->items as $items) {
