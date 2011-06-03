@@ -137,12 +137,10 @@ add_shortcode('tf-menu-full', 'tf_menu_full');
 
 function tf_menu_list ( $atts ) {
 
-    $defaultfx = get_option('tf_menu_currency_symbol');
-
     extract(shortcode_atts(array(
          'id' => '', // Menu Name or Post ID
          'header' => 'yes',
-         'currency'=> $defaultfx,
+         'currency'=> get_option('tf_menu_currency_symbol'),
          'type' => 'menu', // Menu or Single
          'posts_per_page' => 99,
          'align' => '', // For full width
@@ -335,3 +333,40 @@ return $output;
 
 add_shortcode('tf-menu-short', 'tf_menu_short');
 
+/**
+ * Registers the Insert Shortcode tinymce plugin for Food menu.
+ * 
+ */
+function tf_food_menu_register_tinymce_buttons() {
+	
+	if( !is_admin() || !current_user_can( 'edit_posts' ) || empty( $_GET['post'] ) || !in_array( get_post_type( $_GET['post'] ), array( 'post', 'page' ) ) )
+		return;
+	
+	add_filter( 'mce_buttons', 'tf_food_menu_add_tinymce_buttons' );
+	add_filter( 'mce_external_plugins', 'tf_food_menu_add_tinymce_plugins' );
+}
+add_action( 'init', 'tf_food_menu_register_tinymce_buttons' );
+
+/**
+ * Adds the Food Menu tinyMCE button.
+ * 
+ * @param array $buttons
+ * @return array
+ */
+function tf_food_menu_add_tinymce_buttons( $buttons ) {
+	array_push( $buttons, '', "tf_food_menu_shortcode_plugin" );
+
+	return $buttons;
+}
+
+/**
+ * Adds the Insert Shortcode tinyMCE plugin for the food menu.
+ * 
+ * @param array $plugin_array
+ * @return array
+ */
+function tf_food_menu_add_tinymce_plugins( $plugin_array ) {
+	$plugin_array['tf_food_menu_shortcode_plugin'] = TF_URL . '/food-menu/tinymce_plugins/insert_shortcode.js';
+	
+	return $plugin_array;
+}
