@@ -18,7 +18,7 @@ function tf_foursquare_api() {
     $fs_id = '?client_id=' . get_option('tf_fsquare_client_id');
     $fs_secret = '&client_secret=' . get_option('tf_fsquare_client_secret');
     $fs_url = $fs_api . $fs_venue . $fs_id . $fs_secret;
-var_dump( memory_get_peak_usage() / 1024 / 1024 );
+
     // - response -
 	echo $fs_url;
 	var_dump( function_exists ('fsockopen' ) );
@@ -27,7 +27,7 @@ var_dump( memory_get_peak_usage() / 1024 / 1024 );
 	if( is_wp_error( $api_response ) )
 		return $api_response;
 	
-    $json = wp_remote_retrieve_body($api_response);
+    $json = wp_remote_retrieve_body($api_response, array( 'sslverify' => false ) );
     
     $response = json_decode($json);
 
