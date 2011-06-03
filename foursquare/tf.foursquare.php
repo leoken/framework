@@ -21,13 +21,13 @@ function tf_foursquare_api() {
 
     // - response -
 	echo $fs_url;
-	var_dump( function_exists ('fsockopen' ) );
-    $api_response = wp_remote_get("https://api.foursquare.com/v2/venues/36774?client_id=HQ0CMMQ4KQRUFNN5XF53HK0DAV2YEZYBH2H14ZUGLOQW3QE2&client_secret=N0KTGPFJYZQ5LE1TPUA3YAE2NC0I1ANRESC1QJQWPZXLXS3W", array( 'timeout' => 30, '_wp_http_get_object' => false ));
+
+    $api_response = wp_remote_get("https://api.foursquare.com/v2/venues/36774?client_id=HQ0CMMQ4KQRUFNN5XF53HK0DAV2YEZYBH2H14ZUGLOQW3QE2&client_secret=N0KTGPFJYZQ5LE1TPUA3YAE2NC0I1ANRESC1QJQWPZXLXS3W", array( 'timeout' => 30, '_wp_http_get_object' => false, 'sslverify' => false  ));
 	
 	if( is_wp_error( $api_response ) )
 		return $api_response;
 	
-    $json = wp_remote_retrieve_body($api_response, array( 'sslverify' => false ) );
+    $json = wp_remote_retrieve_body($api_response);
     
     $response = json_decode($json);
 
