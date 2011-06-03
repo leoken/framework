@@ -32,6 +32,9 @@ if( current_theme_supports( 'tf_widget_opening_times' ) )
 
 if( current_theme_supports( 'tf_widget_google_maps' ) )
 	require_once( TF_PATH . '/widgets/widget-googlemaps.php' );
+	
+if( current_theme_supports( 'tf_widget_payments' ) )
+	require_once( TF_PATH . '/widgets/widget-payments.php' );
 
 //Google Maps
 require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );
