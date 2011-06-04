@@ -20,9 +20,8 @@ function tf_foursquare_api() {
     $fs_url = $fs_api . $fs_venue . $fs_id . $fs_secret;
 
     // - response -
-	echo $fs_url;
 
-    $api_response = wp_remote_get("https://api.foursquare.com/v2/venues/36774?client_id=HQ0CMMQ4KQRUFNN5XF53HK0DAV2YEZYBH2H14ZUGLOQW3QE2&client_secret=N0KTGPFJYZQ5LE1TPUA3YAE2NC0I1ANRESC1QJQWPZXLXS3W", array( 'timeout' => 30, '_wp_http_get_object' => false, 'sslverify' => false  ));
+    $api_response = wp_remote_get($fs_url, array( 'timeout' => 30, '_wp_http_get_object' => false, 'sslverify' => false  ));
 	
 	if( is_wp_error( $api_response ) )
 		return $api_response;
