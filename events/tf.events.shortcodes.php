@@ -192,7 +192,7 @@ function tf_events_feat ( $atts ) {
 	// - output - ?>
 	    <div class="feat-events">
 	        <?php if( has_post_thumbnail() ) { ?>
-	            <a class="thumb" href="<?php echo $large ?>"><img src="<?php echo $thumbnail ?>" alt="<?php the_title(); ?>" /></a>
+	            <a class="thumb" href="<?php echo $large; ?>"><img src="<?php echo $thumbnail; ?>" alt="<?php the_title(); ?>" /></a>
 	            <div class="thumb-text">
 	        <?php } else { ?>
 	            <div class="text">
