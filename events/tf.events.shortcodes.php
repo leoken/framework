@@ -174,9 +174,11 @@ function tf_events_feat ( $atts ) {
 	$ed = $custom["tf_events_enddate"][0];
 	$post_image_id = get_post_thumbnail_id(get_the_ID());
 	        if ($post_image_id) {
-	                $thumbnail = wp_get_attachment_image_src( $post_image_id,'width=130&height=130&crop=1', false);
-	                if ($thumbnail) (string)$thumbnail = $thumbnail[0];
-	                }
+		             if( $thumbnail = wp_get_attachment_image_src( $post_image_id, 'width=130&height=130&crop=1', false) ) 
+                    	(string) $thumbnail = $thumbnail[0];
+                     if( $large = wp_get_attachment_image_src( $post_image_id, 'large' ) ) 
+                    	(string) $large = $large[0];
+                    }
 	
 	// - determine if it's a new day -
 	$sqldate = date('Y-m-d H:i:s', $sd);
@@ -190,7 +192,7 @@ function tf_events_feat ( $atts ) {
 	// - output - ?>
 	    <div class="feat-events">
 	        <?php if( has_post_thumbnail() ) { ?>
-	            <a class="thumb" href="<?php echo $thumbnail ?>"><img src="<?php echo $thumbnail ?>" alt="<?php the_title(); ?>" /></a>
+	            <a class="thumb" href="<?php echo $large; ?>"><img src="<?php echo $thumbnail; ?>" alt="<?php the_title(); ?>" /></a>
 	            <div class="thumb-text">
 	        <?php } else { ?>
 	            <div class="text">
