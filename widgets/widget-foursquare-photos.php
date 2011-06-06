@@ -107,9 +107,6 @@ class tf_fs_photos_widget extends WP_Widget {
                     <option value='4' <?php selected( $limit, 4); ?>>4</option>
                     <option value='5' <?php selected( $limit, 5); ?>>5</option>
                     <option value='6' <?php selected( $limit, 6); ?>>6</option>
-                    <option value='7' <?php selected( $limit, 7); ?>>7</option>
-                    <option value='8' <?php selected( $limit, 8); ?>>8</option>
-                    <option value='9' <?php selected( $limit, 9); ?>>9</option>
                 </select>
                 <p><label><?php _e('Text above photos:', 'themeforce'); ?></label><textarea class="widefat" rows="5" cols="20" id="<?php echo $this->get_field_id( 'fs-photos-headdesc' ); ?>" name="<?php echo $this->get_field_name( 'fs-photos-headdesc' ); ?>"><?php echo $instance['fs-photos-headdesc']; ?></textarea></p>
                 <p><label><?php _e('Text below photos:', 'themeforce'); ?></label><textarea class="widefat" rows="5" cols="20" id="<?php echo $this->get_field_id( 'fs-photos-footdesc' ); ?>" name="<?php echo $this->get_field_name( 'fs-photos-footdesc' ); ?>"><?php echo $instance['fs-photos-footdesc']; ?></textarea></p>
