@@ -168,9 +168,13 @@ function tf_food_menu_inline_date( $post_id ) {
 	
 	$post = get_post( $post_id );
 	
+	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'width=80&height=80&crop=1' );
+	if( is_array( $image ) )
+		$image = reset( $image );
+		
 	$data = array(
 		'variants' 	=> tf_food_menu_get_food_varients( $post_id ),
-		'image'		=> get_post_thumbnail_id( $post_id ) ? reset( wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'width=80&height=80&crop=1' ) ) : '',
+		'image'		=> get_post_thumbnail_id( $post_id ) ? $image : '',
 		'image_id'	=> get_post_thumbnail_id( $post_id ),
 		'description' => strip_tags( $post->post_content, '<br><p>' ),
 	);
