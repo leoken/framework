@@ -81,7 +81,7 @@ function tf_events_full ( $atts ) {
 	    <div class="text">
 	        <div class="title">
 	            <div class="time"><?php echo $stime . ' - ' . $etime; ?></div>
-	            <div class="eventtext"><?php the_title(); ?></div>
+	            <div class="eventtext"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 	        </div>
 	    </div>
 	     <div class="desc"><?php the_content() ?></div>
