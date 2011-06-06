@@ -81,6 +81,9 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    	
 	    	var TFInlineAddedElements = [];
 	    	
+	    	jQuery( '.row-actions .edit' ).css( 'display', 'none' );
+	    	jQuery( '.row-actions .editinline' ).text( '<?php _e('Edit', 'themeforce' ); ?>' );
+	    	
 	    	jQuery( '#inlineedit input[name=post_name]' ).closest( 'label' ).hide();
 	    	jQuery( '#inlineedit .inline-edit-date' ).hide().prev().filter( function(i, obj) { return jQuery(obj).text() == 'Date'; } ).hide();
 	    	jQuery( "#inlineedit input[name=post_password]").closest( 'div.inline-edit-group' ).hide().prev('br').hide();
