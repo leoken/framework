@@ -141,7 +141,9 @@ wp_admin_css( 'colors-fresh', true );
 		display: table-row;
 	}
 	
-	#tf_menu_shortcode_form select { width: 200px; }
+	#tf_menu_shortcode_form select { width: 150px; }
+	
+	.split-column { float: left; width: 43%; margin-right: 5%; }
 	
 </style>
 </head>
@@ -156,8 +158,12 @@ wp_admin_css( 'colors-fresh', true );
 				//shortcode type				
 				shortcode += jQuery( '#tf_menu_shortcode_form select[name="tf_food_menu_type"]' ).val();
 				
-				if( jQuery( '#tf_menu_shortcode_form select[name="tf_foodmenucat"]' ).val() ) {
+				if( jQuery( '#tf_menu_shortcode_form select[name="tf_foodmenucat"]' ).val() > '') {
 					shortcode += " id='" + jQuery( '#tf_menu_shortcode_form select[name="tf_foodmenucat"]' ).val() + "'"
+				}
+				
+				if( jQuery( '#tf_menu_shortcode_form select[name="tf_food_menu_align"]' ).val() > '' ) {
+					shortcode += " align='" + jQuery('#tf_menu_shortcode_form select[name="tf_food_menu_align"]' ).val() + "'";
 				}
 				
 				shortcode += jQuery( '#tf_menu_shortcode_form input[name="tf_food_menu_show_titles"]' ).is(":checked") ? " header='yes'" : " header='no'";
@@ -177,7 +183,7 @@ wp_admin_css( 'colors-fresh', true );
 			} );
 		</script>
 		<form id="tf_menu_shortcode_form">
-			<p>
+			<p class="split-column">
 				<label>Menu Type</label><br />
 				<select name="tf_food_menu_type">
 					<option value="full">Full</option>
@@ -185,7 +191,7 @@ wp_admin_css( 'colors-fresh', true );
 					<option value="short">Short</option>
 				</select>
 			</p>
-			<p>
+			<p class="split-column">
 				<label>Food Menu Category</label><br />
 				<select name="tf_foodmenucat">
 					<option value="">All</option>
@@ -195,11 +201,20 @@ wp_admin_css( 'colors-fresh', true );
 				</select>
 			</p>
 			
-			<p>
+			<p class="split-column">
+				<label>Align</label><br />
+				<select name="tf_food_menu_align">
+					<option value="">None</option>
+					<option value="left">Left</option>
+					<option value="right">Right</option>
+				</select>
+			</p>
+			
+			<p class="clear">
 				<label><input type="checkbox" name="tf_food_menu_show_titles" checked="checked" /> Show Category Headers</label>
 			</p>
 			
-			<p class="submitbox" style="margin-top:20px;">
+			<p class="submitbox" style="margin-top:15px;">
 				<a href="#" onclick="tinyMCEPopup.close();" class="submitdelete deletion" style="float:left">Cancel</a>
 				<input type="submit" class="right button-primary" style="float:right" value="Insert Menu" />
 			</p>
