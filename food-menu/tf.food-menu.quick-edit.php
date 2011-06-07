@@ -35,17 +35,24 @@ function tf_food_menu_add_fields_to_quick_edit( $column_name, $post_type ) {
 	
 	<?php if( $column_name == 'tf_col_menu_size' ): ?>
 		
+		<div class="tf-quickedit-header">
+			<div class="width-item"><h3>Item</h3></div>
+			<div class="width-cat"><h3>Menu Categories</h3></div>
+			<div class="width-image"><h3>Image</h3></div>
+			<div class="width-desc"><h3>Description</h3></div>
+		</div>
+		
 		<div id="tf-inline-edit-sizes">
 			<span class="title" style="float:left;">Sizes</span>
 			<span class="tf-food-size-varients" style="display:block; margin-left: 5em; padding-top:5px;">
 				<ul>
-					<li class="hidden" style="overflow:hidden;">
-						<span style="width:40%; display:block; float:left; margin-right:5%;">
+					<li class="hidden size-row" style="overflow:hidden;">
+						<span class="size-row-name" style="width:40%; display:block; float:left; margin-right:5%;">
 							<input type="text" name="tf_food_varient_size[]" />
 						</span>
-						<span style="width:55%; display:block; float:left;">
+						<span class="size-row-price" style="width:55%; display:block; float:left;">
 							<em><?php echo get_option( 'tf_currency_symbol', '$' ) ?></em> <input type="text" name="tf_food_varient_price[]" />
-							<a href="#" class="tf-inline-edit-remove-variant">[x]</a>
+							<a class="size-row-price-remove" href="#" class="tf-inline-edit-remove-variant">[x]</a>
 						</span>
 					</li>
 				</ul>
@@ -55,12 +62,10 @@ function tf_food_menu_add_fields_to_quick_edit( $column_name, $post_type ) {
 		</div>
 		
 		<div id="tf-inline-edit-image" style="width:28%; float:left; padding:2% 0">
-			<span class="title" style="float:left;">Image</span>
-			<p><?php _tf_tj_add_image_html_custom( '_tf_food_menu_image', 'Add Image', 0, array( ), '', 'width=80&height=80&crop=1', '' ) ?></p>
+			<?php _tf_tj_add_image_html_custom( '_tf_food_menu_image', 'Add Image', 0, array( ), '', 'width=80&height=80&crop=1', '' ) ?>
 		</div>
 		
 		<div id="tf-inline-edit-description" style="width:66%; padding:2%; float:left;">
-			<span class="title" style="float:left;">Description</span>
 			<textarea style="width:100%; height:100px;"></textarea>
 			<input type="hidden" name="tf_description" value="" />
 		</div>
@@ -85,15 +90,29 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    	jQuery( '.row-actions .editinline' ).text( '<?php _e( 'Edit' ); ?>' );
 	    	jQuery( '.row-title' ).addClass('editinline');
 	    	
+	    	//hide unwanted stuff
 	    	jQuery( '#inlineedit input[name=post_name]' ).closest( 'label' ).hide();
 	    	jQuery( '#inlineedit .inline-edit-date' ).hide().prev().filter( function(i, obj) { return jQuery(obj).text() == 'Date'; } ).hide();
 	    	jQuery( "#inlineedit input[name=post_password]").closest( 'div.inline-edit-group' ).hide().prev('br').hide();
 	    	jQuery( '#inlineedit .inline-edit-tags' ).hide();
-			jQuery("#inlineedit .inline-edit-status").hide();
+			jQuery( "#inlineedit .inline-edit-status").hide();
+			jQuery( "#inlineedit .inline-edit-col h4" ).hide();
+			jQuery( "#inlineedit .inline-edit-categories-label .catshow" ).click().parent().hide();
 			
+			jQuery( '#inlineedit' ).addClass('tf-menu');
+			jQuery( "#inlineedit .inline-edit-col-left" ).addClass( "width-item" );
+			jQuery( "#inlineedit .inline-edit-col-center" ).addClass( "width-cat" );
+			jQuery( "#inlineedit .tf-inline-edit-image" ).addClass( "width-image" );
+			jQuery( "#inlineedit .tf-inline-edit-description" ).addClass( "width-desc" );
+			
+			jQuery( "#inlineedit .colspanchange" ).wrapInner( '<div class="tf-quickedit-content"></div>' );
+			
+			//move stuff around
 	    	var temp = jQuery("#tf-inline-edit-sizes").clone();
 	    	jQuery("#tf-inline-edit-sizes").remove();
 	    	jQuery( '#inlineedit .inline-edit-date' ).closest('.inline-edit-col').append(temp);
+	    	
+	    	jQuery( '.tf-quickedit-header' ).prependTo( jQuery( '.tf-quickedit-header' ).closest( 'td' ) );
 	    	
 	    	jQuery( "#tf-inline-edit-add-new-size").live( 'click', function(e) {
 	    		e.preventDefault();
@@ -138,7 +157,9 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    		//image
 	    		if( data.image_id )
 		    		jQuery( "#tf-inline-edit-image #_tf_food_menu_image_container" ).html( '<span class="image-wrapper" id="' + data.image_id + '"><img src="' + data.image + '" /><a class="delete_custom_image" rel="_tf_food_menu_image:' + data.image_id + '">Remove</a></span>' );
-		    		
+		    	else
+		    		jQuery( "#tf-inline-edit-image #_tf_food_menu_image_container" ).html( '<span class="image-wrapper no-attached-image">No Image Added</span>' );
+
 	    		//description
 	    		jQuery( "#tf-inline-edit-description textarea" ).html( data.description );
 	    		jQuery( "#tf-inline-edit-description input[type='hidden']" ).val( data.description );

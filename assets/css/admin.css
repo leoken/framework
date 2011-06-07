@@ -32,3 +32,10 @@ th#tf_col_menu_cat,th#tf_col_menu_title,th#tf_col_menu_size{width:150px}
 .tf_sortable_admin_row_handle { width: 40px; height: 40px; margin-top: 3px; background: red; display: block; background: url(../images/row-resize.gif); opacity: .5 }
 .tf_sortable_admin_row_handle:hover { opacity: .7; cursor: move; }
 th.column-tf_sortable_column { width: 60px; }
+
+.inline-edit-row.inline-edit-tf_foodmenu .colspanchange { padding: 0; }
+.inline-edit-row.inline-edit-tf_foodmenu .tf-quickedit-header { background: blue; overflow: hidden; }
+.inline-edit-row.inline-edit-tf_foodmenu .width-item { float: left; width: 40%; }
+.inline-edit-row.inline-edit-tf_foodmenu .width-cat { float: left; width: 20%; }
+.inline-edit-row.inline-edit-tf_foodmenu .width-image { float: left; width: 10%; }
+.inline-edit-row.inline-edit-tf_foodmenu .width-desc { float: left; width: 30%; }
