@@ -45,7 +45,7 @@ function tf_food_menu_add_fields_to_quick_edit( $column_name, $post_type ) {
 						</span>
 						<span style="width:55%; display:block; float:left;">
 							<em><?php echo get_option( 'tf_currency_symbol', '$' ) ?></em> <input type="text" name="tf_food_varient_price[]" />
-							<a href="#" class="tf-inline-edit-remove-variant">[x]</a>
+							<a class="size-row-price-remove tf-inline-edit-remove-variant" href="#"><img src="<?php bloginfo('template_url'); ?>/themeforce/assets/images/qe-delete.png" /></a>
 						</span>
 					</li>
 				</ul>
@@ -138,7 +138,8 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    		//image
 	    		if( data.image_id )
 		    		jQuery( "#tf-inline-edit-image #_tf_food_menu_image_container" ).html( '<span class="image-wrapper" id="' + data.image_id + '"><img src="' + data.image + '" /><a class="delete_custom_image" rel="_tf_food_menu_image:' + data.image_id + '">Remove</a></span>' );
-		    		
+		    	else
+		    		jQuery( "#tf-inline-edit-image #_tf_food_menu_image_container" ).html( '<span class="image-wrapper no-attached-image"></span>' );
 	    		//description
 	    		jQuery( "#tf-inline-edit-description textarea" ).html( data.description );
 	    		jQuery( "#tf-inline-edit-description input[type='hidden']" ).val( data.description );
