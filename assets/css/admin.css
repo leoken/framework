@@ -79,11 +79,3 @@ text-shadow:0px -1px 0px #103647;
 #tf-inline-edit-description {padding: 0 0 0 10px !important;} 
 #tf-inline-edit-image {max-width:100px;padding:0 0 0 10px !important;}}
 .no-attached-image {width:80px !important;height:80px !important;background: transparent url('../images/qe-noimage.png') no-repeat 17px 23px !important;}
-=======
-
-.inline-edit-row.inline-edit-tf_foodmenu .colspanchange { padding: 0; }
-.inline-edit-row.inline-edit-tf_foodmenu .tf-quickedit-header { background: blue; overflow: hidden; }
-.inline-edit-row.inline-edit-tf_foodmenu .width-item { float: left; width: 40%; }
-.inline-edit-row.inline-edit-tf_foodmenu .width-cat { float: left; width: 20%; }
-.inline-edit-row.inline-edit-tf_foodmenu .width-image { float: left; width: 10%; }
-.inline-edit-row.inline-edit-tf_foodmenu .width-desc { float: left; width: 30%; }
