@@ -91,7 +91,7 @@ class Example_Widget extends WP_Widget {
 
                 // - output - ?>
 
-                        <div class="eventitem"><?php echo $stime; ?> - <?php the_title(); ?></div>
+                        <div class="eventitem"><?php echo $stime; ?> - <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
                     </div>
                 <?php
 
