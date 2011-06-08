@@ -52,8 +52,8 @@
         <!-- category --> <div class=""><?php _e('Category: ','themeforce');?><span itemprop="eventType"><?php tf_list_cats(); ?></span></div>
 	
         <!-- dates, time & duration -->
-        <div class=""><?php _e('Date: ','themeforce');?><time itemprop="startDate" datetime="<?php echo $schema_startdate; ?>"><?php echo $local_startdate; ?> - <?php echo $stime; ?></time>
-       	<time itemprop="endDate" datetime="<?php echo $schema_enddate; ?>">( <?php _e('Ends','themeforce');?> <?php echo $etime; ?> )</time></div>
+        <div class=""><?php _e('Date: ','themeforce');?><span itemprop="startDate" datetime="<?php echo $schema_startdate; ?>"><?php echo $local_startdate; ?> - <?php echo $stime; ?></span>
+       	<span itemprop="endDate" datetime="<?php echo $schema_enddate; ?>">( <?php _e('Ends','themeforce');?> <?php echo $etime; ?> )</span></div>
         <meta itemprop="duration" content="PT<?php echo $schema_duration; ?>M" />
         
         <!-- location --> <div class=""><?php _e('Location: ','themeforce');?><span itemprop="location"><?php echo get_option('tf_business_name');?>, <?php echo get_option('tf_business_address');?></span></div>
