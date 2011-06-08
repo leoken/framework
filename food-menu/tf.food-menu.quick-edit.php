@@ -116,7 +116,7 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    	
 	    	jQuery( "#tf-inline-edit-add-new-size").live( 'click', function(e) {
 	    		e.preventDefault();
-	    		console.log('creating');
+
 	    		jQuery(this).closest( '#tf-inline-edit-sizes' ).find( 'ul li.hidden' ).first().clone().insertBefore(jQuery(this).closest( '#tf-inline-edit-sizes' ).find( 'ul li.hidden' )).removeClass('hidden');
 	    		
 	    	} );
@@ -128,6 +128,9 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    	
 	    	jQuery( 'a.editinline' ).live( 'click', function() {
 	    		
+	    		//cancel any open ones
+	    		if( jQuery( "tr.inline-edit-row" ).length )
+	    			jQuery( "tr.inline-edit-row a.cancel" ).click();
 	    		
 	    		//clean up anyting from before
 	    		for( var i = 0; i < TFInlineAddedElements.length; i++ ) {
@@ -146,8 +149,9 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    		var sizesUL = jQuery('#tf-inline-edit-sizes' ).find( 'ul' );
 				
 	    		for( var i = 0; i < data.variants.length; i++ ) {
-	    			var newVarientRow = varientRow.clone().insertBefore( varientRow ).removeClass('hidden');
 	    			
+	    			var newVarientRow = varientRow.clone().insertBefore( varientRow ).removeClass('hidden');
+
 	    			TFInlineAddedElements.push( newVarientRow );
 	    			
 	    			newVarientRow.find('input[name="tf_food_varient_size[]"]').val( data.variants[i].size );
@@ -168,7 +172,7 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    	
 	    	//sync description teaxtarea and input
 	    	jQuery( "#tf-inline-edit-description textarea" ).change( function() {
-	    		console.log('chanes;');
+
 	    		jQuery( "#tf-inline-edit-description input[type='hidden']" ).val( jQuery( "#tf-inline-edit-description textarea" ).val() );
 	    	} );
 	    	
