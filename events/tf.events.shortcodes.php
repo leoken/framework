@@ -197,7 +197,7 @@ function tf_events_feat ( $atts ) {
 	        <?php } else { ?>
 	            <div class="text">
 	        <?php } ?>
-	                <div class="eventtitle"><?php the_title(); ?></div>
+	                <div class="eventtitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 	                <div class="time"><?php echo $stime . ' - ' . $etime; ?></div>
 	                <div class="time"><?php echo $longdate; ?></div>
 	                <div class="desc"><?php the_excerpt() ?></div>
