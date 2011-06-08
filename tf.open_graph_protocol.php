@@ -31,6 +31,7 @@ function tf_add_og_meta_tags() {
 		
 		// Content Type
 		if( get_post_type() == 'post' ) {
+			
 			$meta[] = array( 'property' => 'og:type', 'content' => 'article' );
 			
 			// Post Image
@@ -53,6 +54,28 @@ function tf_add_og_meta_tags() {
 				$meta[] = $image;
 			}
 		} elseif ( get_post_type() == 'tf_events' ) {
+			
+			$meta[] = array( 'property' => 'og:type', 'content' => 'activity' );
+			
+			// Post Image
+			// we dont use get_post_thumbnail_id as we want to be able
+			// to fall back on embadded images etc, which is done through the "post_thumbnail_html"
+			// hook, so we get the html and preg_match the image src
+			
+			$post_thumbnail_html = get_the_post_thumbnail( $post->ID, 'width=100&height=100&crop=1' );
+			
+			if( $post_thumbnail_html ) {
+				
+				preg_match( '/ src="([^"]*)/', $post_thumbnail_html, $matches );
+			
+				if( !empty( $matches[1] ) ) {
+			
+					$post_thumbnail = $matches[1];
+					$meta[] = array( 'property' => 'og:image', 'content' => $post_thumbnail );
+				}
+			} else {
+				$meta[] = $image;
+			}	
 		
 		} elseif ( get_post_type() == 'tf_foodmenu' ) {
 		
@@ -60,7 +83,7 @@ function tf_add_og_meta_tags() {
 		
 	} elseif( is_front_page() ) {
 		
-		$meta[] = array( 'property' => 'og:type', 'content' => 'website' );
+		$meta[] = array( 'property' => 'og:type', 'content' => 'restaurant' );
 		
 		if( $description = get_bloginfo( 'description' ) )
 			$meta[] = array( 'property' => 'og:description', 'content' => $description );
