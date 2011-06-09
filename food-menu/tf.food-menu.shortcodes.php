@@ -341,13 +341,16 @@ add_shortcode('tf-menu-short', 'tf_menu_short');
  */
 function tf_food_menu_register_tinymce_buttons() {
 	
-	if( !is_admin() || !current_user_can( 'edit_posts' ) || empty( $_GET['post'] ) || !in_array( get_post_type( $_GET['post'] ), array( 'post', 'page' ) ) )
+	if( !current_user_can( 'edit_posts' ) || 
+		( isset( $_GET['post'] ) && !in_array( get_post_type( $_GET['post'] ), array( 'post', 'page' ) ) ) || 
+		( isset( $_GET['post_type'] ) && !in_array( $_GET['post_type'], array( 'post', 'page' ) ) ) )
 		return;
 	
 	add_filter( 'mce_buttons', 'tf_food_menu_add_tinymce_buttons' );
 	add_filter( 'mce_external_plugins', 'tf_food_menu_add_tinymce_plugins' );
 }
-add_action( 'init', 'tf_food_menu_register_tinymce_buttons' );
+add_action( 'load-post.php', 'tf_food_menu_register_tinymce_buttons' );
+add_action( 'load-post-new.php', 'tf_food_menu_register_tinymce_buttons' );
 
 /**
  * Adds the Food Menu tinyMCE button.
