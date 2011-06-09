@@ -17,7 +17,7 @@
 				ed.windowManager.open({
 					file : url + '/insert_shortcode_dialog.php',
 					width : 400,
-					height : 240,
+					height : 280,
 					inline : 1
 				}, {
 					plugin_url : url, // Plugin absolute URL

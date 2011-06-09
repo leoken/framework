@@ -91,7 +91,7 @@ class Example_Widget extends WP_Widget {
 
                 // - output - ?>
 
-                        <div class="eventitem"><?php echo $stime; ?> - <?php the_title(); ?></div>
+                        <div class="eventitem"><a href="<?php the_permalink(); ?>"><?php echo $stime; ?> - <?php the_title(); ?></a></div>
                     </div>
                 <?php
 
@@ -130,7 +130,7 @@ class Example_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		/* Set up some default widget settings. */
-		$defaults = array( 'title' => __('Example', 'themeforce'), 'limit' => '20');
+		$defaults = array( 'title' => __('Events', 'themeforce'), 'limit' => '20');
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<!-- Widget Title: Text Input -->

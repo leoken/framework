@@ -28,12 +28,12 @@ class TF_Newsletter_Widget extends WP_Widget {
 
                 // - our variables from the widget settings -
 
-		$title = apply_filters('widget_title', $instance['newsletter-title'] );
-		$url = $instance['newsletter-url'];
+				$title = apply_filters('widget_title', $instance['newsletter-title'] );
+				$url = $instance['newsletter-url'];
                 $content = $instance['newsletter-content'];
 
                 echo $before_widget;
-                if ( $title ) echo $before_title . $title . $after_title;
+                if ( $title ) {echo $before_title . $title . $after_title;}
                 ?>
                 <p><?php echo $content; ?></p>
 

@@ -201,14 +201,16 @@ wp_admin_css( 'colors-fresh', true );
 				</select>
 			</p>
 			
+			<?php if( get_current_theme() != 'Pubforce' ) { ?>
 			<p class="split-column">
-				<label>Align</label><br />
+				<label>Align (Only for Full Width)</label><br />
 				<select name="tf_food_menu_align">
 					<option value="">None</option>
 					<option value="left">Left</option>
 					<option value="right">Right</option>
 				</select>
 			</p>
+			<?php } ?>
 			
 			<p class="clear">
 				<label><input type="checkbox" name="tf_food_menu_show_titles" checked="checked" /> Show Category Headers</label>

@@ -28,7 +28,7 @@ class tf_openingtimes_widget extends WP_Widget {
 
                 // - our variables from the widget settings -
 
-		$title = apply_filters('widget_title', $instance['open-title'] );
+				$title = apply_filters('widget_title', $instance['open-title'] );
                 $headdesc = $instance['open-headdesc'];
                 $footdesc = $instance['open-footdesc'];
 

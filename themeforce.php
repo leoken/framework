@@ -158,13 +158,7 @@ function tf_of_business_options( $options ) {
 						"id" => $shortname."_twitter",
 						"std" => "",
 						"type" => "text");
-	
-	$options[] = array( "name" => "Footer Text",
-						"desc" => "This is the text that is right above your social media icons.",
-						"id" => $shortname."_footer_text",
-						"std" => "Pubforce is a WordPress theme for Pubs & Taverns. Edit this text within the Theme Options of Pubforce.",
-						"type" => "textarea");
-	
+		
 	$options[] = array( "name" => "Terminal Footer Text",
 						"desc" => "This is a great place to put any Copyright Information or other short pieces of text",
 						"id" => $shortname."_terminalnotice",
