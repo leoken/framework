@@ -356,13 +356,13 @@ function tf_food_menu_get_food_varients( $post_id ) {
     
     $varients = array();
     
-    if( $metasize1 )
+    if( $metasize1 || $metaprice1 )
     	$varients[] = array( 'size' => $metasize1, 'price' => $metaprice1 );
 
-    if( $metasize2 )
+    if( $metasize2 || $metaprice2 )
     	$varients[] = array( 'size' => $metasize2, 'price' => $metaprice2 );
     
-    if( $metasize3 )
+    if( $metasize3 || $metaprice3 )
     	$varients[] = array( 'size' => $metasize3, 'price' => $metaprice3 );
     
     return $varients;

@@ -229,7 +229,10 @@ function tf_food_menu_inline_edit_save_post( $post_id, $post ) {
 	//varients
 	$varients = array();
 	foreach( $_POST['tf_food_varient_size'] as $key => $size )
-		$varients[] = array( 'size' => esc_attr( $size ), 'price' => esc_attr( $_POST['tf_food_varient_price'][$key] ) );
+		$varients[] = array( 'size' => esc_attr( $size ) );
+
+	foreach( $_POST['tf_food_varient_price'] as $key => $price ) 
+		$varients[$key]['price'] = esc_attr( $price );
 	
 	tf_food_menu_update_food_varients( $post_id, $varients );
 	
