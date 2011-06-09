@@ -76,6 +76,8 @@ text-shadow:0px -1px 0px #103647;
 
 /* Image Section */
 
-#tf-inline-edit-description {padding: 0 0 0 10px !important;} 
-#tf-inline-edit-image {max-width:100px;padding:0 0 0 10px !important;}}
-.no-attached-image {width:80px !important;height:80px !important;background: transparent url('../images/qe-noimage.png') no-repeat 17px 23px !important;}
+.inline-edit-row.inline-edit-tf_foodmenu #tf-inline-edit-description {padding: 0 0 0 10px !important;} 
+.inline-edit-row.inline-edit-tf_foodmenu #tf-inline-edit-image {max-width:100px;padding:0 0 0 10px !important;}}
+.inline-edit-row.inline-edit-tf_foodmenu .no-attached-image {width:80px !important;height:80px !important;background: transparent url('../images/qe-noimage.png') no-repeat 17px 23px !important;}
+
+.inline-edit-row.inline-edit-tf_foodmenu .size-row-price-remove.tf-inline-edit-remove-variant img { margin-bottom: -3px; }
