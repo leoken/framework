@@ -328,4 +328,32 @@ function create_events_tax() {
          update_option('tf_added_default_events_terms','updated');
     }
 }
-?>
+
+/**
+ * Events have custom permalinks including their category.
+ * 
+ * @param string $permalink
+ * @param object $post
+ * @return string
+ */
+function tf_event_permalink( $permalink, $post, $leavename ) {
+	
+	if( $post->post_type !== 'tf_events' || strpos( $permalink, '?' ) )
+		return $permalink;
+	
+	$terms = wp_get_object_terms( $post->ID, 'tf_eventcategory' );
+	$term_slug = null;
+	
+	foreach( $terms as $t ) {
+		if( $t->slug != 'featured' ) {
+			$term_slug = $t->slug;
+			break;
+		}
+	}
+	
+	if( $term_slug === null )		
+		$term_slug = 'uncategorized';
+	
+	return trailingslashit( get_bloginfo( 'url' ) ) . 'events/' . $term_slug . '/'. ( $leavename ? '%postname%' : $post->post_name  ) . '/';
+}
+add_filter( 'post_type_link', 'tf_event_permalink', 10, 3 );

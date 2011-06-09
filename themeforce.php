@@ -13,6 +13,8 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 //WP Thumb
 require_once( TF_PATH . '/wpthumb/wpthumb.php' ); 
 
+require_once( TF_PATH . '/tf.rewrite.php' ); 
+
 //Facebook Open Graph protocol
 require_once( TF_PATH . '/tf.open_graph_protocol.php' );
 

@@ -45,7 +45,7 @@
 		
 		<?php if($thumbnail != '') {?>
 		<!-- img -->  <img itemprop="photo" src="<?php echo $thumbnail; ?>" />
-		<?php ;} ?>
+		<?php } ?>
         <!-- url -->  <a itemprop="url" href="<?php the_permalink(); ?>">
         <!-- name --> <h1 class="post-title" itemprop="summary"><?php the_title(); ?></h1>
         <!-- /url --> </a>
