@@ -99,10 +99,11 @@ function tf_add_og_meta_tags() {
 		$meta[] = $image;
 	}
 
-	foreach( $meta as $meta_item ) : ?>
-		<meta property="<?php echo $meta_item['property'] ?>" content="<?php echo $meta_item['content'] ?>" />
-		
-	<?php endforeach;
+	foreach( $meta as $meta_item ) : 
+		if( $meta_item['content'] ) :?>
+			<meta property="<?php echo $meta_item['property'] ?>" content="<?php echo $meta_item['content'] ?>" />
+		<?php endif;	
+	endforeach;
 
 }
 
