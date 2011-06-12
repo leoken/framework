@@ -170,6 +170,16 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    		
 	    	} );
 	    	
+	    	//re-modify the Edit links when quick edit finished
+	    	jQuery( document ).ajaxComplete( function(e, xhr, settings) { 
+	    		
+	    		jQuery( '.row-actions .edit' ).css( 'display', 'none' );
+		    	jQuery( '.row-actions .editinline' ).text( '<?php _e( 'Edit' ); ?>' );
+		    	jQuery( '.row-title' ).addClass('editinline');
+	    		
+	    	} ); 
+
+	    	
 	    	//sync description teaxtarea and input
 	    	jQuery( "#tf-inline-edit-description textarea" ).change( function() {
 
@@ -223,16 +233,17 @@ function tf_food_menu_inline_edit_save_post( $post_id, $post ) {
 
 	// description
 	global $wpdb;
-	$data['post_content'] = strip_tags( $_POST['tf_description'], '<br><p>' );
+	$data['post_content'] = strip_tags( stripslashes( $_POST['tf_description'] ), '<br><p>' );
+	
 	$wpdb->update( $wpdb->posts, $data, array( 'ID' => $post_id ) );
 	
 	//varients
 	$varients = array();
 	foreach( $_POST['tf_food_varient_size'] as $key => $size )
-		$varients[] = array( 'size' => esc_attr( $size ) );
+		$varients[] = array( 'size' => stripslashes( $size ) );
 
 	foreach( $_POST['tf_food_varient_price'] as $key => $price ) 
-		$varients[$key]['price'] = esc_attr( $price );
+		$varients[$key]['price'] = stripslashes( $price );
 	
 	tf_food_menu_update_food_varients( $post_id, $varients );
 	
