@@ -66,7 +66,7 @@ text-shadow:0px -1px 0px #103647;
 .inline-edit-row.inline-edit-tf_foodmenu .width-item { float: left; width: 40%; }
 .inline-edit-row.inline-edit-tf_foodmenu .width-cat { float: left; width: 20%; }
 .inline-edit-row.inline-edit-tf_foodmenu .width-image { float: left; width: 120px; }
-.inline-edit-row.inline-edit-tf_foodmenu .width-desc { float: left; width: 30%; }
+.inline-edit-row.inline-edit-tf_foodmenu .width-desc { float: left; width: 20%; }
 
 .inline-edit-row.inline-edit-tf_foodmenu .tf-quickedit-header .width-item,
 .inline-edit-row.inline-edit-tf_foodmenu .tf-quickedit-header .width-cat,
