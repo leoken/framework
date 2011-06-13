@@ -7,6 +7,8 @@ jQuery(document).ready(function($) {
 		    showOn: 'both',
 			buttonImage: themeforce.buttonImage,
 		    buttonImageOnly: true,
+			changeMonth:true,
+			changeYear: true,
 		    numberOfMonths: 3
 		    });
 	}
