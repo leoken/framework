@@ -3,6 +3,7 @@
 
 require_once( TF_PATH . '/food-menu/tf.food-menu.shortcodes.php' );
 require_once( TF_PATH . '/food-menu/tf.food-menu.quick-edit.php' );
+require_once( TF_PATH . '/food-menu/tf.food-menu.upgrade.php' );
 
 /*
  * FOOD MENU FUNCTION (CUSTOM POST TYPE)
@@ -92,7 +93,6 @@ function tf_foodmenu_edit_columns($columns) {
  		"cb" => "<input type=\"checkbox\" />",
  		"tf_col_menu_thumb" => '',
  		//"tf_col_menu_id" => __('ID'),
- 		//"tf_col_menu_order" => __('Order'),
  		"title" => __('Item'),
  		"tf_col_menu_cat" => __('Section'),
  		"tf_col_menu_desc" => __('Description'),
@@ -111,10 +111,7 @@ function tf_foodmenu_custom_columns($column)
 		case "tf_col_menu_id":
 				echo $post->ID;
 				break;
-		case "tf_col_menu_order":
-				$order = $custom["tf_menu_order"][0];
-				echo $order;
-				break;
+
 		case "tf_col_menu_cat":
 				$menucats = get_the_terms($post->ID, "tf_foodmenucat");
 				$menucats_html = array();
@@ -169,7 +166,6 @@ function tf_foodmenu_create() {
 function tf_foodmenu_meta () {
     global $post;
     $custom = get_post_custom($post->ID);
-    $metaorder = $custom["tf_menu_order"][0];
     $metasize1 = $custom["tf_menu_size1"][0];
     $metasize2 = $custom["tf_menu_size2"][0];
     $metasize3 = $custom["tf_menu_size3"][0];
@@ -188,7 +184,6 @@ function tf_foodmenu_meta () {
 
     <div class="tf-meta">
         <ul>
-            <li><label>Order ID</label><input name="tf_menu_order" value="<?php echo $metaorder; ?>" /><em><?php _e('Enabled in Theme Options - Use a number to order menu items.', 'themeforce'); ?></em></li>
             <li><label>Size 1</label><input name="tf_menu_size1" value="<?php echo $metasize1; ?>" /><em><?php _e('All Sizes are Optional', 'themeforce'); ?></em></li>
             <li><label>Size 2</label><input name="tf_menu_size2" value="<?php echo $metasize2; ?>" /></li>
             <li><label>Size 3</label><input name="tf_menu_size3" value="<?php echo $metasize3; ?>" /></li>
@@ -219,12 +214,6 @@ function save_tf_menuitem(){
         return $post->ID;
 
     // - update post
-
-    if(!isset($_POST["tf_menu_order"])):
-    return $post;
-    endif;
-    update_post_meta($post->ID, "tf_menu_order", $_POST["tf_menu_order"]);
-
     if(!isset($_POST["tf_menu_size1"])):
     return $post;
     endif;

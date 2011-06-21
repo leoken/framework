@@ -54,12 +54,18 @@ function tf_menu_full ( $atts ) {
 
      // ===== LOOP: FULL MENU SECTION =====
 
-            // - get options -
-                $sortfield = get_option('tf_menu_sort_key');
-                $metakey = null;
-                $orderby = 'title';
-                if ($sortfield=='true') { $metakey = 'tf_menu_order'; $orderby = 'meta_value';}
-		if ($posttype=='p') { $metakey = 'null'; $orderby = 'title';}
+        // - get options -
+        $sortfield = get_option('tf_menu_sort_key');
+        $metakey = null;
+        $orderby = 'title';
+        if ($sortfield=='true') { 
+        	$orderby = 'menu_order';
+        }
+        
+		if ($posttype=='p') { 
+			$metakey = 'null'; 
+			$orderby = 'title';
+		}
 
             // - arguments -
             $args = array(
@@ -174,19 +180,26 @@ function tf_menu_list ( $atts ) {
 
      // ===== LOOP: LIST MENU SECTION =====
 
-	// - get options -
-	$sortfield = get_option('tf_menu_sort_key');
-	$metakey = null;
-	$orderby = 'title';
-	if ($sortfield=='true') { $metakey = 'tf_menu_order'; $orderby = 'meta_value';}
-	if ($posttype=='p') { $metakey = 'null'; $orderby = 'title';}
+		// - get options -
+		$sortfield = get_option('tf_menu_sort_key');
+		$metakey = null;
+		$orderby = 'title';
+	  	
+	  	if ($sortfield=='true') { 
+        	$orderby = 'menu_order';
+        }
+        
+		if ($posttype=='p') { 
+			$metakey = 'null'; 
+			$orderby = 'title';
+		}
 	 
             // - arguments -
             $args = array(
                 'post_type' => 'tf_foodmenu',
                 $posttype => $id,
                 'post_status' => 'publish',
-		'orderby' => $orderby,
+				'orderby' => $orderby,
                 'meta_key' => $metakey,
                 'order' => 'ASC',
                 'posts_per_page' => 99,
@@ -257,20 +270,21 @@ function tf_menu_short ( $atts ) {
 
     // ===== OPTIONS =====
 
-        // - header text -
-        if ($header=="yes") {
-             echo '<h2 class="full-menu">'. $id .'</h2>';}
+    // - header text -
+    if ($header=="yes") {
+         echo '<h2 class="full-menu">'. $id .'</h2>';}
 
-        // - currency -
-        $fx = null;
-        if ($currency=='true') {
-             $fx = get_option('tf_currency_symbol');}
+    // - currency -
+    $fx = null;
+    if ($currency=='true') {
+         $fx = get_option('tf_currency_symbol');}
 
-        // - taxonomy group or single post -
-        if ($type=="menu") {
-            $posttype = 'tf_foodmenucat';
-        } else {
-            $posttype = 'p';}
+    // - taxonomy group or single post -
+    if ($type=="menu") {
+        $posttype = 'tf_foodmenucat';
+    } else {
+        $posttype = 'p';
+    }
 
      // ===== LOOP: SMALL MENU SECTION =====
 
@@ -278,49 +292,58 @@ function tf_menu_short ( $atts ) {
 	$sortfield = get_option('tf_menu_sort_key');
 	$metakey = null;
 	$orderby = 'title';
-	if ($sortfield=='true') { $metakey = 'tf_menu_order'; $orderby = 'meta_value';}
-	if ($posttype=='p') { $metakey = 'null'; $orderby = 'title';}
+	
+	if ($sortfield=='true') { 
+        	$orderby = 'menu_order';
+    }
+    
+	if ($posttype=='p') { 
+	    $metakey = 'null'; 
+	    $orderby = 'title';
+	}
+		
 	 
-            // - arguments -
-            $args = array(
-                'post_type' => 'tf_foodmenu',
-                $posttype => $id,
-                'post_status' => 'publish',
+    // - arguments -
+    $args = array(
+        'post_type' => 'tf_foodmenu',
+        $posttype => $id,
+        'post_status' => 'publish',
 		'orderby' => $orderby,
-                'meta_key' => $metakey,
-                'order' => 'ASC',
-                'posts_per_page' => 99,
-            );
+        'meta_key' => $metakey,
+        'order' => 'ASC',
+        'posts_per_page' => 99,
+    );
 
-            // - query -
-            $counter = 1;
-            $global_counter = 0;
-            $my_query = null;
-            $my_query = new WP_query($args);
-            while ($my_query->have_posts()) : $my_query->the_post();
+    // - query -
+    $counter = 1;
+    $global_counter = 0;
+    $my_query = null;
+    $my_query = new WP_query($args);
+    while ($my_query->have_posts()) : $my_query->the_post();
 
-            // - variables -
-            $custom = get_post_custom(get_the_ID());
-            $price1 = $custom["tf_menu_price1"][0];
-            $price2 = $custom["tf_menu_price2"][0];
-            $price3 = $custom["tf_menu_price3"][0];
-            $size1 = $custom["tf_menu_size1"][0];
-            $size2 = $custom["tf_menu_size2"][0];
-            $size3 = $custom["tf_menu_size3"][0];
-            $odd_even_checker = ($counter%2) ? TRUE : FALSE;
+    // - variables -
+    $custom = get_post_custom(get_the_ID());
+    $price1 = $custom["tf_menu_price1"][0];
+    $price2 = $custom["tf_menu_price2"][0];
+    $price3 = $custom["tf_menu_price3"][0];
+    $size1 = $custom["tf_menu_size1"][0];
+    $size2 = $custom["tf_menu_size2"][0];
+    $size3 = $custom["tf_menu_size3"][0];
+    $odd_even_checker = ($counter%2) ? TRUE : FALSE;
 
-            // - output -
-            ?>
-            <div class="small-menu <?php if (!$odd_even_checker) { ?>right<?php } else { ?>left<?php } ?>">
-            <div class="leftbox">
-                <div class="title"><div class="lefttext"><?php the_title(); ?></div></div>
-                <div class="desc"><?php the_content_rss(); ?></div>
-            </div>
-                <div class="rightbox"><?php if ($size1!="") { ?><div class="size"><?php echo $size1 ?></div><?php ;} ?><div class="price"><?php echo $fx; echo $price1 ?></div></div>
-                <?php if ($size2!="") {?><div class="rightbox"><div class="size"><?php echo $size2 ?></div><div class="price"><?php echo $fx; echo $price2 ?></div></div><?php ;} ?>
-                <?php if ($size3!="") {?><div class="rightbox"><div class="size"><?php echo $size3 ?></div><div class="price"><?php echo $fx; echo $price3 ?></div></div><?php ;} ?>
-            </div>
-            <div style="clear:<?php if ($odd_even_checker) { ?>right<?php } else { ?>left<?php } ?>;"></div>
+    // - output -
+    ?>
+    <div class="small-menu <?php if (!$odd_even_checker) { ?>right<?php } else { ?>left<?php } ?>">
+    <div class="leftbox">
+        <div class="title"><div class="lefttext"><?php the_title(); ?></div></div>
+        <div class="desc"><?php the_content_rss(); ?></div>
+    </div>
+        <div class="rightbox"><?php if ($size1!="") { ?><div class="size"><?php echo $size1 ?></div><?php ;} ?><div class="price"><?php echo $fx; echo $price1 ?></div></div>
+        <?php if ($size2!="") {?><div class="rightbox"><div class="size"><?php echo $size2 ?></div><div class="price"><?php echo $fx; echo $price2 ?></div></div><?php ;} ?>
+        <?php if ($size3!="") {?><div class="rightbox"><div class="size"><?php echo $size3 ?></div><div class="price"><?php echo $fx; echo $price3 ?></div></div><?php ;} ?>
+    </div>
+    
+    <div style="clear:<?php if ($odd_even_checker) { ?>right<?php } else { ?>left<?php } ?>;"></div>
 
         <?php
         $counter++;

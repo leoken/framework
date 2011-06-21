@@ -53,6 +53,9 @@ if( current_theme_supports( 'tf_yelp' ) ) {
 	require_once( TF_PATH . '/yelp/tf.yelp.php' );
 }
 
+//upgrader
+require_once( TF_PATH . '/tf.upgrade.php' );  
+
 //Options Framework
 define('OF_FILEPATH', STYLESHEETPATH );
 define('OF_DIRECTORY', TF_URL . '/options-framework' );
