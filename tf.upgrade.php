@@ -38,7 +38,7 @@ add_action( 'admin_init', 'tf_upgrade_scripts_action' );
  */
 function tf_run_upgrade_scripts() {
 	
-	foreach( apply_filters( 'tf_upgrade_scripts', null ) as $callback ) {
+	foreach( (array) apply_filters( 'tf_upgrade_scripts', null ) as $callback ) {
 		call_user_func( $callback );
 	}
 	

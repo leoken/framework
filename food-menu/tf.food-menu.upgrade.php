@@ -13,7 +13,6 @@ add_filter( 'tf_upgrade_scripts', 'tf_food_menu_migrate_menu_order_upgrade' );
 
 function tf_food_menu_migrate_menu_order() {
 	
-	
 	global $wpdb;
 	
 	$posts = $wpdb->get_col( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'tf_menu_order' ORDER BY meta_value ASC" );
