@@ -5,23 +5,27 @@
 
 require_once( dirname( __FILE__ ) . '/tf.gowalla.admin-options.php' );
 
-function tf_gowalla_api() {
+function tf_gowalla_photos() {
+	$spotid = get_option('tf_gowalla_spot_id');
+	return $this->tf_gowalla_api('spots/' . (int)$spotid . '/photos');
+	}
+
+function tf_gowalla_api($url) {
 
 	// - setup -
 	
 	$spotid = get_option('tf_gowalla_spot_id');
 	$apikey	= get_option('tf_gowalla_api_key');
 
-	$apiserver = 'http://api.gowalla.com/spots/'; 
+	$apiserver = 'http://api.gowalla.com/'; 
 	$version = '1.0';
-
-
+	
 	// - response -
 
 	$curl = curl_init($url);
 
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($curl, CURLOPT_URL, $apiserver . $spotid);
+	curl_setopt($curl, CURLOPT_URL, $apiserver . $spotid . '/photos');
 	curl_setopt($curl, CURLOPT_USERAGENT, 'GowallaAPI: ' . $version . '/ThemeForce w/ Curl ' . curl_version());
 	curl_setopt($curl, CURLOPT_HTTPHEADER, array(
 		'X-Gowalla-API-Key: ' . $apikey,
