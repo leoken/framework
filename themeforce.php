@@ -36,6 +36,10 @@ if( current_theme_supports( 'tf_widget_google_maps' ) )
 	
 if( current_theme_supports( 'tf_widget_payments' ) )
 	require_once( TF_PATH . '/widgets/widget-payments.php' );
+
+if( current_theme_supports( 'tf_mailchimp' ) )
+	require_once( TF_PATH . '/mailchimp/mailchimp-widget.php' );
+	
 	
 /* Theme Force Upgrade Tools
 =========================================*/	
@@ -110,10 +114,25 @@ function tf_add_tf_icon_classes_to_widgets() {
 	?>
 	 <script type="text/javascript">
      	jQuery( document ).ready( function() {
-     		
+    		
      		jQuery( '.widget' ).filter( function( i, object ) {
      			if( jQuery( this ).attr('id').indexOf( '_tf' ) > 1 )
 					jQuery( object ).addClass('tf-admin-widget');
+     		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '-gowalla-' ) > 1 )
+					jQuery( object ).addClass('tf-gowalla-widget');
+     		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '-fs-' ) > 1 )
+					jQuery( object ).addClass('tf-fs-widget');
+     		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '_mailchimp-' ) > 1 )
+					jQuery( object ).addClass('tf-mailchimp-widget');
      		} );
      		
      	} );
@@ -121,7 +140,10 @@ function tf_add_tf_icon_classes_to_widgets() {
      
      <style text="text/css">
      	/* ThemeForce Icon */
-		.tf-admin-widget .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-themeforce-18.png); background-repeat: no-repeat; background-position: 213px center; }
+		/* .tf-admin-widget .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-themeforce-18.png); background-repeat: no-repeat; background-position: 213px center; } */
+		.tf-gowalla-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-gowalla-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
+		.tf-fs-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-fs-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
+		.tf-mailchimp-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-mailchimp-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
      </style>
 	<?php
 }
@@ -203,6 +225,15 @@ function tf_of_business_options( $options ) {
 						"id" => $shortname."_google_analytics",
 						"std" => "",
 						"type" => "textarea"); 
+						
+	$options[] = array( "name" => "MailChimp API",
+						"type" => "heading");
+						
+	$options[] = array( "name" => "MailChimp API",
+						"desc" => "Please enter your currency symbol or 3-letter code, whichever looks better to you. Is used for the menu.",
+						"id" => "tf_mailchimp_api_key",
+						"std" => "",
+						"type" => "text");
 	
 	return $options;
 }
