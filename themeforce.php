@@ -73,6 +73,7 @@ if( current_theme_supports( 'tf_foursquare' ) ) {
 	require_once( TF_PATH . '/api_foursquare/tf.foursquare.php' ); 
 	require_once( TF_PATH . '/widgets/widget-foursquare-photos.php' );
 	require_once( TF_PATH . '/widgets/widget-foursquare-tips.php' );
+	require_once( TF_PATH . '/widgets/widget-foursquare-herenow.php' );
 }
 //Yelp
 if( current_theme_supports( 'tf_yelp' ) ) {
@@ -81,8 +82,12 @@ if( current_theme_supports( 'tf_yelp' ) ) {
 
 //Gowalla
 if( current_theme_supports( 'tf_gowalla' ) ) {
-	require_once( TF_PATH . '/api_gowalla/tf.gowalla.php' );
+	// photos
+	require_once( TF_PATH . '/api_gowalla/tf.gowalla.api-photos.php' );
 	require_once( TF_PATH . '/widgets/widget-gowalla-photos.php' );
+	// checkins
+	require_once( TF_PATH . '/api_gowalla/tf.gowalla.api-checkins.php' );
+	require_once( TF_PATH . '/widgets/widget-gowalla-checkins.php' );
 }
 
 /* Remaining Functions

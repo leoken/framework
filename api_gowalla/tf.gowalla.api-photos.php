@@ -5,7 +5,7 @@
 
 require_once( dirname( __FILE__ ) . '/tf.gowalla.admin-options.php' );
 
-function tf_gowalla_api() {
+function tf_gowalla_api_photos() {
 
 	// - setup -
 	
@@ -19,7 +19,7 @@ function tf_gowalla_api() {
 
 	$args = array(
 		'headers' => array(
-		'X-Gowalla-API-Key:' => '7f3ff82ae45f4f64b7b0f5dd60d75c00',
+		'X-Gowalla-API-Key' => $apikey,
 		'Content-type' => 'application/json',
 		'Accept' => 'application/json'
 		)
@@ -32,6 +32,7 @@ function tf_gowalla_api() {
     $json = wp_remote_retrieve_body($api_response);
     
     $response = json_decode($json);
+	
 	return $response;
 
 	// - error checking -
@@ -48,12 +49,8 @@ function tf_gowalla_api() {
 		406: Not Acceptable (server can’t satisfy the Accept header specified by the client)
 		500: Application Error
 		
-    if( !isset( $response->meta->code ) || $response->meta->code != 200 )
-		return new WP_Error( 'gw-not-200', 'Gowalla did not return a valid code, returned: ' . $response->meta->code );
-	
-    return $response;
-	
-	*/
+		*/
+
 }
 
 /**
@@ -61,17 +58,17 @@ function tf_gowalla_api() {
  * 
  * @return object
  */
-function tf_gowalla_transient() {
+function tf_gowalla_photos_transient() {
 
     // - get transient -
-    $json = get_transient('tf_gowalla_json');
+    $json = get_transient('tf_gowalla_photos_json');
 
     // - refresh transient - 
     if ( !$json ) {
-        $json = tf_gowalla_api();
+        $json = tf_gowalla_api_photos();
 		
-		if( !empty( $json ) /* && !is_wp_error( $json ) */ )
-			set_transient('tf_gowalla_json', $json, 180);
+		if( !empty( $json ) && !is_wp_error( $json ) )
+			set_transient('tf_gowalla_photos_json', $json, 180);
     }
     return $json;
 }
@@ -80,9 +77,9 @@ function tf_gowalla_transient() {
  * If the Gowalla options are changed, we need to remove teh transient to there is no overlap of incorrect data
  * 
  */
-function tf_delete_gowalla_transient_on_update_option() {
+function tf_delete_gowalla_photos_transient_on_update_option() {
 	
-	delete_transient( 'tf_gowalla_json' );
+	delete_transient( 'tf_gowalla_photos_json' );
 }
-add_action( 'update_option_tf_gowalla_api_key', 'tf_delete_gowalla_transient_on_update_option' );
-add_action( 'update_option_tf_gowalla_spot_id', 'tf_delete_gowalla_transient_on_update_option' );
+add_action( 'update_option_tf_gowalla_api_key', 'tf_delete_gowalla_photos_transient_on_update_option' );
+add_action( 'update_option_tf_gowalla_spot_id', 'tf_delete_gowalla_photos_transient_on_update_option' );

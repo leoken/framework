@@ -1,7 +1,7 @@
 <?php
 /* ------------------- THEME FORCE ----------------------*/
 
-// WIDGET: gowalla PHOTOS
+// WIDGET: Gowalla Photos
 //***********************************************
 
 class tf_gowalla_photos_widget extends WP_Widget {
@@ -11,13 +11,13 @@ class tf_gowalla_photos_widget extends WP_Widget {
 	 */
 	function tf_gowalla_photos_widget() {
 		/* Widget settings. */
-		$widget_ops = array( 'classname' => 'tf-gowalla-photos', 'description' => __('This widget is used to show Gowalla photos', 'themeforce') );
+		$widget_ops = array( 'classname' => 'tf-gowalla-photos', 'description' => __('This widget is used to show Gowalla Customer Photos', 'themeforce') );
 
 		/* Widget control settings. */
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'tf-gowalla-photos-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'tf-gowalla-photos-widget', __('Gowalla Photos', 'themeforce'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'tf-gowalla-photos-widget', __('Gowalla - Photos', 'themeforce'), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -41,7 +41,7 @@ class tf_gowalla_photos_widget extends WP_Widget {
                 if ( $headdesc ) {echo '<p>' . $headdesc . '</p>';}
                 echo '<div class="gowalla-photos">';
 
-                $spot = tf_gowalla_transient();
+                $spot = tf_gowalla_photos_transient();
 				 
 				/*	
 				if( is_wp_error( $spot ) || !$spot ) {
@@ -56,8 +56,7 @@ class tf_gowalla_photos_widget extends WP_Widget {
                 	    if ($counter < $limit) {
                 	        $counter++;
                 	        echo '<div class="gowalla-photos-item">';
-                	        echo '<div class="gowalla-photos-thumb"><img src="' . $items->photo_urls->square_100 . '" style="padding:0;margin:0" /></div>';
-                	        // echo '<div class="gowalla-photos-text"><strong>'. $items->user->firstName . ' ' . $items->user->lastName . __(' says ', 'themeforce') . '</strong><div class="gowalla-photos-quote">"' . $items->text . '"</div></div>';
+                	        echo '<div class="gowalla-photos-thumb"><a class="thumb" title="' . $items->message .'" href="' . $items->photo_urls->high_res_320x480 . '"><img src="' . $items->photo_urls->square_100 . '" style="padding:0;margin:0" alt="' . $items->message .'" /></a></div>';
                 	        echo '</div>';
                 	    }   
 				    }

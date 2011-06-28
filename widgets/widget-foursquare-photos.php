@@ -11,13 +11,13 @@ class tf_fs_photos_widget extends WP_Widget {
 	 */
 	function tf_fs_photos_widget() {
 		/* Widget settings. */
-		$widget_ops = array( 'classname' => 'tf-fs-photos', 'description' => __('This widget is used to show Foursquare photos', 'themeforce') );
+		$widget_ops = array( 'classname' => 'tf-fs-photos', 'description' => __('This widget is used to show Foursquare Customer Photos', 'themeforce') );
 
 		/* Widget control settings. */
 		$control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'tf-fs-photos-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'tf-fs-photos-widget', __('Foursquare Photos', 'themeforce'), $widget_ops, $control_ops );
+		$this->WP_Widget( 'tf-fs-photos-widget', __('Foursquare - Photos', 'themeforce'), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -55,8 +55,7 @@ class tf_fs_photos_widget extends WP_Widget {
                 	    if ($counter < $limit) {
                 	        $counter++;
                 	        echo '<div class="fs-photos-item">';
-                	        echo '<div class="fs-photos-thumb"><img src="' . $items->sizes->items[2]->url . '" style="padding:0;margin:0" /></div>';
-                	        // echo '<div class="fs-photos-text"><strong>'. $items->user->firstName . ' ' . $items->user->lastName . __(' says ', 'themeforce') . '</strong><div class="fs-photos-quote">"' . $items->text . '"</div></div>';
+                	        echo '<div class="fs-photos-thumb"><a class="thumb" href="' . $items->sizes->items[0]->url . '"><img src="' . $items->sizes->items[2]->url . '" style="padding:0;margin:0" /></a></div>';
                 	        echo '</div>';
                 	    }   
 				    }
@@ -91,7 +90,7 @@ class tf_fs_photos_widget extends WP_Widget {
 	function form( $instance ) {
 
 		/* Set up some default widget settings. */
-		$defaults = array( 'fs-photos-title' => __('Guest photos', 'themeforce'), 'fs-photos-limit' => '6');
+		$defaults = array( 'fs-photos-title' => __('Foursquare Photos', 'themeforce'), 'fs-photos-limit' => '6');
 		$instance = wp_parse_args( (array) $instance, $defaults );
                 $limit = $instance['fs-photos-limit'];
                 ?>
