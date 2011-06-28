@@ -5,38 +5,31 @@
 
 require_once( dirname( __FILE__ ) . '/tf.gowalla.admin-options.php' );
 
-function tf_gowalla_photos() {
-	$spotid = get_option('tf_gowalla_spot_id');
-	return $this->tf_gowalla_api('spots/' . (int)$spotid . '/photos');
-	}
-
-function tf_gowalla_api($url) {
+function tf_gowalla_api() {
 
 	// - setup -
 	
 	$spotid = get_option('tf_gowalla_spot_id');
 	$apikey	= get_option('tf_gowalla_api_key');
-
 	$apiserver = 'http://api.gowalla.com/'; 
-	$version = '1.0';
 	
 	// - response -
+	
+	$url = $apiserver . 'spots/' . $spotid . '/photos';
 
-	$curl = curl_init($url);
+	$args = array(
+		'headers' => array(
+		'X-Gowalla-API-Key' => '7f3ff82ae45f4f64b7b0f5dd60d75c00'
+		)
+	);
+	$api_response = wp_remote_request( $url, $args );
 
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($curl, CURLOPT_URL, $apiserver . $spotid . '/photos');
-	curl_setopt($curl, CURLOPT_USERAGENT, 'GowallaAPI: ' . $version . '/ThemeForce w/ Curl ' . curl_version());
-	curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-		'X-Gowalla-API-Key: ' . $apikey,
-		'Content-Type: application/json',
-		'Accept: application/json'
-	));
-
-	$data = curl_exec($curl);
-	curl_close($curl);
-
-	$response = json_decode($data, true);
+	if( is_wp_error( $api_response ) )
+		return $api_response;
+	
+    $json = wp_remote_retrieve_body($api_response);
+    
+    $response = json_decode($json);
 
 	// - error checking -
 	
@@ -52,7 +45,6 @@ function tf_gowalla_api($url) {
 		406: Not Acceptable (server can’t satisfy the Accept header specified by the client)
 		500: Application Error
 		
-	
     if( !isset( $response->meta->code ) || $response->meta->code != 200 )
 		return new WP_Error( 'gw-not-200', 'Gowalla did not return a valid code, returned: ' . $response->meta->code );
 	
@@ -75,7 +67,7 @@ function tf_gowalla_transient() {
     if ( !$json ) {
         $json = tf_gowalla_api();
 		
-		if( !empty( $json ) && !is_wp_error( $json ) )
+		if( !empty( $json ) /* && !is_wp_error( $json ) */ )
 			set_transient('tf_gowalla_json', $json, 180);
     }
     return $json;
@@ -90,4 +82,4 @@ function tf_delete_gowalla_transient_on_update_option() {
 	delete_transient( 'tf_gowalla_json' );
 }
 add_action( 'update_option_tf_gowalla_api_key', 'tf_delete_gowalla_transient_on_update_option' );
-add_action( 'update_option_tf_gowalla_client_api', 'tf_delete_gowalla_transient_on_update_option' );
+add_action( 'update_option_tf_gowalla_spot_id', 'tf_delete_gowalla_transient_on_update_option' );

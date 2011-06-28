@@ -82,6 +82,7 @@ if( current_theme_supports( 'tf_yelp' ) ) {
 //Gowalla
 if( current_theme_supports( 'tf_gowalla' ) ) {
 	require_once( TF_PATH . '/api_gowalla/tf.gowalla.php' );
+	require_once( TF_PATH . '/widgets/widget-gowalla-photos.php' );
 }
 
 /* Remaining Functions
