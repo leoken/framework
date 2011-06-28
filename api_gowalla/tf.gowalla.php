@@ -32,7 +32,7 @@ function tf_gowalla_api() {
 	$data = curl_exec($curl);
 	curl_close($curl);
 
-	$response json_decode($data, true);
+	$response = json_decode($data, true);
 
 	// - error checking -
 	
