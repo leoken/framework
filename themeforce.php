@@ -10,13 +10,9 @@ define( 'TF_DIR_SLUG', end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) 
 define( 'TF_PATH', dirname( __FILE__ ) );
 define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 
-//WP Thumb
-require_once( TF_PATH . '/wpthumb/wpthumb.php' ); 
 
-require_once( TF_PATH . '/tf.rewrite.php' ); 
-
-//Facebook Open Graph protocol
-require_once( TF_PATH . '/tf.open_graph_protocol.php' );
+/* Theme Force Core Tools
+=========================================*/
 
 //Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
@@ -25,9 +21,12 @@ if( current_theme_supports( 'tf_food_menu' ) )
 //Events
 if( current_theme_supports( 'tf_events' ) )
 	require_once( TF_PATH . '/events/tf.events.php' );
-
+	
+//Google Maps
+	require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );	
+	
 //Widgets
-require_once( TF_PATH . '/widgets/newsletter-widget.php' );
+	require_once( TF_PATH . '/widgets/newsletter-widget.php' );
 
 if( current_theme_supports( 'tf_widget_opening_times' ) )
 	require_once( TF_PATH . '/widgets/widget-openingtimes.php' );
@@ -37,46 +36,70 @@ if( current_theme_supports( 'tf_widget_google_maps' ) )
 	
 if( current_theme_supports( 'tf_widget_payments' ) )
 	require_once( TF_PATH . '/widgets/widget-payments.php' );
+	
+/* Theme Force Upgrade Tools
+=========================================*/	
 
-//Google Maps
-require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );
+//upgrader from 2.x - 3.0 -> 3.2
+	require_once( TF_PATH . '/tf.upgrade.php' );  	
 
-//Four Square
-if( current_theme_supports( 'tf_four_square' ) ) {
-	require_once( TF_PATH . '/foursquare/tf.foursquare.php' ); 
+/* 3rd Party Tools
+=========================================*/
+
+//WP Thumb
+	require_once( TF_PATH . '/wpthumb/wpthumb.php' ); 
+	require_once( TF_PATH . '/tf.rewrite.php' );
+	
+//Options Framework
+	define('OF_FILEPATH', STYLESHEETPATH );
+	define('OF_DIRECTORY', TF_URL . '/options-framework' );
+
+	require_once( TF_PATH . '/options-framework/admin/admin-options.php' );
+	require_once( TF_PATH . '/options-framework/admin/admin-functions.php');		// Custom functions and plugins
+	require_once( TF_PATH . '/options-framework/admin/admin-interface.php');		// Admin Interfaces (options,framework, seo)	
+
+/* SEO & Semantic Connections
+=========================================*/	
+	
+//Facebook Open Graph Protocol
+	require_once( TF_PATH . '/tf.open_graph_protocol.php' );
+
+
+/* API Connections
+=========================================*/	
+
+//Foursquare
+if( current_theme_supports( 'tf_foursquare' ) ) {
+	require_once( TF_PATH . '/api_foursquare/tf.foursquare.php' ); 
 	require_once( TF_PATH . '/widgets/widget-foursquare-photos.php' );
 	require_once( TF_PATH . '/widgets/widget-foursquare-tips.php' );
 }
-
 //Yelp
 if( current_theme_supports( 'tf_yelp' ) ) {
-	require_once( TF_PATH . '/yelp/tf.yelp.php' );
+	require_once( TF_PATH . '/api_yelp/tf.yelp.php' );
 }
 
-//upgrader
-require_once( TF_PATH . '/tf.upgrade.php' );  
+//Gowalla
+if( current_theme_supports( 'tf_gowalla' ) ) {
+	require_once( TF_PATH . '/api_gowalla/tf.gowalla.php' );
+}
 
-//Options Framework
-define('OF_FILEPATH', STYLESHEETPATH );
-define('OF_DIRECTORY', TF_URL . '/options-framework' );
-
-require_once( TF_PATH . '/options-framework/admin/admin-options.php' );
-require_once( TF_PATH . '/options-framework/admin/admin-functions.php');		// Custom functions and plugins
-require_once( TF_PATH . '/options-framework/admin/admin-interface.php');		// Admin Interfaces (options,framework, seo)
+/* Remaining Functions
+=========================================*/	
 
 /**
  * Enqueue the admin styles for themeforce features.
- * 
  */
+ 
 function tf_enqueue_admin_css() {
 	wp_enqueue_style('tf-functions-css', TF_URL . '/assets/css/admin.css');
 }
 add_action('admin_init', 'tf_enqueue_admin_css');
 
-/**
+/*
  * Adds the themeforce icon to the ThemeForce related widget in the admin.
- * 
  */
+ 
 function tf_add_tf_icon_classes_to_widgets() {
 	?>
 	 <script type="text/javascript">
@@ -98,12 +121,11 @@ function tf_add_tf_icon_classes_to_widgets() {
 }
 add_action( 'in_admin_footer', 'tf_add_tf_icon_classes_to_widgets' );
 
+// Options Framework
 add_filter('tf_of_options','tf_of_business_options', 8);
 function tf_of_business_options( $options ) {
 
 	$shortname = "tf";
-
-// BUSINES OPTIONS
 	
 	$options[] = array( "name" => "Business Options",
 						"type" => "heading");
