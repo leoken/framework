@@ -42,8 +42,6 @@ class tf_gowalla_photos_widget extends WP_Widget {
                 echo '<div class="gowalla-photos">';
 
                 $spot = tf_gowalla_transient();
-				
-				echo tf_gowalla_api();
 				 
 				/*	
 				if( is_wp_error( $spot ) || !$spot ) {
@@ -54,7 +52,7 @@ class tf_gowalla_photos_widget extends WP_Widget {
                 } else {
 				 */   
                 	$counter=0;
-                	foreach ($spot['activity'] as $items) {
+                	foreach ($spot->activity as $items) {
                 	    if ($counter < $limit) {
                 	        $counter++;
                 	        echo '<div class="gowalla-photos-item">';

@@ -19,17 +19,20 @@ function tf_gowalla_api() {
 
 	$args = array(
 		'headers' => array(
-		'X-Gowalla-API-Key' => '7f3ff82ae45f4f64b7b0f5dd60d75c00'
+		'X-Gowalla-API-Key:' => '7f3ff82ae45f4f64b7b0f5dd60d75c00',
+		'Content-type' => 'application/json',
+		'Accept' => 'application/json'
 		)
 	);
 	$api_response = wp_remote_request( $url, $args );
-
+	
 	if( is_wp_error( $api_response ) )
 		return $api_response;
 	
     $json = wp_remote_retrieve_body($api_response);
     
     $response = json_decode($json);
+	return $response;
 
 	// - error checking -
 	
