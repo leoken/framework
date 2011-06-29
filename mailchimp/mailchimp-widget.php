@@ -1,4 +1,7 @@
 <?php
+
+require_once( dirname( __FILE__ ) . '/tf.mailchimp.admin-options.php' );
+
 /*
 Plugin Name: MailChimp Widget
 Plugin URI: https://github.com/kalchas

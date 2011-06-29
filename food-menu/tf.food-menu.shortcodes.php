@@ -37,10 +37,6 @@ function tf_menu_full ( $atts ) {
         // - full-width check -
         if( $align ) { echo '<div style="clear:' . $align . '"></div><div class="' . $align . ' half-col">';}
 
-        // - header text -
-        if ($header=="yes") {
-             echo '<h2 class="full-menu">'. $id .'</h2>';}
-
         // - currency -
         $fx = null;
         if ($currency=='true') {
@@ -75,17 +71,28 @@ function tf_menu_full ( $atts ) {
                 'orderby' => $orderby,
                 'meta_key' => $metakey,
                 'order' => 'ASC',
-                'posts_per_page' => 99,
+                'posts_per_page' => 99
             );
 
+			// - header text -
+			$term = get_term_by('slug', $id, 'tf_foodmenucat');
+			$term_name = $term->name;
+			
+			if ($header=="yes") {
+				echo '<h2 class="full-menu">'.  $term_name .'</h2>';
+			}
+			
             // - query -
             $my_query = null;
             $my_query = new WP_query($args);
-            
+			
+		
             while ($my_query->have_posts()) : $my_query->the_post();
 
             // - variables -
+			
             $custom = get_post_custom(get_the_ID());
+			$category = get_terms('tf_foodmenucat');
             $price1 = $custom["tf_menu_price1"][0];
             $price2 = $custom["tf_menu_price2"][0];
             $price3 = $custom["tf_menu_price3"][0];
@@ -98,7 +105,7 @@ function tf_menu_full ( $atts ) {
                             if( $large = wp_get_attachment_image_src( $post_image_id, 'large' ) ) 
                             	(string) $large = $large[0];
                     }
-
+					
             // - output -
             ?>
 
@@ -163,10 +170,6 @@ function tf_menu_list ( $atts ) {
         // - full-width check -
         if( $align ) { echo '<div style="clear:' . $align . '"></div><div class="' . $align . ' half-col">';}
 
-        // - header text -
-        if ($header=="yes") {
-             echo '<h2 class="full-menu">'. $id .'</h2>';}
-
         // - currency -
         $fx = null;
         if ($currency=='true') {
@@ -205,6 +208,14 @@ function tf_menu_list ( $atts ) {
                 'posts_per_page' => 99,
                 'align' => '', // For full width
             );
+			
+			// - header text -
+			$term = get_term_by('slug', $id, 'tf_foodmenucat');
+			$term_name = $term->name;
+			
+			if ($header=="yes") {
+				echo '<h2 class="full-menu">'.  $term_name .'</h2>';
+			}
 
             // - query -
             $my_query = null;
@@ -270,10 +281,6 @@ function tf_menu_short ( $atts ) {
 
     // ===== OPTIONS =====
 
-    // - header text -
-    if ($header=="yes") {
-         echo '<h2 class="full-menu">'. $id .'</h2>';}
-
     // - currency -
     $fx = null;
     if ($currency=='true') {
@@ -302,7 +309,6 @@ function tf_menu_short ( $atts ) {
 	    $orderby = 'title';
 	}
 		
-	 
     // - arguments -
     $args = array(
         'post_type' => 'tf_foodmenu',
@@ -313,6 +319,14 @@ function tf_menu_short ( $atts ) {
         'order' => 'ASC',
         'posts_per_page' => 99,
     );
+	
+	// - header text -
+	$term = get_term_by('slug', $id, 'tf_foodmenucat');
+	$term_name = $term->name;
+	
+	if ($header=="yes") {
+		echo '<h2 class="full-menu">'.  $term_name .'</h2>';
+	}
 
     // - query -
     $counter = 1;

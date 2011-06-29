@@ -196,7 +196,7 @@ wp_admin_css( 'colors-fresh', true );
 				<select name="tf_foodmenucat">
 					<option value="">All</option>
 					<?php foreach( get_terms( 'tf_foodmenucat' ) as $term ) : ?>
-						<option value="<?php echo $term->name ?>"><?php echo $term->name ?></option>
+						<option value="<?php echo $term->slug ?>"><?php echo $term->name ?></option>
 					<?php endforeach; ?>
 				</select>
 			</p>

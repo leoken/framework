@@ -134,6 +134,11 @@ function tf_add_tf_icon_classes_to_widgets() {
      			if( jQuery( this ).attr('id').indexOf( '_mailchimp-' ) > 1 )
 					jQuery( object ).addClass('tf-mailchimp-widget');
      		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( 'googlemaps' ) > 1 )
+					jQuery( object ).addClass('tf-google-widget');
+     		} );
      		
      	} );
      </script>
@@ -144,6 +149,7 @@ function tf_add_tf_icon_classes_to_widgets() {
 		.tf-gowalla-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-gowalla-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
 		.tf-fs-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-fs-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
 		.tf-mailchimp-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-mailchimp-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
+		.tf-google-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-googlemaps-20.png) ; background-repeat: no-repeat; background-position: 145px center; }
      </style>
 	<?php
 }
@@ -226,14 +232,7 @@ function tf_of_business_options( $options ) {
 						"std" => "",
 						"type" => "textarea"); 
 						
-	$options[] = array( "name" => "MailChimp API",
-						"type" => "heading");
-						
-	$options[] = array( "name" => "MailChimp API",
-						"desc" => "Please enter your currency symbol or 3-letter code, whichever looks better to you. Is used for the menu.",
-						"id" => "tf_mailchimp_api_key",
-						"std" => "",
-						"type" => "text");
+
 	
 	return $options;
 }

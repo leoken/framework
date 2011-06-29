@@ -7,7 +7,7 @@
 class NS_Widget_MailChimp extends WP_Widget {
 	
 	private $default_failure_message;
-	private $default_loader_graphic = '/wp-content/plugins/mailchimp-widget/images/ajax-loader.gif';
+	private $default_loader_graphic = '/themeforce/assets/images/ajax-loader.gif';
 	private $default_signup_text;
 	private $default_success_message;
 	private $default_title;
@@ -34,7 +34,7 @@ class NS_Widget_MailChimp extends WP_Widget {
 		
 		$this->ns_mc_plugin = NS_MC_Plugin::get_instance();
 		
-		$this->default_loader_graphic = get_bloginfo('wpurl') . $this->default_loader_graphic;
+		$this->default_loader_graphic = get_bloginfo('template_url') . $this->default_loader_graphic;
 		
 		add_action('init', array(&$this, 'add_scripts'));
 		
