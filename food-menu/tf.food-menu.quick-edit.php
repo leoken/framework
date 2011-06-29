@@ -116,7 +116,10 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    	
 	    	jQuery( "#tf-inline-edit-add-new-size").live( 'click', function(e) {
 	    		e.preventDefault();
-
+				
+				if( jQuery( this ).closest( '#tf-inline-edit-sizes' ).find( 'ul li' ).length >= 3 )
+	    			jQuery( this ).hide();
+				
 	    		jQuery(this).closest( '#tf-inline-edit-sizes' ).find( 'ul li.hidden' ).first().clone().insertBefore(jQuery(this).closest( '#tf-inline-edit-sizes' ).find( 'ul li.hidden' )).removeClass('hidden');
 	    		
 	    	} );
@@ -124,6 +127,7 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    	jQuery( '.tf-inline-edit-remove-variant' ).live('click', function(e) {
 	    		e.preventDefault();
 	    		jQuery( this ).closest( 'li' ).remove();
+	    		jQuery( "#tf-inline-edit-add-new-size" ).show();
 	    	} );
 	    	
 	    	jQuery( 'a.editinline' ).live( 'click', function() {
@@ -148,6 +152,7 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    		var varientRow = jQuery('#tf-inline-edit-sizes' ).find( 'ul li.hidden' );
 	    		var sizesUL = jQuery('#tf-inline-edit-sizes' ).find( 'ul' );
 				
+				// Add size varient rows
 	    		for( var i = 0; i < data.variants.length; i++ ) {
 	    			
 	    			var newVarientRow = varientRow.clone().insertBefore( varientRow ).removeClass('hidden');
@@ -158,6 +163,11 @@ function tf_food_menu_add_inline_js_to_footer() {
 	    			newVarientRow.find('input[name="tf_food_varient_price[]"]').val( data.variants[i].price );
 	    		}
 	    		
+	    		if( data.variants.length >= 3 )
+	    			jQuery( "#tf-inline-edit-add-new-size").hide();
+	    		else
+	    			jQuery( "#tf-inline-edit-add-new-size").show();
+	    			
 	    		//image
 	    		if( data.image_id )
 		    		jQuery( "#tf-inline-edit-image #_tf_food_menu_image_container" ).html( '<span class="image-wrapper" id="' + data.image_id + '"><img src="' + data.image + '" /><a class="delete_custom_image" rel="_tf_food_menu_image:' + data.image_id + '">Remove</a></span>' );
