@@ -1,7 +1,7 @@
 <?php
 /* ------------------- THEME FORCE ----------------------*/
 
-// WIDGET: Foursquare Check-ins (API calls it 'Here Now'
+// WIDGET: Foursquare Check-ins (API calls it 'Here Now')
 //******************************************************
 
 class tf_fs_herenow_widget extends WP_Widget {
@@ -40,28 +40,28 @@ class tf_fs_herenow_widget extends WP_Widget {
                 if ( $title ) {echo $before_title . $title . $after_title;}
                 if ( $headdesc ) {echo '<p>' . $headdesc . '</p>';}
                 echo '<div class="fs-herenow">';
-
-                $venue = tf_foursquare_transient();
-				    
-				if( is_wp_error( $venue ) || !$venue ) {
+			    
+		        $venue = tf_foursquare_transient();
+		        if( is_wp_error( $venue ) || !$venue ) {
                 	echo 'Please configure foursquare in the Theme Options';
 					
 					if( is_wp_error( $venue ) )
 						echo '<!-- FourSquare returned error: ' . $venue->get_error_message() . '-->';
                 } else {
-				    
+				
                 	$counter=0;
+										
                 	foreach ($venue->response->venue->hereNow->groups[1]->items as $items) {
                 	    if ($counter < $limit) {
                 	        $counter++;
                 	        echo '<div class="fs-herenow-item">';
-                	        echo '<div class="fs-herenow-thumb"><img src="' . $items->user->photo . '" style="padding:0;margin:0" /></div>';
+                	        echo '<div class="fs-herenow-thumb"><img src="' . $items->user->photo . '" width="50px" height="50px" style="padding:0;margin:0" /></div>';
                 	        echo '</div>';
                 	    }   
 				    }
+				
 				}
-
-                echo '<div class="clearfix"></div></div>';
+                echo '</div><div class="clearfix"></div>';
                 if ( $footdesc ) {echo '<p>' . $footdesc . '</p>';}
 
                 echo $after_widget;
