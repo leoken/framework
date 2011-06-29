@@ -28,7 +28,7 @@
 	function tf_list_cats() {
 		$terms = get_the_terms($post->id, 'tf_eventcategory');
 		foreach ($terms as $term) {
-			if($term->name != 'Featured') {
+			if($term->name != __('Featured','themeforce')) {
 			  echo $term->name;
 			}
 		};
