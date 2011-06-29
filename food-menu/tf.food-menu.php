@@ -243,7 +243,6 @@ function save_tf_menuitem(){
     return $post;
     endif;
     update_post_meta($post->ID, "tf_menu_price3", $_POST["tf_menu_price3"]);
-    
 }
 
 // 6. Customize Update Messages

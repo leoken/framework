@@ -77,7 +77,7 @@ if( current_theme_supports( 'tf_foursquare' ) ) {
 	require_once( TF_PATH . '/api_foursquare/tf.foursquare.php' ); 
 	require_once( TF_PATH . '/widgets/widget-foursquare-photos.php' );
 	require_once( TF_PATH . '/widgets/widget-foursquare-tips.php' );
-	require_once( TF_PATH . '/widgets/widget-foursquare-herenow.php' );
+	/* require_once( TF_PATH . '/widgets/widget-foursquare-herenow.php' ); WIP */
 }
 //Yelp
 if( current_theme_supports( 'tf_yelp' ) ) {
