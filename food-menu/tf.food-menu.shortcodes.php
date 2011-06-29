@@ -131,6 +131,7 @@ function tf_menu_full ( $atts ) {
         <?php
         endwhile;
         if( $align ) { echo '</div>';}
+		wp_reset_query();
 
     // ===== RETURN: FULL MENU SECTION =====
         
@@ -247,7 +248,8 @@ function tf_menu_list ( $atts ) {
         <?php
         endwhile;
         if( $align ) { echo '</div>';}
-
+		wp_reset_query();
+		
 $output = ob_get_contents();
 ob_end_clean();
 
@@ -363,6 +365,8 @@ function tf_menu_short ( $atts ) {
         $counter++;
         endwhile;
         ?><div class="clearfix"></div><?php
+		wp_reset_query();
+		
 $output = ob_get_contents();
 ob_end_clean();
 
