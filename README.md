@@ -8,7 +8,7 @@ structured as a **modular feature-set** highly relevant to industry needs. This 
 
 ## Resources
 
-* **Must-Read** Developer Homepage: http://www.theme-force.com/developers
+* **Must-Read** Developer Homepage: http://www.theme-force.com/framework-developers/
 * GitHub Homepage: https://github.com/themeforce/framework
 * Discussion & News: http://www.facebook.com/pages/Theme-Force/111741295576685
 
@@ -38,7 +38,7 @@ The main file that brings everything together is:
 
 ## Contributing
 
-We'd love to have your input, and if you're interested in contributing code, we'd love that too. Head over to http://www.theme-force.com/developers for more information.
+We'd love to have your input, and if you're interested in contributing code, we'd love that too. Head over to http://www.theme-force.com/framework-developers/ for more information.
 	
 ## Support
 
