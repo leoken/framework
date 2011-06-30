@@ -1,11 +1,49 @@
-<?php
+<?php /*
 
-/*
- * Theme Force Framework
- *
- * Version: dev
- */
+Theme-Force.com - WordPress Framework (v 3.2.1)
+===================================================
 
+Introduction
+------------
+
+The Theme Force Framework is the most comprehensive solution for restaurant websites based on WordPress. It is
+structured as a modular feature-set highly relevant to industry needs.
+
+Resources
+---------
+
+Developer Homepage: http://www.theme-force.com/developers
+GitHub Homepage: https://github.com/themeforce/framework
+Discussion & News: http://www.facebook.com/pages/Theme-Force/111741295576685
+
+Requirements
+------------
+
+In order to make use of our complete feature set, you will need to use the Options Framework within your theme 
+(maintained by @devinsays), it can be found here: https://github.com/devinsays/options-framework-plugin
+
+Activating within your Theme
+----------------------------
+
+We understand you may not want to use all the features, so it's normal that you only reduce the number of queries
+that your theme executes. Our modular approach means that you only need to add theme support (i.e. the functions
+below) that you need (within functions.php).
+
+	add_theme_support( 'tf_food_menu' );
+	add_theme_support( 'tf_events' );
+	add_theme_support( 'tf_widget_opening_times' );
+	add_theme_support( 'tf_widget_google_maps' );
+	add_theme_support( 'tf_widget_payments' );
+	add_theme_support( 'tf_foursquare' );
+	add_theme_support( 'tf_gowalla' );
+	add_theme_support( 'tf_yelp' );
+	add_theme_support( 'tf_mailchimp' );
+		
+*/
+
+ /* Definitions
+=========================================*/
+ 
 define( 'TF_DIR_SLUG', end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) ) );
 define( 'TF_PATH', dirname( __FILE__ ) );
 define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
@@ -14,18 +52,18 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 /* Theme Force Core Tools
 =========================================*/
 
-//Food Menu
+// Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
 	require_once( TF_PATH . '/food-menu/tf.food-menu.php' );
 
-//Events
+// Events
 if( current_theme_supports( 'tf_events' ) )
 	require_once( TF_PATH . '/events/tf.events.php' );
 	
-//Google Maps
+// Google Maps
 	require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );	
 	
-//Widgets
+// Widgets
 	require_once( TF_PATH . '/widgets/newsletter-widget.php' );
 
 if( current_theme_supports( 'tf_widget_opening_times' ) )
@@ -40,21 +78,14 @@ if( current_theme_supports( 'tf_widget_payments' ) )
 if( current_theme_supports( 'tf_mailchimp' ) )
 	require_once( TF_PATH . '/mailchimp/mailchimp-widget.php' );
 	
-	
-/* Theme Force Upgrade Tools
-=========================================*/	
-
-//upgrader from 2.x - 3.0 -> 3.2
-	require_once( TF_PATH . '/tf.upgrade.php' );  	
-
 /* 3rd Party Tools
 =========================================*/
 
-//WP Thumb
+// WP Thumb
 	require_once( TF_PATH . '/wpthumb/wpthumb.php' ); 
 	require_once( TF_PATH . '/tf.rewrite.php' );
 	
-//Options Framework
+// Options Framework
 	define('OF_FILEPATH', STYLESHEETPATH );
 	define('OF_DIRECTORY', TF_URL . '/options-framework' );
 
@@ -65,26 +96,26 @@ if( current_theme_supports( 'tf_mailchimp' ) )
 /* SEO & Semantic Connections
 =========================================*/	
 	
-//Facebook Open Graph Protocol
+// Facebook Open Graph Protocol
 	require_once( TF_PATH . '/tf.open_graph_protocol.php' );
 
 
 /* API Connections
 =========================================*/	
 
-//Foursquare
+// Foursquare
 if( current_theme_supports( 'tf_foursquare' ) ) {
 	require_once( TF_PATH . '/api_foursquare/tf.foursquare.php' ); 
 	require_once( TF_PATH . '/widgets/widget-foursquare-photos.php' );
 	require_once( TF_PATH . '/widgets/widget-foursquare-tips.php' );
 	/* require_once( TF_PATH . '/widgets/widget-foursquare-herenow.php' ); WIP */
 }
-//Yelp
+// Yelp
 if( current_theme_supports( 'tf_yelp' ) ) {
 	require_once( TF_PATH . '/api_yelp/tf.yelp.php' );
 }
 
-//Gowalla
+// Gowalla
 if( current_theme_supports( 'tf_gowalla' ) ) {
 	// photos
 	require_once( TF_PATH . '/api_gowalla/tf.gowalla.api-photos.php' );
@@ -94,21 +125,28 @@ if( current_theme_supports( 'tf_gowalla' ) ) {
 	require_once( TF_PATH . '/widgets/widget-gowalla-checkins.php' );
 }
 
+	
+/* Theme Force Upgrade Tools
+=========================================
+   You won't require this for a fresh install
+*/	
+
+//upgrader from 2.x - 3.0 -> 3.2
+	require_once( TF_PATH . '/tf.upgrade.php' );  	
+
+
 /* Remaining Functions
 =========================================*/	
 
-/**
- * Enqueue the admin styles for themeforce features.
- */
+
+// Enqueue Admin Styles
  
 function tf_enqueue_admin_css() {
 	wp_enqueue_style('tf-functions-css', TF_URL . '/assets/css/admin.css');
 }
 add_action('admin_init', 'tf_enqueue_admin_css');
 
-/*
- * Adds the themeforce icon to the ThemeForce related widget in the admin.
- */
+// Add Widget Styling within Widget Admin Area
  
 function tf_add_tf_icon_classes_to_widgets() {
 	?>
@@ -155,7 +193,8 @@ function tf_add_tf_icon_classes_to_widgets() {
 }
 add_action( 'in_admin_footer', 'tf_add_tf_icon_classes_to_widgets' );
 
-// Options Framework
+// Add Theme Force options to Options Framework
+
 add_filter('tf_of_options','tf_of_business_options', 8);
 function tf_of_business_options( $options ) {
 
@@ -237,24 +276,27 @@ function tf_of_business_options( $options ) {
 	return $options;
 }
 
+// Datepicker JS
+
 function tf_sortable_admin_rows_scripts() {
 	wp_enqueue_script('ui-datepicker-settings', TF_URL . '/assets/js/themeforce-admin.js', array('jquery'));
 
 }
 add_action( 'admin_print_scripts-edit.php', 'tf_sortable_admin_rows_scripts' );
 
-add_action( 'load-edit.php', 'tf_sortable_admin_rows_order_table_rows_hook' );
+/* Food Menu Sorting
+=========================================*/	
+
 function tf_sortable_admin_rows_order_table_rows_hook() {
 	if( !empty( $_GET['post_type'] ) && $_GET['post_type'] == 'tf_foodmenu' && !empty( $_GET['term'] ) )
 		add_action( 'parse_query', 'tf_sortable_admin_rows_order_table_rows' );
 }
+add_action( 'load-edit.php', 'tf_sortable_admin_rows_order_table_rows_hook' );
 
 function tf_sortable_admin_rows_order_table_rows( $wp_query ) {
 	global $wpdb;
-	
 	$wp_query->query_vars['orderby'] = 'menu_order';
 	$wp_query->query_vars['order'] = 'ASC';
-	
 }
 
 function tf_sortable_admin_rows_column( $columns ) {
@@ -265,7 +307,6 @@ function tf_sortable_admin_rows_column( $columns ) {
 	$columns['tf_sortable_column'] = '';
 	
 	return $columns;
-
 }
 add_action( 'manage_edit-tf_foodmenu_columns', 'tf_sortable_admin_rows_column', 11 );
 
@@ -273,7 +314,6 @@ function tf_sortable_admin_row_cell( $column ) {
 	
 	if( $column != 'tf_sortable_column' )
 		return $column;
-	
 	?>
 	
 	<a class="tf_sortable_admin_row_handle"></a>
