@@ -34,7 +34,11 @@ that your theme executes. Our modular approach means that you can do just that. 
 	
 The main file that brings everything together is:
 
-	/themeforce.php	
+	/themeforce.php
+
+## Contributing
+
+We'd love to have your input, and if you're interested in contributing code, we'd love that too. Head over to http://www.theme-force.com/developers for more information.
 	
 ## Support
 
