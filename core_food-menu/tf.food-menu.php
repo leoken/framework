@@ -1,9 +1,9 @@
 <?php
 /* ------------------- THEME FORCE ---------------------- */
 
-require_once( TF_PATH . '/food-menu/tf.food-menu.shortcodes.php' );
-require_once( TF_PATH . '/food-menu/tf.food-menu.quick-edit.php' );
-require_once( TF_PATH . '/food-menu/tf.food-menu.upgrade.php' );
+require_once( TF_PATH . '/core_food-menu/tf.food-menu.shortcodes.php' );
+require_once( TF_PATH . '/core_food-menu/tf.food-menu.quick-edit.php' );
+require_once( TF_PATH . '/core_food-menu/tf.food-menu.upgrade.php' );
 
 /*
  * FOOD MENU FUNCTION (CUSTOM POST TYPE)

@@ -412,7 +412,7 @@ function tf_food_menu_add_tinymce_buttons( $buttons ) {
  * @return array
  */
 function tf_food_menu_add_tinymce_plugins( $plugin_array ) {
-	$plugin_array['tf_food_menu_shortcode_plugin'] = TF_URL . '/food-menu/tinymce_plugins/insert_shortcode.js';
+	$plugin_array['tf_food_menu_shortcode_plugin'] = TF_URL . '/core_food-menu/tinymce_plugins/insert_shortcode.js';
 	
 	return $plugin_array;
 }
