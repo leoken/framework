@@ -75,8 +75,7 @@ if( current_theme_supports( 'tf_widget_google_maps' ) )
 if( current_theme_supports( 'tf_widget_payments' ) )
 	require_once( TF_PATH . '/widgets/widget-payments.php' );
 
-if( current_theme_supports( 'tf_mailchimp' ) )
-	require_once( TF_PATH . '/mailchimp/mailchimp-widget.php' );
+
 	
 /* 3rd Party Tools
 =========================================*/
@@ -124,76 +123,13 @@ if( current_theme_supports( 'tf_gowalla' ) ) {
 	require_once( TF_PATH . '/api_gowalla/tf.gowalla.api-checkins.php' );
 	require_once( TF_PATH . '/widgets/widget-gowalla-checkins.php' );
 }
-
+// MailChimp
+if( current_theme_supports( 'tf_mailchimp' ) )
+	require_once( TF_PATH . '/api_mailchimp/mailchimp-widget.php' );
 	
-/* Theme Force Upgrade Tools
-=========================================
-   You won't require this for a fresh install
-*/	
-
-//upgrader from 2.x - 3.0 -> 3.2
-	require_once( TF_PATH . '/tf.upgrade.php' );  	
-
-
-/* Remaining Functions
+	
+/* Add TF options to Options Framework
 =========================================*/	
-
-
-// Enqueue Admin Styles
- 
-function tf_enqueue_admin_css() {
-	wp_enqueue_style('tf-functions-css', TF_URL . '/assets/css/admin.css');
-}
-add_action('admin_init', 'tf_enqueue_admin_css');
-
-// Add Widget Styling within Widget Admin Area
- 
-function tf_add_tf_icon_classes_to_widgets() {
-	?>
-	 <script type="text/javascript">
-     	jQuery( document ).ready( function() {
-    		
-     		jQuery( '.widget' ).filter( function( i, object ) {
-     			if( jQuery( this ).attr('id').indexOf( '_tf' ) > 1 )
-					jQuery( object ).addClass('tf-admin-widget');
-     		} );
-			
-			jQuery( '.widget' ).filter( function( i, object ) {
-     			if( jQuery( this ).attr('id').indexOf( '-gowalla-' ) > 1 )
-					jQuery( object ).addClass('tf-gowalla-widget');
-     		} );
-			
-			jQuery( '.widget' ).filter( function( i, object ) {
-     			if( jQuery( this ).attr('id').indexOf( '-fs-' ) > 1 )
-					jQuery( object ).addClass('tf-fs-widget');
-     		} );
-			
-			jQuery( '.widget' ).filter( function( i, object ) {
-     			if( jQuery( this ).attr('id').indexOf( '_mailchimp-' ) > 1 )
-					jQuery( object ).addClass('tf-mailchimp-widget');
-     		} );
-			
-			jQuery( '.widget' ).filter( function( i, object ) {
-     			if( jQuery( this ).attr('id').indexOf( 'googlemaps' ) > 1 )
-					jQuery( object ).addClass('tf-google-widget');
-     		} );
-     		
-     	} );
-     </script>
-     
-     <style text="text/css">
-     	/* ThemeForce Icon */
-		/* .tf-admin-widget .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-themeforce-18.png); background-repeat: no-repeat; background-position: 213px center; } */
-		.tf-gowalla-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-gowalla-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
-		.tf-fs-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-fs-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
-		.tf-mailchimp-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-mailchimp-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
-		.tf-google-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-googlemaps-20.png) ; background-repeat: no-repeat; background-position: 145px center; }
-     </style>
-	<?php
-}
-add_action( 'in_admin_footer', 'tf_add_tf_icon_classes_to_widgets' );
-
-// Add Theme Force options to Options Framework
 
 add_filter('tf_of_options','tf_of_business_options', 8);
 function tf_of_business_options( $options ) {
@@ -284,6 +220,7 @@ function tf_sortable_admin_rows_scripts() {
 }
 add_action( 'admin_print_scripts-edit.php', 'tf_sortable_admin_rows_scripts' );
 
+
 /* Food Menu Sorting
 =========================================*/	
 
@@ -333,3 +270,70 @@ function tf_sortable_admin_row_request() {
 	exit;
 }
 add_action( 'wp_ajax_tf_sort_admin_rows', 'tf_sortable_admin_row_request' );
+
+
+/* Theme Force Upgrade Tools
+=========================================
+   You won't require this for a fresh install
+*/	
+
+//upgrader from 2.x - 3.0 -> 3.2
+	require_once( TF_PATH . '/tf.upgrade.php' );  	
+
+
+/* Remaining Functions
+=========================================*/	
+
+// Enqueue Admin Styles
+ 
+function tf_enqueue_admin_css() {
+	wp_enqueue_style('tf-functions-css', TF_URL . '/assets/css/admin.css');
+}
+add_action('admin_init', 'tf_enqueue_admin_css');
+
+// Add Widget Styling within Widget Admin Area
+ 
+function tf_add_tf_icon_classes_to_widgets() {
+	?>
+	 <script type="text/javascript">
+     	jQuery( document ).ready( function() {
+    		
+     		jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '_tf' ) > 1 )
+					jQuery( object ).addClass('tf-admin-widget');
+     		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '-gowalla-' ) > 1 )
+					jQuery( object ).addClass('tf-gowalla-widget');
+     		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '-fs-' ) > 1 )
+					jQuery( object ).addClass('tf-fs-widget');
+     		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( '_mailchimp-' ) > 1 )
+					jQuery( object ).addClass('tf-mailchimp-widget');
+     		} );
+			
+			jQuery( '.widget' ).filter( function( i, object ) {
+     			if( jQuery( this ).attr('id').indexOf( 'googlemaps' ) > 1 )
+					jQuery( object ).addClass('tf-google-widget');
+     		} );
+     		
+     	} );
+     </script>
+     
+     <style text="text/css">
+     	/* ThemeForce Icon */
+		/* .tf-admin-widget .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-themeforce-18.png); background-repeat: no-repeat; background-position: 213px center; } */
+		.tf-gowalla-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-gowalla-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
+		.tf-fs-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-fs-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
+		.tf-mailchimp-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-mailchimp-20.png) ; background-repeat: no-repeat; background-position: 175px center; }
+		.tf-google-widget.ui-draggable .widget-top { background-image: url(<?php echo TF_URL ?>/assets/images/ui/icon-googlemaps-20.png) ; background-repeat: no-repeat; background-position: 145px center; }
+     </style>
+	<?php
+}
+add_action( 'in_admin_footer', 'tf_add_tf_icon_classes_to_widgets' );
