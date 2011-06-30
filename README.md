@@ -4,12 +4,13 @@ The **Theme Force Framework** is the most comprehensive solution for **restauran
 structured as a **modular feature-set** highly relevant to industry needs. This read-me only provides usage instructions, please see the developer page below for more information.
 
 ![Theme Force Model](http://www.theme-force.com/tf-model.jpg)
+(if the image doesn't completely load or has a pink stripe, **reload the page**)
 
 ## Resources
 
-**Must-Read** Developer Homepage: http://www.theme-force.com/developers
-GitHub Homepage: https://github.com/themeforce/framework
-Discussion & News: http://www.facebook.com/pages/Theme-Force/111741295576685
+* **Must-Read** Developer Homepage: http://www.theme-force.com/developers
+* GitHub Homepage: https://github.com/themeforce/framework
+* Discussion & News: http://www.facebook.com/pages/Theme-Force/111741295576685
 
 ## Requirements
 
