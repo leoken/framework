@@ -24,15 +24,7 @@
 	$time_format = get_option('time_format');
 	$stime = date($time_format, $sd); // <- Start Time
 	$etime = date($time_format, $ed); // <- End Time
-	
-	function tf_list_cats() {
-		$terms = get_the_terms($post->id, 'tf_eventcategory');
-		foreach ($terms as $term) {
-			if($term->name != __('Featured','themeforce')) {
-			  echo $term->name;
-			}
-		};
-	};
+
 ?>
 
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
