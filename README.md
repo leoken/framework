@@ -1,7 +1,9 @@
 # Introduction
 
-The **Theme Force Framework** is the most comprehensive solution for restaurant websites based on WordPress. It is
-structured as a modular feature-set highly relevant to industry needs. This read-me only provides usage instructions, please see the developer page below for more information.
+The **Theme Force Framework** is the most comprehensive solution for **restaurant websites** based on WordPress. It is
+structured as a **modular feature-set** highly relevant to industry needs. This read-me only provides usage instructions, please see the developer page below for more information.
+
+![Theme Force Model](http://www.theme-force.com/tf-model.jpg)
 
 ## Resources
 
@@ -16,9 +18,8 @@ In order to make use of our complete feature set, you will need to use the Optio
 
 ## Activating within your Theme
 
-We understand you may not want to use all the features, so it's normal that you only reduce the number of queries
-that your theme executes. Our modular approach means that you only need to add theme support (i.e. the functions
-below) that you need (within functions.php).
+We understand you may not want to use all the features, so it's only normal that you reduce the number of queries
+that your theme executes. Our modular approach means that you can do just that. Just add any or all of the functions below to grab what you need (within functions.php).
 
 	add_theme_support( 'tf_food_menu' );
 	add_theme_support( 'tf_events' );
