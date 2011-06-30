@@ -1,8 +1,8 @@
 <?php
 /* ------------------- THEME FORCE ----------------------*/
 
-// WIDGET: EVENTS
-//***********************************************
+// WIDGET: Legacy Widget (not used anymore, replace by MailChimp Widget)
+//**********************************************************************
 
 class TF_Newsletter_Widget extends WP_Widget {
 

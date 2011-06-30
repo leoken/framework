@@ -57,9 +57,8 @@ function tf_foursquare_transient() {
     return $json;
 }
 
-/**
- * If the Foursquare options are changed, we need to remove teh transient to there is no overlap of incorrect data
- * 
+/*
+ * Delete & Update the Transient upon settings update.
  */
 function tf_delete_forsquare_transient_on_update_option() {
 	

@@ -3,7 +3,7 @@
 add_filter( 'tf_of_options', 'tf_foursquare_admin_options' );
 
 /**
- * The options for forsquare (via the "options framework").
+ * The options for foursquare (via the "options framework").
  * 
  * @param array $options
  * @return array

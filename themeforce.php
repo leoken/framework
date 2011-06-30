@@ -12,34 +12,9 @@ structured as a modular feature-set highly relevant to industry needs.
 Resources
 ---------
 
-Developer Homepage: http://www.theme-force.com/developers
-GitHub Homepage: https://github.com/themeforce/framework
-Discussion & News: http://www.facebook.com/pages/Theme-Force/111741295576685
-
-Requirements
-------------
-
-In order to make use of our complete feature set, you will need to use the Options Framework within your theme 
-(maintained by @devinsays), it can be found here: https://github.com/devinsays/options-framework-plugin
-
-Activating within your Theme
-----------------------------
-
-We understand you may not want to use all the features, so it's normal that you only reduce the number of queries
-that your theme executes. Our modular approach means that you only need to add theme support (i.e. the functions
-below) that you need (within functions.php).
-
-	add_theme_support( 'tf_food_menu' );
-	add_theme_support( 'tf_events' );
-	add_theme_support( 'tf_widget_opening_times' );
-	add_theme_support( 'tf_widget_google_maps' );
-	add_theme_support( 'tf_widget_payments' );
-	add_theme_support( 'tf_foursquare' );
-	add_theme_support( 'tf_gowalla' );
-	add_theme_support( 'tf_yelp' );
-	add_theme_support( 'tf_mailchimp' );
-		
-*/
+Developer Homepage: 	http://www.theme-force.com/developers
+GitHub Homepage: 		https://github.com/themeforce/framework
+Discussion & News: 		http://www.facebook.com/pages/Theme-Force/111741295576685
 
  /* Definitions
 =========================================*/
@@ -54,26 +29,26 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 
 // Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
-	require_once( TF_PATH . '/food-menu/tf.food-menu.php' );
+	require_once( TF_PATH . '/core_food-menu/tf.food-menu.php' );
 
 // Events
 if( current_theme_supports( 'tf_events' ) )
-	require_once( TF_PATH . '/events/tf.events.php' );
+	require_once( TF_PATH . '/core_events/tf.events.php' );
 	
 // Google Maps
-	require_once( TF_PATH . '/tf.googlemaps.shortcodes.php' );	
+	require_once( TF_PATH . '/api_google/tf.googlemaps.shortcodes.php' );	
 	
 // Widgets
-	require_once( TF_PATH . '/widgets/newsletter-widget.php' );
+	require_once( TF_PATH . '/core_widgets/newsletter-widget.php' );
 
 if( current_theme_supports( 'tf_widget_opening_times' ) )
-	require_once( TF_PATH . '/widgets/widget-openingtimes.php' );
+	require_once( TF_PATH . '/core_widgets/widget-openingtimes.php' );
 
 if( current_theme_supports( 'tf_widget_google_maps' ) )
-	require_once( TF_PATH . '/widgets/widget-googlemaps.php' );
+	require_once( TF_PATH . '/core_widgets/widget-googlemaps.php' );
 	
 if( current_theme_supports( 'tf_widget_payments' ) )
-	require_once( TF_PATH . '/widgets/widget-payments.php' );
+	require_once( TF_PATH . '/core_widgets/widget-payments.php' );
 
 
 	
@@ -96,7 +71,7 @@ if( current_theme_supports( 'tf_widget_payments' ) )
 =========================================*/	
 	
 // Facebook Open Graph Protocol
-	require_once( TF_PATH . '/tf.open_graph_protocol.php' );
+	require_once( TF_PATH . '/core_seo/tf.open_graph_protocol.php' );
 
 
 /* API Connections
@@ -105,8 +80,8 @@ if( current_theme_supports( 'tf_widget_payments' ) )
 // Foursquare
 if( current_theme_supports( 'tf_foursquare' ) ) {
 	require_once( TF_PATH . '/api_foursquare/tf.foursquare.php' ); 
-	require_once( TF_PATH . '/widgets/widget-foursquare-photos.php' );
-	require_once( TF_PATH . '/widgets/widget-foursquare-tips.php' );
+	require_once( TF_PATH . '/core_widgets/widget-foursquare-photos.php' );
+	require_once( TF_PATH . '/core_widgets/widget-foursquare-tips.php' );
 	/* require_once( TF_PATH . '/widgets/widget-foursquare-herenow.php' ); WIP */
 }
 // Yelp
@@ -118,10 +93,10 @@ if( current_theme_supports( 'tf_yelp' ) ) {
 if( current_theme_supports( 'tf_gowalla' ) ) {
 	// photos
 	require_once( TF_PATH . '/api_gowalla/tf.gowalla.api-photos.php' );
-	require_once( TF_PATH . '/widgets/widget-gowalla-photos.php' );
+	require_once( TF_PATH . '/core_widgets/widget-gowalla-photos.php' );
 	// checkins
 	require_once( TF_PATH . '/api_gowalla/tf.gowalla.api-checkins.php' );
-	require_once( TF_PATH . '/widgets/widget-gowalla-checkins.php' );
+	require_once( TF_PATH . '/core_widgets/widget-gowalla-checkins.php' );
 }
 // MailChimp
 if( current_theme_supports( 'tf_mailchimp' ) )

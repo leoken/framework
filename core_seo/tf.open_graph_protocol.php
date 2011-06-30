@@ -2,9 +2,6 @@
 
 /**
  * Adds the OpenGraph meta tags to the head.
- *
- * TODO - implement more for event pages, and menu pages.
- * TODO - seperate address fields
  * 
  */
 function tf_add_og_meta_tags() {

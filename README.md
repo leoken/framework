@@ -32,6 +32,10 @@ that your theme executes. Our modular approach means that you can do just that. 
 	add_theme_support( 'tf_yelp' );
 	add_theme_support( 'tf_mailchimp' );
 	
+The main file that brings everything together is:
+
+	/themeforce.php	
+	
 ## Support
 
 We can't actually help you with CSS, XHTML, PHP & JS so there's a certain degree of self-reliance that's required if you'd like to implement. It doesn't mean we won't guide you on the right path, but we'd like to keep the discussions relevant to bugs, enhancements and features.

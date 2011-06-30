@@ -1,5 +1,7 @@
 <?php
 
+// Grab Yelp API Data
+
 require_once( dirname( __FILE__ ) . '/tf.yelp.admin-options.php' );
 
 function tf_yelp_api() {
@@ -36,7 +38,7 @@ function tf_yelp_transient() {
 
 
 /**
- * If the Yelp options are changed, we need to remove teh transient to there is no overlap of incorrect data
+ * Delete & Update the Transient upon settings update.
  * 
  */
 function tf_delete_yelp_transient_on_update_option() {
