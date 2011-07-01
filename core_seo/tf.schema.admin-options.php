@@ -58,7 +58,7 @@ function tf_schema_admin_options( $options ) {
 		// SCHEMA :  - url - URL - URL of the item.
 
 
-// SCHEMA :  - Properties from Place - 
+// SCHEMA :  - Properties from Place - 
 //======================================
 
 	// SCHEMA :  - aggregateRating - AggregateRating - The overall rating, based on a collection of reviews or ratings, of the item.
@@ -112,7 +112,7 @@ function tf_schema_admin_options( $options ) {
 			"type" => "text"
 		);
 
-	// SCHEMA :  - photos - Photograph orImageObject - Photographs of this place.
+	// SCHEMA :  - photos - Photograph orImageObject - Photographs of this place.
 
 		// TODO Schema Photos should be handled by Widgets (Foursquare & Gowalla)
 
@@ -121,12 +121,12 @@ function tf_schema_admin_options( $options ) {
 		// SCHEMA :  - address - PostalAddress - Physical address of the item.
 		// SCHEMA :  - events - Event - The events held at this place or organization.
 		// SCHEMA :  - containedIn - Place - The basic containment relation between places.
-		// SCHEMA :  - interactionCount - Text - A count of a specific user interactions with this item—for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.
+		// SCHEMA :  - interactionCount - Text - A count of a specific user interactions with this item—for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.
 		// SCHEMA :  - reviews - Review - Review of the item.
 		// SCHEMA :  - telephone - Text - The telephone number.
 
 
-// SCHEMA :  - Properties from Organization - 
+// SCHEMA :  - Properties from Organization - 
 //============================================
 
 	// SCHEMA :  - email - Text - Email address.
@@ -146,28 +146,28 @@ function tf_schema_admin_options( $options ) {
 		// SCHEMA :  - employees - Person - People working for this organization.
 		// SCHEMA :  - founders - Person - A person who founded this organization.
 		// SCHEMA :  - foundingDate - Date - The date that this organization was founded.
-		// SCHEMA :  - location - Place orPostalAddress - The location of the event or organization.
-		// SCHEMA :  - members - Person orOrganization - A member of this organization.
+		// SCHEMA :  - location - Place orPostalAddress - The location of the event or organization.
+		// SCHEMA :  - members - Person orOrganization - A member of this organization.
 
 
-// SCHEMA :  - Properties from LocalBusiness - 
+// SCHEMA :  - Properties from LocalBusiness - 
 //=============================================
 
-	// SCHEMA :  - currenciesAccepted - Text - The currency accepted (in ISO 4217 currency format).
+	// SCHEMA :  - currenciesAccepted - Text - The currency accepted (in ISO 4217 currency format).
 
 		$options[] = array( 
 			"name" => "Currency Accepted",
-			"desc" => "The currency accepted (in ISO 4217 currency format) - <a href='http://www.xe.com/iso4217.php' target='_blank'>See List for Codes</a>",
+			"desc" => "The currency accepted (in ISO 4217 currency format) - <a href='http://www.xe.com/iso4217.php' target='_blank'>See List for Codes</a>",
 			"id" => "tf_schema_currency",
 			"std" => "Cash, Credit Cards",
 			"type" => "text"
 		);
 
 	// SCHEMA :  - openingHours - Duration - The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.
-	// SCHEMA :  -  -  - - Days are specified using the following two-letter combinations: Mo, Tu, We, Th, Fr, Sa, Su.
-	// SCHEMA :  -  -  - - Times are specified using 24:00 time. For example, 3pm is specified as 15:00. 
-	// SCHEMA :  -  -  - - Here is an example: <time itemprop="openingHours" datetime="Tu,Th 16:00-20:00">Tuesdays and Thursdays 4-8pm</time>. 
-	// SCHEMA :  -  -  - - If a business is open 7 days a week, then it can be specified as <time itemprop="openingHours" datetime="Mo-Su">Monday through Sunday, all day</time>.
+	// SCHEMA :  -  -  - - Days are specified using the following two-letter combinations: Mo, Tu, We, Th, Fr, Sa, Su.
+	// SCHEMA :  -  -  - - Times are specified using 24:00 time. For example, 3pm is specified as 15:00. 
+	// SCHEMA :  -  -  - - Here is an example: <time itemprop="openingHours" datetime="Tu,Th 16:00-20:00">Tuesdays and Thursdays 4-8pm</time>. 
+	// SCHEMA :  -  -  - - If a business is open 7 days a week, then it can be specified as <time itemprop="openingHours" datetime="Mo-Su">Monday through Sunday, all day</time>.
 
 		$options[] = array( 
 			"name" => "Opening Hours",
@@ -187,7 +187,7 @@ function tf_schema_admin_options( $options ) {
 			"type" => "text"
 		);
 
-	// SCHEMA :  - priceRange - Text - The price range of the business, for example $$$.
+	// SCHEMA :  - priceRange - Text - The price range of the business, for example $$$.
 
 
 			$options[] = array( 
@@ -205,10 +205,10 @@ function tf_schema_admin_options( $options ) {
 		// SCHEMA :  - branchOf - Organization - The larger organization that this local business is a branch of, if any.
 	
 	
-// SCHEMA :  - Properties from FoodEstablishment -
+// SCHEMA :  - Properties from FoodEstablishment -
 //=================================================
 
-	// SCHEMA :  - acceptsReservations - Text or URL - Either Yes/No, or a URL at which reservations can be made.
+	// SCHEMA :  - acceptsReservations - Text or URL - Either Yes/No, or a URL at which reservations can be made.
 
 		$options[] = array( 
 			"name" => "Accept Reservations",
