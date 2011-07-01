@@ -17,6 +17,12 @@ structured as a **modular feature-set** highly relevant to industry needs. This 
 In order to make use of our complete feature set, you will need to use the Options Framework within your theme 
 (maintained by @devinsays), it can be found here: https://github.com/devinsays/options-framework-plugin
 
+## Adding to your Theme
+
+The contents of this framework should be pulled into a folder called **themeforce** within your theme:
+
+	../wp-content/themes/your-theme/themeforce/
+
 ## Activating within your Theme
 
 We understand you may not want to use all the features, so it's only normal that you reduce the number of queries
