@@ -174,6 +174,23 @@ function of_load_only() {
 	wp_enqueue_script('color-picker', OF_DIRECTORY.'/admin/js/colorpicker.js', array('jquery'));
 	wp_enqueue_script('ajaxupload', OF_DIRECTORY.'/admin/js/ajaxupload.js', array('jquery'));
 	
+	// Google Maps Picker
+	wp_enqueue_script('googlemapspicker', OF_DIRECTORY.'/admin/js/googlemapspicker.js');
+		
+		// Check
+		$of_latitude = get_option('of_googlemapspicker_latitude');
+			if ( $of_latitude == '' ) { $latitude = '43.834526782236814'; } else { $latitude = $of_latitude;}
+		$of_longitude = get_option('of_googlemapspicker_longitude');
+			if ( $of_latitude == '' ) { $longitude = '-37.265625'; } else { $longitude = $of_latitude;}
+		$of_zoom = get_option('of_googlemapspicker_zoom');
+			if ( $of_zoom == '' ) { $zoom = '3'; } else { $zoom = $of_latitude;}
+			
+		wp_localize_script( 'googlemapspicker', 'of_googlemapspicker', array(
+			'latitude' => $latitude,
+			'longitude' => $longitude,
+			'zoom' => $zoom,
+	));
+	
 }
 
 function of_admin_head() {
@@ -912,6 +929,27 @@ function optionsframework_machine($options) {
 		
 		break; 
 		
+		case "googlemapspicker":
+		
+			$gmp_default = $value['std'];
+			$gmp_stored = get_option( $value['id'] );
+			
+			$output .= '<div id="of_googlemapspicker" style="width:595px;height:400px"></div>';
+			
+			$val = $gmp_default['lat'];
+			if ( $gmp_stored['lat'] != "") { $val = $gmp_stored['lat']; };		
+			$output .= '<input type="hidden" name="'. $value['id'] .'_lat" id="'. $value['id'] .'_lat" type="text" value="'. $val .'" />';
+			
+			$val = $gmp_default['lon'];
+			if ( $gmp_stored['lon'] != "") { $val = $gmp_stored['lon']; };	
+			$output .= '<input type="hidden" name="'. $value['id'] .'_lon" id="'. $value['id'] .'_lon" type="text" value="'. $val .'" />';
+			
+			$val = $gmp_default['zoom'];
+			if ( $gmp_stored['zoom'] != "") { $val = $gmp_stored['zoom']; };	
+			$output .= '<input type="hidden" name="'. $value['id'] .'_zoom" id="'. $value['id'] .'_zoom" type="text" value="'. $val .'" />';
+			
+		break;  
+		
 		case "info":
 			$default = $value['std'];
 			$output .= $default;
@@ -961,7 +999,6 @@ function optionsframework_machine($options) {
     return array($output,$menu);
 
 }
-
 
 
 /*-----------------------------------------------------------------------------------*/

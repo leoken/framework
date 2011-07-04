@@ -121,7 +121,7 @@ function tf_schema_admin_options( $options ) {
 		// SCHEMA :  - address - PostalAddress - Physical address of the item.
 		// SCHEMA :  - events - Event - The events held at this place or organization.
 		// SCHEMA :  - containedIn - Place - The basic containment relation between places.
-		// SCHEMA :  - interactionCount - Text - A count of a specific user interactions with this item—for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.
+		// SCHEMA :  - interactionCount - Text - A count of a specific user interactions with this item for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.
 		// SCHEMA :  - reviews - Review - Review of the item.
 		// SCHEMA :  - telephone - Text - The telephone number.
 

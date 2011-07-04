@@ -182,8 +182,17 @@ function tf_of_business_options( $options ) {
 						"std" => "",
 						"type" => "textarea"); 
 						
+	$options[] = array( "name" => "Location Details",
+						"type" => "heading");					
 
-	
+	// Requires valid Google Maps API Key to be called in Header
+						
+	$options[] = array( "name" => "Picker",
+						"desc" => "Pick your location",
+						"id" => $shortname."_googlemapspicker",
+						"std" => "",
+						"type" => "googlemapspicker");
+
 	return $options;
 }
 
