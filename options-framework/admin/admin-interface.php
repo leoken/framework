@@ -175,6 +175,7 @@ function of_load_only() {
 	wp_enqueue_script('ajaxupload', OF_DIRECTORY.'/admin/js/ajaxupload.js', array('jquery'));
 	
 	// Google Maps Picker
+	wp_enqueue_script('googlemaps', 'http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=ABQIAAAAviYjaR8FeZKoJ0iOyuOw3BT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSuUsx66fC9iWRGJmqDPp28yTYt1w');
 	wp_enqueue_script('googlemapspicker', OF_DIRECTORY.'/admin/js/googlemapspicker.js');
 		
 		// Check

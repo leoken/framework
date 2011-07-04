@@ -92,11 +92,10 @@ function showMap() {
         }
     );
     
-	var storedlat: [];
-	var storedlon: [];
-	var storedzoom: [];
-	
-	
+	var storedlat = [];
+	var storedlon = [];
+	var storedzoom = [];
+		
     // Pass default values or saved values
     gmap.setCenter(
         new google.maps.LatLng(storedlat, storedlon), storedzoom
