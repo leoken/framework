@@ -28,8 +28,7 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 =========================================*/
 
 // Template Hooks
-	require_once( TF_PATH . '/core_other/tf.atomic.php' );
-	require_once( TF_PATH . '/core_seo/tf.schema.php' );
+	require_once( TF_PATH . '/core_general/tf.template-hooks.php' );
 
 // Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
@@ -40,7 +39,10 @@ if( current_theme_supports( 'tf_events' ) )
 	require_once( TF_PATH . '/core_events/tf.events.php' );
 	
 // Google Maps
-	require_once( TF_PATH . '/api_google/tf.googlemaps.shortcodes.php' );	
+	require_once( TF_PATH . '/api_google/tf.googlemaps.shortcodes.php' );
+
+// Schema Functions
+	require_once( TF_PATH . '/core_seo/tf.schema.php' );
 	
 // Widgets
 	require_once( TF_PATH . '/core_widgets/newsletter-widget.php' );

@@ -11,7 +11,7 @@ Events are handled through their own templates.
 
 */
 
-// Add to Template Tag
+// Add after Body Tag
 
 function tf_schema_showheadermeta() {
 	echo tf_schema_generateheadermeta();
