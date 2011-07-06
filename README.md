@@ -41,6 +41,12 @@ that your theme executes. Our modular approach means that you can do just that. 
 The main file that brings everything together is:
 
 	/themeforce.php
+	
+## Using within your Theme	
+
+If you'd like to learn how to use the Theme Force framework (i.e. shortcodes, widgets, etc.), please consult the **manual**:
+
+* Manual: http://www.theme-force.com/members/manual/
 
 ## Contributing
 
