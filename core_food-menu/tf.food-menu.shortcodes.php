@@ -108,25 +108,28 @@ function tf_menu_full ( $atts ) {
 					
             // - output -
             ?>
+				<div itemscope itemtype="http://schema.org/Restaurant">
+				<span itemprop="menu">
+					<div class="full-menu">
+						<?php if( has_post_thumbnail() ) { ?>
+						<a class="thumb" href="<?php echo $large; ?>"><img src="<?php echo $thumbnail; ?>" alt="<?php the_title(); ?>" /></a>
+						<div class="thumb-text">
+						<?php } else { ?>
+						<div class="text">
+						<?php } ?>
+							<div class="title">
+								<div class="left"><?php the_title(); ?></div>
+								<div class="right"><?php echo $fx; echo $price1 ?></div>
+							</div>
+							<div class="desc"><?php the_content_rss(); ?></div>
 
-                <div class="full-menu">
-                    <?php if( has_post_thumbnail() ) { ?>
-                    <a class="thumb" href="<?php echo $large; ?>"><img src="<?php echo $thumbnail; ?>" alt="<?php the_title(); ?>" /></a>
-                    <div class="thumb-text">
-                    <?php } else { ?>
-                    <div class="text">
-                    <?php } ?>
-                        <div class="title">
-                            <div class="left"><?php the_title(); ?></div>
-                            <div class="right"><?php echo $fx; echo $price1 ?></div>
-                        </div>
-                        <div class="desc"><?php the_content_rss(); ?></div>
-
-                        <?php if ($size2=="") {?>
-                        </div><?php ;} else { ?>
-                        <div class="extrasizes"><?php echo $size2 ?> <strong> <?php echo $fx; echo $price2 ?></strong>
-                        <?php if ($size3=="") {?></div></div><?php ;} else { ?> , <?php echo $size3 ?><strong> <?php echo $fx; echo $price3 ?></strong></div></div><?php ;}} ?>
-                </div>
+							<?php if ($size2=="") {?>
+							</div><?php ;} else { ?>
+							<div class="extrasizes"><?php echo $size2 ?> <strong> <?php echo $fx; echo $price2 ?></strong>
+							<?php if ($size3=="") {?></div></div><?php ;} else { ?> , <?php echo $size3 ?><strong> <?php echo $fx; echo $price3 ?></strong></div></div><?php ;}} ?>
+					</div>
+				</span>
+				</div>
                 <div class="clearfix"></div>
         <?php
         endwhile;

@@ -111,6 +111,9 @@ function tf_of_business_options( $options ) {
 
 	$shortname = "tf";
 	
+	// GENERAL BUSINESS OPTIONS
+	// -----------------------------------------------------------------
+	
 	$options[] = array( "name" => "Business Options",
 						"type" => "heading");
 	
@@ -126,9 +129,23 @@ function tf_of_business_options( $options ) {
 						"std" => "Please enter your address here.",
 						"type" => "text");
 	
-	$options[] = array( "name" => "Phone #",
-						"desc" => "",
+	$options[] = array( "name" => "Phone Number",
+						"desc" => "Your business phone number.",
 						"id" => $shortname."_business_phone",
+						"std" => "(123) 456 789",
+						"type" => "text");
+						
+	$options[] = array( 
+						"name" => "Fax Number",
+						"desc" => "Your business fax number (if you have one).",
+						"id" => $shortname."_business_fax",
+						"std" => "",
+						"type" => "text");
+	
+	// new 3.2.2	
+	$options[] = array( "name" => "Description",
+						"desc" => "A short description of the location.",
+						"id" => $shortname."_business_description",
 						"std" => "(123) 456 789",
 						"type" => "text");
 	
@@ -181,7 +198,10 @@ function tf_of_business_options( $options ) {
 						"id" => $shortname."_google_analytics",
 						"std" => "",
 						"type" => "textarea"); 
-						
+	
+	// LOCATION OPTIONS
+	// -----------------------------------------------------------------
+	
 	$options[] = array( "name" => "Location Details",
 						"type" => "heading");					
 
