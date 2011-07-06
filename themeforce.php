@@ -27,6 +27,10 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 /* Theme Force Core Tools
 =========================================*/
 
+// Template Hooks
+	require_once( TF_PATH . '/core_other/tf.atomic.php' );
+	require_once( TF_PATH . '/core_seo/tf.schema.php' );
+
 // Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
 	require_once( TF_PATH . '/core_food-menu/tf.food-menu.php' );
