@@ -90,9 +90,15 @@ if( current_theme_supports( 'tf_foursquare' ) ) {
 	require_once( TF_PATH . '/core_widgets/widget-foursquare-tips.php' );
 	/* require_once( TF_PATH . '/widgets/widget-foursquare-herenow.php' ); WIP */
 }
+
 // Yelp
 if( current_theme_supports( 'tf_yelp' ) ) {
 	require_once( TF_PATH . '/api_yelp/tf.yelp.php' );
+}
+
+// Qype
+if( current_theme_supports( 'tf_qype' ) ) {
+	require_once( TF_PATH . '/api_qype/tf.qype.php' );
 }
 
 // Gowalla
