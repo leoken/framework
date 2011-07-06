@@ -10,7 +10,7 @@ structured as a **modular feature-set** highly relevant to industry needs. This 
 
 * **Must-Read** Developer Homepage: http://www.theme-force.com/framework-developers/
 * GitHub Homepage: https://github.com/themeforce/framework
-* Discussion & News: http://www.facebook.com/pages/Theme-Force/111741295576685
+* Discussion & News: http://www.facebook.com/themeforce
 
 ## Requirements
 
