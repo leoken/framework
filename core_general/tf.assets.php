@@ -39,11 +39,11 @@
  */
 
 function tf_nivoslider_js() {
-	wp_enqueue_script('nivoslider', (get_bloginfo('template_url')) . '/themeforce/assets/js/jquery.nivo.slider.js', array('jquery'));
+	wp_enqueue_script('nivoslider', TF_URL . '/assets/js/jquery.nivo.slider.js', array('jquery'));
 	}
 	
 function tf_nivoslider_css() {
-	wp_enqueue_style('nivoslider', (get_bloginfo('template_url')) . '/themeforce/assets/css/nivo-slider.css');
+	wp_enqueue_style('nivoslider', TF_URL . '/assets/css/nivo-slider.css');
 	}
 	
 /* 
@@ -59,11 +59,11 @@ function tf_nivoslider_css() {
  */
 
 function tf_fancybox_js() {
-	wp_enqueue_script('fancybox', (get_bloginfo('template_url')) . '/themeforce/assets/js/jquery.fancybox-1.3.4.pack.js', array('jquery'));
+	wp_enqueue_script('fancybox', TF_URL . '/assets/js/jquery.fancybox-1.3.4.pack.js', array('jquery'));
 	}
 	
 function tf_fancybox_css() {
-	wp_enqueue_style('fancybox', (get_bloginfo('template_url')) . '/themeforce/assets/css/jquery.fancybox-1.3.4.css');
+	wp_enqueue_style('fancybox', TF_URL . '/assets/css/jquery.fancybox-1.3.4.css');
 	}	
 
 /* 
@@ -79,7 +79,7 @@ function tf_fancybox_css() {
  */	
  
  function tf_bxslider_js() {
-	wp_enqueue_script('bxslider', (get_bloginfo('template_url')) . '/themeforce/assets/js/jquery.bxSlider.min.js', array('jquery'));
+	wp_enqueue_script('bxslider', TF_URL . '/assets/js/jquery.bxSlider.min.js', array('jquery'));
 	}
 	
 ?>
