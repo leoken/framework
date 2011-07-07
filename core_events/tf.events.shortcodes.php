@@ -68,6 +68,7 @@ function tf_events_full ( $atts ) {
 	if ($events):
 	global $post;
 	foreach ($events as $post):
+	
 	setup_postdata($post);
 	
 	// - custom variables -
