@@ -29,6 +29,9 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 
 // Template Hooks
 	require_once( TF_PATH . '/core_general/tf.template-hooks.php' );
+	
+// Common Assets
+	require_once( TF_PATH . '/core_general/tf.assets.php' );	
 
 // Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
