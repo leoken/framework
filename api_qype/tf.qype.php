@@ -12,14 +12,13 @@ function tf_qype_api() {
 
     $api_response = wp_remote_get("http://api.qype.com/v1/places/{$api_place}?consumer_key={$api_key}");
     $qypefile = wp_remote_retrieve_body($api_response);
-	$qype = new SimpleXMLElement($qypefile);
-	$wp_qype = maybe_serialize($qype);
+	$wp_xml = (string) $qypefile->asXML();
 	
 	//error checking
 	if( isset( $qype->fat_response->status->code ))
 		return null;
 	
-    return $qype;
+    return $wp_xml;
 }
 
 function tf_qype_transient() {
@@ -29,12 +28,12 @@ function tf_qype_transient() {
 
     // - refresh transient -
     if ( !$wp_xml ) {
-        $xml = tf_qype_api();
+        $wp_xml = tf_qype_api();
         set_transient('tf_qype_xml', $wp_xml, 180);
 	}
 
     // - data -
-	$xml =  maybe_unserialize($wp_xml);
+	$xml = new SimpleXMLElement($wp_xml);
     return $xml;
 }
 
