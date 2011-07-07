@@ -1,9 +1,8 @@
 <?php
 /* 
 * -------------------------------------
-* Common Library of Assets & Licenses
+* Common Library of 3rd Party Assets
 * -------------------------------------
-* 
 */
 
 /* 
@@ -79,7 +78,7 @@ function tf_fancybox_css() {
  http://www.opensource.org/licenses/mit-license.php
  */	
  
- function tf_fancybox_js() {
+ function tf_bxslider_js() {
 	wp_enqueue_script('bxslider', (get_bloginfo('template_url')) . '/themeforce/assets/js/jquery.bxSlider.min.js', array('jquery'));
 	}
 	
