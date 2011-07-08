@@ -1,6 +1,6 @@
 <?php /*
 
-Theme-Force.com - WordPress Framework (v 3.2.1)
+Theme-Force.com - WordPress Framework (v 3.2.2)
 ===================================================
 
 Introduction
@@ -280,9 +280,10 @@ function tf_of_business_options( $options ) {
 						"std" => "",
 						"type" => "textarea"); 
 	
+        
 	// LOCATION OPTIONS
 	// -----------------------------------------------------------------
-	
+	/*
 	$options[] = array( "name" => "Map Details",
 						"type" => "heading");					
 
@@ -293,7 +294,7 @@ function tf_of_business_options( $options ) {
 						"id" => $shortname."_googlemapspicker",
 						"std" => "",
 						"type" => "googlemapspicker");
-
+        */                                        
 	return $options;
 }
 

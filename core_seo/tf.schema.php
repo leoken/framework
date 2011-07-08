@@ -19,7 +19,7 @@ function tf_open_schema_restaurant() {
 	echo '<div itemscope itemtype="http://schema.org/Restaurant">';
 }
 
-add_action('tf_body_top','tf_open_schema_restaurant');
+add_action('tf_body_top','tf_open_schema_restaurant', 8);
 
 // Close
 
@@ -27,6 +27,6 @@ function tf_close_schema_retaurant() {
 	echo '</div>';
 }
 
-add_action('tf_body_bottom','tf_close_schema_restaurant');
+add_action('tf_body_bottom','tf_close_schema_restaurant', 8);
 
 ?>
