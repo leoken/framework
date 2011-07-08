@@ -41,7 +41,7 @@ function create_event_postype() {
 	    'rewrite' => array( "slug" => "events" ),
 	    'supports'=> array('title', 'thumbnail', 'excerpt', 'editor') ,
 	    'show_in_nav_menus' => true,
-	    'taxonomies' => array( 'tf_eventcategory', 'post_tag')
+	    'taxonomies' => array( 'tf_eventcategory')
 	);
 	
 	register_post_type( 'tf_events', $args);

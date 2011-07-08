@@ -29,6 +29,9 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 
 // Template Hooks
 	require_once( TF_PATH . '/core_general/tf.template-hooks.php' );
+        
+// Shortcodes - Business
+	require_once( TF_PATH . '/core_general/tf.business-shortcodes.php' );        
 	
 // Common Assets
 	require_once( TF_PATH . '/core_general/tf.assets.php' );	
@@ -125,11 +128,14 @@ add_filter('tf_of_options','tf_of_business_options', 8);
 function tf_of_business_options( $options ) {
 
 	$shortname = "tf";
+	$options_cuisine = array('Afghan', 'African', 'American (New)', 'American (Traditional)', 'Argentine', 'Asian Fusion', 'Barbeque', 'Basque', 'Belgian', 'Brasseries', 'Brazilian', 'Breakfast & Brunch', 'British', 'Buffets', 'Burgers', 'Burmese', 'Cafes', 'Cajun/Creole', 'Cambodian', 'Caribbean', 'Cheesesteaks', 'Chicken Wings', 'Chinese', 'Creperies', 'Cuban', 'Delis', 'Diners', 'Ethiopian', 'Fast Food', 'Filipino', 'Fish & Chips', 'Fondue', 'Food Stands', 'French', 'Gastropubs', 'German', 'Gluten-Free', 'Greek', 'Halal', 'Hawaiian', 'Himalayan/Nepalese', 'Hot Dogs', 'Hungarian', 'Indian', 'Indonesian', 'Irish', 'Italian', 'Japanese', 'Korean', 'Kosher', 'Latin American', 'Live/Raw Food', 'Malaysian', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Modern European', 'Mongolian', 'Moroccan', 'Pakistani', 'Persian/Iranian', 'Peruvian', 'Pizza', 'Polish', 'Portuguese', 'Russian', 'Sandwiches', 'Scandinavian', 'Seafood', 'Singaporean', 'Soul Food', 'Soup', 'Southern', 'Spanish', 'Steakhouses', 'Sushi Bars', 'Taiwanese', 'Tapas Bars', 'Tapas/Small Plates', 'Tex-Mex', 'Thai', 'Turkish', 'Ukrainian', 'Vegan', 'Vegetarian', 'Vietnamese');
+	$options_pricerange = array ('$','$$','$$$','$$$$');
+	$options_yesno = array ('yes','no');
 	
-	// GENERAL BUSINESS OPTIONS
+	// LOCATION
 	// -----------------------------------------------------------------
 	
-	$options[] = array( "name" => "Business Options",
+	$options[] = array( "name" => "Location Details",
 						"type" => "heading");
 	
 	$options[] = array( "name" => "Business Name",
@@ -137,40 +143,94 @@ function tf_of_business_options( $options ) {
 						"id" => $shortname."_business_name",
 						"std" => "Your Business Name",
 						"type" => "text");
-	
-	$options[] = array( "name" => "Address",
-						"desc" => "It's always worth checking against <a href='http://maps.google.com'>Google Maps</a> to see if it is an address search engines can recognize.",
-						"id" => $shortname."_business_address",
-						"std" => "Please enter your address here.",
+
+	// new 3.2.2					
+	$options[] = array( "name" => "Street Name",
+						"desc" => "The street address. For exampl: 1600 Amphitheatre Pkwy",
+						"id" => $shortname."_address_street",
+						"std" => "",
 						"type" => "text");
+		
+	// new 3.2.2		
+	$options[] = array( "name" => "Town or Locality",
+						"desc" => "The locality. For example, Mountain View, Miami, Sydney, etc.",
+						"id" => $shortname."_address_locality",
+						"std" => "",
+						"type" => "text");					
 	
+	// new 3.2.2		
+	$options[] = array( "name" => "State or Region",
+						"desc" => "The region. For example, CA.",
+						"id" => $shortname."_address_region",
+						"std" => "",
+						"type" => "text");		
+	
+	// new 3.2.2		
+	$options[] = array( "name" => "Country",
+						"desc" => "Select your country",
+						"id" => $shortname."_address_country",
+						"std" => "",
+						"type" => "text");	
+						
 	$options[] = array( "name" => "Phone Number",
 						"desc" => "Your business phone number.",
 						"id" => $shortname."_business_phone",
 						"std" => "(123) 456 789",
 						"type" => "text");
-						
-	$options[] = array( 
-						"name" => "Fax Number",
-						"desc" => "Your business fax number (if you have one).",
-						"id" => $shortname."_business_fax",
-						"std" => "",
-						"type" => "text");
+							
+	if( get_current_theme() == 'Chowforce' ) {
+	$options[] = array( "name" => "Short Contact Info",
+						"desc" => "Visible contact information in the top-right corner (you can also leave blank)",
+						"id" => "chowforce_biz_contactinfo",
+						"std" => "Call us at +01 (02) 123 57 89",
+						"type" => "text");}					
+	
+	// LOCATION
+	// -----------------------------------------------------------------
+	
+	$options[] = array( "name" => "Business Details",
+						"type" => "heading");
 	
 	// new 3.2.2	
 	$options[] = array( "name" => "Description",
 						"desc" => "A short description of the location.",
 						"id" => $shortname."_business_description",
-						"std" => "(123) 456 789",
-						"type" => "text");
-	
-	if( get_current_theme() == 'Chowforce' ) {
-		$options[] = array( "name" => "Short Contact Info",
-							"desc" => "Visible contact information in the top-right corner (you can also leave blank)",
-							"id" => "chowforce_biz_contactinfo",
-							"std" => "Call us at +01 (02) 123 57 89",
-							"type" => "text");
-	}
+						"std" => "",
+						"type" => "textarea");
+						
+	$options[] = array( 
+						"name" => "Cuisine",
+						"desc" => "The cuisine of the restaurant. Uses the Yelp cuisine categorization.",
+						"id" => "tf_schema_cuisine",
+						"std" => "",
+						"type" => "select",
+						"class" => "small", //mini, tiny, small
+						"options" => $options_cuisine);	
+
+	$options[] = array( 
+						"name" => "Price Range",
+						"desc" => "US Example: Price range is the approximate cost per person for a meal including one drink, tax, and tip. We're going for averages here, folks. $ = Cheap, Under $10 * $$ = Moderate, $11 - $30 * $$$ = Spendy, $31 - $60 * $$$$ = Splurge, Above $61",
+						"id" => "tf_schema_pricerange",
+						"std" => "",
+						"type" => "select",
+						"class" => "small", //mini, tiny, small
+						"options" => $options_pricerange);
+
+	$options[] = array( 
+						"name" => "Payment Accepted",
+						"desc" => "List the types of payments you accept, separate by comma.",
+						"id" => "tf_schema_paymentaccepted",
+						"std" => "Cash, Credit Cards",
+						"type" => "text");		
+						
+	$options[] = array( 
+						"name" => "Accept Reservations",
+						"desc" => "Do you accept reservations at all?",
+						"id" => "tf_schema_reservations",
+						"std" => "",
+						"type" => "select",
+						"class" => "small", //mini, tiny, small
+						"options" => $options_yesno);					
 	
 	$options[] = array( "name" => "Menu Currency",
 						"desc" => "Please enter your currency symbol or 3-letter code, whichever looks better to you. Is used for the menu.",
@@ -187,8 +247,14 @@ function tf_of_business_options( $options ) {
 	$options[] = array( "name" => "Use advanced sort functionality for Menu?",
 						"desc" => "If you don't use the advanced sort, menu items will be sorted alphabetically. ", //See <a href='http://'>this tutorial</a>for more information
 						"id" => "tf_menu_sort_key",
-						"std" => "false",
+						"std" => "true",
 						"type" => "checkbox");
+	
+	// Design OPTIONS
+	// -----------------------------------------------------------------
+	
+	$options[] = array( "name" => "Other Details",
+						"type" => "heading");
 	
 	$options[] = array( "name" => "Facebook Link",
 						"desc" => "Icon will show automatically once a link entered.",
@@ -217,7 +283,7 @@ function tf_of_business_options( $options ) {
 	// LOCATION OPTIONS
 	// -----------------------------------------------------------------
 	
-	$options[] = array( "name" => "Location Details",
+	$options[] = array( "name" => "Map Details",
 						"type" => "heading");					
 
 	// Requires valid Google Maps API Key to be called in Header

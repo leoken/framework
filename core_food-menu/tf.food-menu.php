@@ -43,7 +43,7 @@ function create_foodmenu_postype() {
         'rewrite' => array( "slug" => "food-menu" ),
         'supports'=> array('title', 'thumbnail', 'editor') ,
         'show_in_nav_menus' => true,
-        'taxonomies' => array( 'tf_foodmenucat', 'post_tag')
+        'taxonomies' => array( 'tf_foodmenucat')
     );
 
 	register_post_type( 'tf_foodmenu', $args);
