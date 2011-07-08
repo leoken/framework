@@ -14,7 +14,7 @@ function tf_shortcode_address()
 	ob_start(); 
 	if ($streetaddress != '')
         {
-            echo '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
+            echo '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" style="display:inline">';
                     echo '<span itemprop="streetAddress">' . $streetaddress . '</span>';
                     if ($locality != '') { echo ', <span itemprop="addressLocality">' . $locality . '</span> ';}
                     if ($postalcode != '') { echo ', <span itemprop="postalCode">' . $postalcode . '</span>';}      

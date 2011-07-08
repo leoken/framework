@@ -60,6 +60,8 @@ function tf_nivoslider_css() {
 
 function tf_fancybox_js() {
 	wp_enqueue_script('fancybox', TF_URL . '/assets/js/jquery.fancybox-1.3.4.pack.js', array('jquery'));
+        // adds pop-up to .thumb classes
+        wp_enqueue_script('fancybox-settings', TF_URL . '/assets/js/jquery.fancybox-settings.js', array('jquery'));
 	}
 	
 function tf_fancybox_css() {

@@ -29,6 +29,7 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 
 // Template Hooks
 	require_once( TF_PATH . '/core_general/tf.template-hooks.php' );
+        require_once( TF_PATH . '/core_general/tf.business-general.php' );
         
 // Shortcodes - Business
 	require_once( TF_PATH . '/core_general/tf.business-shortcodes.php' );        

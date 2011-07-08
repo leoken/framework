@@ -23,7 +23,7 @@ add_action('tf_body_top','tf_open_schema_restaurant', 8);
 
 // Close
 
-function tf_close_schema_retaurant() {
+function tf_close_schema_restaurant() {
 	echo '</div>';
 }
 
