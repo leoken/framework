@@ -4,36 +4,44 @@
 
 require_once( dirname( __FILE__ ) . '/tf.qype.admin-options.php' );
 
-function tf_qype_api() {
+function tf_get_qype_api_xml() {
 
     $api_key = get_option('tf_qype_api_key');
     $api_place = get_option('tf_qype_place');
 	// Consider adding language option for reviews
 
     $api_response = wp_remote_get("http://api.qype.com/v1/places/{$api_place}?consumer_key={$api_key}");
-    $qypefile = wp_remote_retrieve_body($api_response);
-	$wp_xml = (string) $qypefile->asXML();
+    $qype_response = wp_remote_retrieve_body($api_response);
+	
+	$xml_object = new SimpleXMLElement( $qype_response );
 	
 	//error checking
-	if( isset( $qype->fat_response->status->code ))
-		return null;
+	if( isset( $xml_object->status->code ) )
+		return new WP_Error( (int) $xml_object->status->code, (string) $xml_object->status->error );
 	
-    return $wp_xml;
+    return $qype_response;
 }
 
 function tf_qype_transient() {
 
     // - get transient -
     $wp_xml = get_transient('tf_qype_xml');
-
+	
+	
     // - refresh transient -
     if ( !$wp_xml ) {
-        $wp_xml = tf_qype_api();
+        $wp_xml = tf_get_qype_api_xml();
         set_transient('tf_qype_xml', $wp_xml, 180);
 	}
-
+	
     // - data -
-	$xml = new SimpleXMLElement($wp_xml);
+    if( is_wp_error( $wp_xml ) )
+    	$xml = $wp_xml;
+    else if( $wp_xml )
+		$xml = new SimpleXMLElement($wp_xml);
+	else
+		$xml = new WP_Error( 'no-xml-present', 'No XML was returned from the API' );
+		
     return $xml;
 }
 
@@ -63,19 +71,29 @@ function tf_qype_bar() {
     	return;
 
     ob_start();
-        // Shows Response Code for Debugging (as HTML Comment)
-        echo '<div id="qypebar">';
-        echo '<div id="qypecontent" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-        // Display Requirement: Follow Link back to qype.com
-        echo '<div class="qypeimg"><a href="http://www.qype.com">';
-        echo '<img src ="' . TF_URL . '/assets/images/qype_logo.jpg" alt="qype">';
-        echo '</a></div>';
-        // Show Venue specific details
-        echo '<div class="qypetext">' . __('users have rated our establishment', 'themeforce') . '</div>';
-        echo '<a href="' . $qype->url . '">';
-        echo '<div class="qypeimg"><span itemprop="ratingValue" content="' . $qype->average_rating . '"><img src="' . TF_URL . '/assets/images/qype_stars_' . $qype->average_rating . '.jpg" alt="' . $qype->average_rating . '" style="padding-top:7px;" alt="Qype Rating" /></span><meta itemprop="bestRating" content="5" /></div>';
-        echo '</a>';
-        echo '</div></div>';
+    	?>
+		
+		<?php if( is_wp_error( $qype ) ) : ?>
+			<!-- Qype errored with WP_ERROR: <?php echo $qype->get_error_code() ?> - <?php echo $qype->get_error_message() ?> -->
+		<?php else : ?>
+		
+        	<div id="qypebar">
+        		<div id="qypecontent" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        		<div class="qypeimg"><a href="http://www.qype.com">
+        			<img src ="<?php echo  TF_URL ?>/assets/images/qype_logo.jpg" alt="qype">
+    	    		</a>
+    	    	</div>
+			
+        		<div class="qypetext"><?php _e('users have rated our establishment', 'themeforce') ?></div>
+        		<a href="<?php echo $qype->url ?>">
+	        		<div class="qypeimg"><span itemprop="ratingValue" content="<?php echo  $qype->average_rating ?>"><img src="<?php echo TF_URL . '/assets/images/qype_stars_' . $qype->average_rating . '.jpg" alt="' . $qype->average_rating ?>" style="padding-top:7px;" alt="Qype Rating" /></span><meta itemprop="bestRating" content="5" /></div>
+        		</a>
+        		</div>
+        	</div>
+        		
+        <?php
+        
+        endif;
     $output = ob_get_contents();
     ob_end_clean();
 
