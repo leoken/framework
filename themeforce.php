@@ -133,60 +133,7 @@ function tf_of_business_options( $options ) {
 	$options_pricerange = array ('$','$$','$$$','$$$$');
 	$options_yesno = array ('yes','no');
 	
-	// LOCATION
-	// -----------------------------------------------------------------
-	
-	$options[] = array( "name" => "Location Details",
-						"type" => "heading");
-	
-	$options[] = array( "name" => "Business Name",
-						"desc" => "This is used within the Address HTML tags too, so make sure it's correct",
-						"id" => $shortname."_business_name",
-						"std" => "Your Business Name",
-						"type" => "text");
-
-	// new 3.2.2					
-	$options[] = array( "name" => "Street Name",
-						"desc" => "The street address. For exampl: 1600 Amphitheatre Pkwy",
-						"id" => $shortname."_address_street",
-						"std" => "",
-						"type" => "text");
-		
-	// new 3.2.2		
-	$options[] = array( "name" => "Town or Locality",
-						"desc" => "The locality. For example, Mountain View, Miami, Sydney, etc.",
-						"id" => $shortname."_address_locality",
-						"std" => "",
-						"type" => "text");					
-	
-	// new 3.2.2		
-	$options[] = array( "name" => "State or Region",
-						"desc" => "The region. For example, CA.",
-						"id" => $shortname."_address_region",
-						"std" => "",
-						"type" => "text");		
-	
-	// new 3.2.2		
-	$options[] = array( "name" => "Country",
-						"desc" => "Select your country",
-						"id" => $shortname."_address_country",
-						"std" => "",
-						"type" => "text");	
-						
-	$options[] = array( "name" => "Phone Number",
-						"desc" => "Your business phone number.",
-						"id" => $shortname."_business_phone",
-						"std" => "(123) 456 789",
-						"type" => "text");
-							
-	if( get_current_theme() == 'Chowforce' ) {
-	$options[] = array( "name" => "Short Contact Info",
-						"desc" => "Visible contact information in the top-right corner (you can also leave blank)",
-						"id" => "chowforce_biz_contactinfo",
-						"std" => "Call us at +01 (02) 123 57 89",
-						"type" => "text");}					
-	
-	// LOCATION
+	// BUSINESS
 	// -----------------------------------------------------------------
 	
 	$options[] = array( "name" => "Business Details",
@@ -250,6 +197,62 @@ function tf_of_business_options( $options ) {
 						"id" => "tf_menu_sort_key",
 						"std" => "true",
 						"type" => "checkbox");
+	
+	
+	// LOCATION
+	// -----------------------------------------------------------------
+	
+	$options[] = array( "name" => "Location Details",
+						"type" => "heading");
+	
+	$options[] = array( "name" => "Business Name",
+						"desc" => "This is used within the Address HTML tags too, so make sure it's correct",
+						"id" => $shortname."_business_name",
+						"std" => "Your Business Name",
+						"type" => "text");
+
+	// new 3.2.2					
+	$options[] = array( "name" => "Street Name",
+						"desc" => "The street address. For exampl: 1600 Amphitheatre Pkwy",
+						"id" => $shortname."_address_street",
+						"std" => "",
+						"type" => "text");
+		
+	// new 3.2.2		
+	$options[] = array( "name" => "Town or Locality",
+						"desc" => "The locality. For example, Mountain View, Miami, Sydney, etc.",
+						"id" => $shortname."_address_locality",
+						"std" => "",
+						"type" => "text");					
+	
+	// new 3.2.2		
+	$options[] = array( "name" => "State or Region",
+						"desc" => "The region. For example, CA.",
+						"id" => $shortname."_address_region",
+						"std" => "",
+						"type" => "text");		
+	
+	// new 3.2.2		
+	$options[] = array( "name" => "Country",
+						"desc" => "Select your country",
+						"id" => $shortname."_address_country",
+						"std" => "",
+						"type" => "text");	
+						
+	$options[] = array( "name" => "Phone Number",
+						"desc" => "Your business phone number.",
+						"id" => $shortname."_business_phone",
+						"std" => "(123) 456 789",
+						"type" => "text");
+							
+	if( get_current_theme() == 'Chowforce' ) {
+	$options[] = array( "name" => "Short Contact Info",
+						"desc" => "Visible contact information in the top-right corner (you can also leave blank)",
+						"id" => "chowforce_biz_contactinfo",
+						"std" => "Call us at +01 (02) 123 57 89",
+						"type" => "text");}					
+	
+	
 	
 	// Design OPTIONS
 	// -----------------------------------------------------------------
