@@ -139,6 +139,12 @@ function tf_of_business_options( $options ) {
 	$options[] = array( "name" => "Business Details",
 						"type" => "heading");
 	
+	$options[] = array( "name" => "Business Name",
+						"desc" => "This is used within the Address HTML tags too, so make sure it's correct",
+						"id" => $shortname."_business_name",
+						"std" => "Your Business Name",
+						"type" => "text");
+
 	// new 3.2.2	
 	$options[] = array( "name" => "Description",
 						"desc" => "A short description of the location.",
@@ -205,11 +211,7 @@ function tf_of_business_options( $options ) {
 	$options[] = array( "name" => "Location Details",
 						"type" => "heading");
 	
-	$options[] = array( "name" => "Business Name",
-						"desc" => "This is used within the Address HTML tags too, so make sure it's correct",
-						"id" => $shortname."_business_name",
-						"std" => "Your Business Name",
-						"type" => "text");
+
 
 	// new 3.2.2					
 	$options[] = array( "name" => "Street Name",
