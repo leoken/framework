@@ -61,7 +61,6 @@ add_action( 'update_option_tf_yelp_country_code', 'tf_delete_yelp_transient_on_u
 *  - Schema enhanced now ( Thing > Intangible > Rating > AggregateRating )
 */
 
-
 function tf_yelp_bar() {
     
     ob_start();
@@ -102,7 +101,7 @@ function tf_yelp_bar() {
         
     $output = ob_get_contents();
     ob_end_clean();    
-    return $output;
+    echo $output;
 };
 
 add_action('tf_body_top','tf_yelp_bar', 12);

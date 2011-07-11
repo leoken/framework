@@ -65,37 +65,36 @@ add_action( 'update_option_tf_qype_place', 'tf_delete_qype_transient_on_update_o
 
 function tf_qype_bar() {
 
-    $qype = tf_qype_transient();
-    
-    if( !$qype )
-    	return;
-
     ob_start();
-    	?>
-		
-		<?php if( is_wp_error( $qype ) ) : ?>
-			<!-- Qype errored with WP_ERROR: <?php echo $qype->get_error_code() ?> - <?php echo $qype->get_error_message() ?> -->
-		<?php else : ?>
-		
-        	<div id="qypebar">
-        		<div id="qypecontent" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-        		<div class="qypeimg"><a href="http://www.qype.com">
-        			<img src ="<?php echo  TF_URL ?>/assets/images/qype_logo.jpg" alt="qype">
-    	    		</a>
-    	    	</div>
-			
-        		<div class="qypetext"><?php _e('users have rated our establishment', 'themeforce') ?></div>
-        		<a href="<?php echo $qype->url ?>">
-	        		<div class="qypeimg"><span itemprop="ratingValue" content="<?php echo  $qype->average_rating ?>"><img src="<?php echo TF_URL . '/assets/images/qype_stars_' . $qype->average_rating . '.jpg" alt="' . $qype->average_rating ?>" style="padding-top:7px;" alt="Qype Rating" /></span><meta itemprop="bestRating" content="5" /></div>
-        		</a>
-        		</div>
-        	</div>
-        		
-        <?php
-        
-        endif;
-    $output = ob_get_contents();
-    ob_end_clean();
+    
+    echo '<!-- qype bar -->';
+    
+    if (get_option('tf_qype_enabled') == 'true') {
 
-    return $output;
+        $qype = tf_qype_transient();
+        if( !$qype )
+            {
+            return;
+            } else {
+        	echo '<div id="qypebar">';
+        	echo '<div id="qypecontent" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+        	echo '<div class="qypeimg"><a href="' . $qype->link[1][href] . '" target="_blank">';
+        	echo '<img src ="' . TF_URL . '/assets/images/qype_logo.jpg" alt="qype"></a></div>';
+		echo '<div class="qypetext">' . __('users have rated our establishment', 'themeforce') . '</div>';
+        	echo '<a href="' . $qype->link[1][href] . '" target="_blank">';
+	        echo '<div class="qypeimg"><span itemprop="ratingValue" content="' . $qype->average_rating . '"><img src="' . TF_URL . '/assets/images/qype_stars_' . $qype->average_rating . '.jpg" alt="' . $qype->average_rating . '" style="padding-top:7px;" alt="Qype Rating" /></span><meta itemprop="bestRating" content="5" /></div>';
+        	echo '</a></div></div>';
+            }
+        } else {
+            echo '<!-- qype bar disabled (see theme options) -->'; 
+        }
+
+    echo '<!-- / qype bar -->'; 
+    
+    $output = ob_get_contents();
+    ob_end_clean();    
+    echo $output;
 };
+
+add_action('tf_body_top','tf_qype_bar', 12);
+?>
