@@ -25,6 +25,9 @@
 	$stime = date($time_format, $sd); // <- Start Time
 	$etime = date($time_format, $ed); // <- End Time
 
+	//
+	$category = tf_list_cats();
+	
 ?>
 
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -41,7 +44,7 @@
         <!-- url -->  <a itemprop="url" href="<?php the_permalink(); ?>">
         <!-- name --> <h1 class="post-title" itemprop="summary"><?php the_title(); ?></h1>
         <!-- /url --> </a>
-        <!-- category --> <div class=""><?php _e('Category: ','themeforce');?><span itemprop="eventType"><?php tf_list_cats(); ?></span></div>
+        <!-- category --> <?php if ( $category != '') { ?><div class=""><?php _e('Category: ','themeforce');?><span itemprop="eventType"><?php echo $category; ?></span></div><?php } ?>
 	
         <!-- dates, time & duration -->
         <div class=""><?php _e('Date: ','themeforce');?><span itemprop="startDate" datetime="<?php echo $schema_startdate; ?>"><?php echo $local_startdate; ?> - <?php echo $stime; ?></span>

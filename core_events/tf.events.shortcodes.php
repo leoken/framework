@@ -8,16 +8,24 @@
  * [tf-events-feat limit='1' group='Featured' header='yes' text='Featured Events']
  *
  */
+ 
+// CATEGORIES FUNCTION
+//***********************************************************************************
 
 function tf_list_cats() {
 	$terms = get_the_terms($post->id, 'tf_eventcategory');
+	if (!$terms) {return;}
+	$counter = 0;
 	foreach ($terms as $term) {
+	// Doesn't show featured items by default
 		if($term->name != __('Featured','themeforce')) {
-		  return $term->name;
+		  if ( $counter > 0 ) { $output .= ', ';}
+		  $output .= $term->name;
+		  $counter++;
 		}
 	};
+	return $output;
 };
- 
  
 // 1) FULL EVENTS
 //***********************************************************************************
