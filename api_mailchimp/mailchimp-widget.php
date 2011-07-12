@@ -63,8 +63,8 @@ spl_autoload_register('buffered_autoloader');
  * Get the plugin object. All the bookkeeping and other setup stuff happens here.
  */
 
-$ns_mc_plugin = NS_MC_Plugin::get_instance();
+$tf_mc_plugin = TF_MC_Plugin::get_instance();
 
-register_deactivation_hook(__FILE__, array(&$ns_mc_plugin, 'remove_options'));
+register_deactivation_hook(__FILE__, array(&$tf_mc_plugin, 'remove_options'));
 
 ?>

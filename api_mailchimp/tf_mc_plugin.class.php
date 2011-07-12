@@ -1,17 +1,17 @@
 <?php
 
-/**
- *
+/*
+ * MC Plug-in
  */
 
-class NS_MC_Plugin {
+class TF_MC_Plugin {
 	
 	private $options;
 	private $donate_link = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JSL4JTA4KMZLG';
 	private static $instance;
 	private static $mcapi;
-	private static $name = 'NS_MC_Plugin';
-	private static $prefix = 'ns_mc';
+	private static $name = 'TF_MC_Plugin';
+	private static $prefix = 'tf_mailchimp';
 	private static $public_option = 'no';
 	private static $textdomain = 'mailchimp-widget';
 	
@@ -45,7 +45,7 @@ class NS_MC_Plugin {
 		 * Add our widget when widgets get intialized.
 		 */
 		
-		add_action('widgets_init', create_function('', 'return register_widget("NS_Widget_MailChimp");'));
+		add_action('widgets_init', create_function('', 'return register_widget("TF_Widget_MailChimp");'));
 
 		add_filter('plugin_row_meta', array(&$this, 'add_plugin_meta_links'), 10, 2);
 
@@ -170,7 +170,7 @@ class NS_MC_Plugin {
 		
 		$notice = '<p>';
 		
-		$notice .= __('You\'ll need to set up the MailChimp signup widget plugin options before using it. ', 'mailchimp-widget') . __('You can make your changes', 'mailchimp-widget') . ' <a href="' . get_admin_url($blog_id) . 'options-general.php?page=mailchimp-widget/lib/ns_mc_plugin.class.php">' . __('here', 'mailchimp-widget') . '.</a>';
+		$notice .= __('You\'ll need to set up the MailChimp signup widget plugin options before using it. ', 'mailchimp-widget') . __('You can make your changes', 'mailchimp-widget') . ' <a href="' . get_admin_url($blog_id) . 'options-general.php?page=mailchimp-widget/lib/TF_MC_plugin.class.php">' . __('here', 'mailchimp-widget') . '.</a>';
 		
 		$notice .= '</p>';
 		
