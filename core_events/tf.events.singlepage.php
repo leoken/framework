@@ -12,22 +12,22 @@
 	
 	// - determine date -
 	$sqldate = date('Y-m-d H:i:s', $sd);
-	$schema_startdate = date('Y-m-d\TH:i', $sd); // <- Date for Google Rich Snippets
-	$schema_enddate = date('Y-m-d\TH:i', $ed); // <- Date for Google Rich Snippets
+	$schema_startdate = date('Y-m-d\TH:i', $sd); // <- Date for Schema
+	$schema_enddate = date('Y-m-d\TH:i', $ed); // <- Date for Schema
 	$date_format = get_option('date_format');
 	$local_startdate = mysql2date($date_format, $sqldate); // <- Date for Display
 	
 	// - determine duration -
-	$schema_duration = ($ed-$sd)/60; // Duration for Google Rich Snippets
+	$schema_duration = ($ed-$sd)/60; // Duration for Schema
 
 	// - local time format -
 	$time_format = get_option('time_format');
 	$stime = date($time_format, $sd); // <- Start Time
 	$etime = date($time_format, $ed); // <- End Time
 
-	//
+	// - grab categories -
 	$category = tf_list_cats();
-	
+
 ?>
 
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
