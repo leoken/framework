@@ -21,7 +21,7 @@ In order to make use of our complete feature set, you will need to use the **Opt
 
 The contents of this framework should be pulled into a folder called **themeforce** within your theme:
 
-	../wp-content/themes/your-theme**/themeforce/**
+	../wp-content/themes/your-theme/themeforce/
 
 ## Activating within your Theme (functions.php)
 
@@ -46,7 +46,7 @@ that your theme executes. Our modular approach means that you can do just that. 
 	
 The main file that brings everything together within the *"themeforce/** folder is is:
 
-	themeforce/**themeforce.php**
+	themeforce/themeforce.php
 	
 ## Using within your Theme	
 
