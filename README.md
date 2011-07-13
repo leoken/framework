@@ -14,33 +14,39 @@ structured as a **modular feature-set** highly relevant to industry needs. This 
 
 ## Requirements
 
-In order to make use of our complete feature set, you will need to use the Options Framework within your theme 
+In order to make use of our complete feature set, you will need to use the **Options Framework** within your theme 
 (maintained by @devinsays), it can be found here: https://github.com/devinsays/options-framework-plugin
 
 ## Adding to your Theme
 
 The contents of this framework should be pulled into a folder called **themeforce** within your theme:
 
-	../wp-content/themes/your-theme/themeforce/
+	../wp-content/themes/your-theme**/themeforce/**
 
-## Activating within your Theme
+## Activating within your Theme (functions.php)
 
 We understand you may not want to use all the features, so it's only normal that you reduce the number of queries
-that your theme executes. Our modular approach means that you can do just that. Just add any or all of the functions below to grab what you need (within functions.php).
+that your theme executes. Our modular approach means that you can do just that. Just add any (or all) of the functions below to grab what you need (within **functions.php**).
 
+	// Core Features
 	add_theme_support( 'tf_food_menu' );
 	add_theme_support( 'tf_events' );
+	
+	// Widgets
 	add_theme_support( 'tf_widget_opening_times' );
 	add_theme_support( 'tf_widget_google_maps' );
 	add_theme_support( 'tf_widget_payments' );
+	
+	// 3rd Party API's
 	add_theme_support( 'tf_foursquare' );
 	add_theme_support( 'tf_gowalla' );
 	add_theme_support( 'tf_yelp' );
+	add_theme_support( 'tf_qype' );
 	add_theme_support( 'tf_mailchimp' );
 	
-The main file that brings everything together is:
+The main file that brings everything together within the *"themeforce/** folder is is:
 
-	/themeforce.php
+	themeforce/**themeforce.php**
 	
 ## Using within your Theme	
 
