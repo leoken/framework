@@ -1,0 +1,42 @@
+#info {
+	display: block;
+	padding: 10px; margin-bottom: 20px;
+	border: 1px solid #333;
+	background-color: #efefef;
+}
+
+#test-list {
+	list-style: none;
+}
+
+#test-list li {
+    margin:10px 0;
+    padding:10px;
+    border:1px #DFDFDF solid !important;
+    overflow:auto;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width:500px;
+}
+
+#test-list li .handle {
+        float:left;
+        display:block !important;
+        background: transparent url('../images/row-resize-blue.png') 0% 50% no-repeat;
+        width:40px;
+        min-height:40px;
+        height:100%;
+	margin-right: 20px;
+	cursor: move;
+}
+
+#test-list .ui-state-highlight {
+    height:40px;
+    background:#eafbea !important;
+}
+
+.slider-item {
+    border:gray !important;
+    
+}
