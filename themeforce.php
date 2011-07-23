@@ -35,7 +35,8 @@ define( 'TF_URL', get_bloginfo( 'template_directory' ) . '/' . TF_DIR_SLUG );
 	require_once( TF_PATH . '/core_general/tf.business-shortcodes.php' );        
 	
 // Common Assets
-	require_once( TF_PATH . '/core_general/tf.assets.php' );	
+	require_once( TF_PATH . '/core_general/tf.assets.php' );
+        require_once( TF_PATH . '/core_general/tf.slider.php' );
 
 // Food Menu
 if( current_theme_supports( 'tf_food_menu' ) )
