@@ -1,10 +1,17 @@
 jQuery(document).ready(function($) { 
-  $("#test-list").sortable({
-    placeholder: 'ui-state-highlight',  
-    handle : '.handle', 
-    update : function () { 
-      var order = $('#test-list').sortable('serialize'); 
-      $("#info").load("process-sortable.php?"+order); 
-    } 
-  }); 
-}); 
+  $("#tf-slider-list").sortable({
+        // Slider Placeholder  
+        placeholder: 'ui-state-highlight', 
+        // Slider Dragger
+        handle : '.handle', 
+        update : function () { 
+        // Slider Order Update    
+        var order = 1;
+        $("li").each( function() {
+
+        $(this).find('input[name*="order"]').val(order);
+        order++;
+        });  
+        }
+      }); 
+    });
