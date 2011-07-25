@@ -26,7 +26,8 @@ jQuery(document).ready(function($) {
         $(this).parent().parent().find('span').hide();
     });
     
-    // Delete
+    // Delete Slide
+    
     $('.slider-delete').click(function () {
     var thisbox = $(this);    
         
@@ -35,7 +36,23 @@ jQuery(document).ready(function($) {
                 $(thisbox).parent().parent().find('input[name*="delete"]').val('true');
                 $(thisbox).parent().parent().slideUp('slow')
                 }
-    });    
+        });    
         
     });
+    
+    // Upload Slide Image
+    
+    $('#upload_image_button').click(function() {
+     formfield = jQuery('#tfslider_image').attr('name');
+     tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true&amp;tab=gallery');
+     $('tr.post_title, tr.image_alt, tr.post_except, tr.post_content, tr.url, tr.0, tr.align, tr.image-size').hide();
+     return false;
+    });
+
+    window.send_to_editor = function(html) {
+     imgurl = jQuery('img',html).attr('src');
+     jQuery('#tfslider_image').val(imgurl);
+     tb_remove();
+    }    
+
   });
