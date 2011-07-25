@@ -41,6 +41,8 @@ if(is_admin()){
     wp_enqueue_script("jquery-ui-sortable");
     wp_enqueue_script("jquery-ui-draggable");
     wp_enqueue_script('thickbox');
+    wp_enqueue_script( 'jalerts', TF_URL . '/assets/js/jquery.alerts.js' );
+    wp_enqueue_style('jalerts', TF_URL . '/assets/css/jquery.alerts.css');
     wp_enqueue_script( 'media-uploader-extensions', TF_URL . '/assets/js/media-uploader.extensions.js' );
     wp_enqueue_script('tfslider', TF_URL . '/assets/js/themeforce-slider.js', array('jquery'));
     wp_enqueue_style('tfslider', TF_URL . '/assets/css/themeforce-slider.css');
@@ -96,7 +98,14 @@ function themeforce_slider_page() {
 	        }
                     
              echo '<li id="listItem_' . $id . '" class="menu-item-handle slider-item">';
-             echo '<div class="handle"></div>';
+             echo '<div class="slider-controls">';
+                 echo '<div class="handle"></div>';
+                 echo '<div class="slider-edit"></div>';
+                 echo '<div class="slider-delete"></div>';
+             echo '</div>';
+             
+             // ID
+             echo '<input type="hidden" name="' . 'slider[id][' . $id . ']" value="' . $id . '" />';
              
              // Thumbnail
              echo '<div class="slider-thumbnail">';
@@ -105,12 +114,15 @@ function themeforce_slider_page() {
              
              // Content
              echo '<div class="slider-content">';
-             echo '<h3>' . get_the_title($id) . '</h3>';
-             echo '<p>' . get_the_content($id) . '</p>';
+             echo '<h3><span>' . get_the_title($id) . '</span><input style="display:none;" type="text" name="' . 'slider[title][' . $id . ']" size="45" id="input-title" value="' . get_the_title($id)  . '" /></h3>';
+             echo '<p><span>' . get_the_content($id) . '</span><textarea style="display:none;" rows="5" cols="40" name="' . 'slider[content][' . $id . ']">' . get_the_content($id)  . '</textarea></p>';
              echo '</div>';
              
              // Update Sortable List
-             echo '<input type="text" name="' . 'slider[order][' . $id . ']" size="5" value="' . $order . '" id="input-title"/>';
+             echo '<input type="hidden" name="' . 'slider[order][' . $id . ']" value="' . $order . '" id="input-title"/>';
+             
+             // Update Delete Field
+             echo '<input type="hidden" name="' . 'slider[delete][' . $id . ']" value="false" id="input-title"/>';
              echo '</li>';     
                          
              endwhile;   
@@ -120,7 +132,7 @@ function themeforce_slider_page() {
     
     <input type="hidden" name="update_post" value="1"/> 
     
-    <input class="subput" type="submit" name="updatepost" value="Update"/> 
+    <input type="submit" name="updatepost" value="Update" class="button-primary" /> 
     </form>
     
 <?php
@@ -145,7 +157,7 @@ function themeforce_slider_page() {
 
         <input type="hidden" name="new_post" value="1"/> 
 
-        <input class="subput" type="submit" name="submitpost" value="Post"/> 
+        <input type="submit" name="submitpost" class="button-primary menu-save" value="Post"/> 
 
     </form>
     
@@ -211,9 +223,30 @@ function themeforce_slider_catch_update() {
     
     if(isset($_POST['update_post']) == '1') {
     foreach ( $_POST['slider']['order'] as $key => $val ) {
-        $slider_order = intval($_POST['slider']['order'][$key]);
-        update_post_meta($key, '_tfslider_order', $slider_order);
+        
+        // Grab Data
+        $my_post = array();
+        $my_post['ID'] = $_POST['slider']['id'][$key];
+        $my_post['post_title'] = $_POST['slider']['title'][$key];
+        $my_post['post_content'] = $_POST['slider']['content'][$key];
+        $delete = $_POST['slider']['delete'][$key];
+        
+        
+        if ($delete == 'true') {
+            
+            // Delete selected sliders
+            wp_delete_post( $key, true );
+        
+                
+        } else {
+
+            // Update the post into the database
+            wp_update_post( $my_post );
+            $slider_order = intval($_POST['slider']['order'][$key]);
+            update_post_meta($key, '_tfslider_order', $slider_order);
         }
+    }    
+        
     wp_redirect(wp_get_referer());
     exit;
     }

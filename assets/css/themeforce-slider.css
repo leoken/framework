@@ -18,14 +18,17 @@
 }
 
 #tf-slider-list li .handle {
-    float:left;
     display:block !important;
-    background: transparent url('../images/row-resize-blue.png') 0% 50% no-repeat;
-    width:40px;
-    min-height:40px;
-    height:100%;
-    margin-right: 20px;
+    background: transparent url('../images/row-resize-blue.png') top left no-repeat;
+    width:24px;
+    min-height:24px;
+    margin-bottom: 10px;
     cursor: move;
+}
+
+#tf-slider-list .slider-controls {
+    float:left;
+    width:30px;
 }
 
 #tf-slider-list .slider-thumbnail {
@@ -40,11 +43,43 @@
 #tf-slider-list .slider-content {
     float:left;
     display:block;
-    min-width:300px;
+    min-width:360px;
 }
 
 #tf-slider-list .slider-content h3 {
     margin-top:0px;
+}
+
+#tf-slider-list .slider-content h3, p {
+    text-shadow:0 2px #fff;
+}
+
+#tf-slider-list .slider-edit {
+    display:block;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width:24px;
+    height:24px;
+    background: transparent url('../images/slider-edit.png') top right no-repeat;
+}
+
+#tf-slider-list .slider-delete {
+    display:block;
+    cursor: pointer;
+    width:24px;
+    height:24px;
+    background: transparent url('../images/slider-delete.png') top right no-repeat;
+}
+
+#tf-slider-list .slider-content span {
+    cursor: pointer;
+    display:inline;
+}
+
+#tf-slider-list .slider-content textarea, #tf-slider-list .slider-content input {
+    width:340px;
+    margin:0;
+    padding:10px;
 }
 
 #tf-slider-list .ui-state-highlight {
